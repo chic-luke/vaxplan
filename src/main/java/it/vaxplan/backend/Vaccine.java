@@ -13,7 +13,6 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @Accessors(chain = true)
 @AllArgsConstructor
-@Builder
 abstract class Vaccine {
 
     Map<User, Booking> bookings = new HashMap<>();
@@ -27,7 +26,8 @@ abstract class Vaccine {
      */
     public abstract boolean isEligible();
 
-    /*public void readBufferSedi(Predicate<String> selector, ArrayList<String> save) throws IOException {
+    /*
+    public void readBufferSedi(Predicate<String> selector, ArrayList<String> save) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("prenotazioni.txt"));
         String line = reader.readLine();
         while(line != null)
@@ -38,17 +38,6 @@ abstract class Vaccine {
 
             line = reader.readLine();
         }
-    }*/
-
-    /**
-     * Getter for number of available slots
-     * @return Number of available slots
-     */
-    /*
-    public int getAvailableSlots()
-    {
-        return availableSlots;
     }
-
-     */
+    */
 }

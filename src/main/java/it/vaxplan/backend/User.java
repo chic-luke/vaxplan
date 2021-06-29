@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
@@ -36,6 +37,25 @@ public class User {
             codiceFiscaleValido = codiceFiscaleValido.concat(getDayFemale());
         }
         codiceFiscaleValido = codiceFiscaleValido.concat(code);
+
+        return true;
+    }
+
+    boolean isCodeValid() {
+        // Is it 14 chars long?
+        if (fiscalCode.length() != 14)
+            return false;
+        // Are the first 6 characters letters?
+        for (var i = 0; i < 6; ++i) {
+            if (!Character.isLetter(fiscalCode.charAt(i)) && !Character.isUpperCase(fiscalCode.charAt(i)))
+                return false;
+        }
+
+        // Are the next 2 characters valid numbers?
+
+        // regex
+
+
 
         return true;
     }

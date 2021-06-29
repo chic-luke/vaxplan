@@ -3,16 +3,14 @@ package it.vaxplan.backend;
 public class Main {
 
     public static void main(String[] args) {
-	    User p1 = new User("NOME", "COGNOME", "CGNNMO99A01F205A", "205A", "CITTÀ", "01/01/1999", "F", false);
-
-	    User u1 = User.builder()
+		var p1 = User.builder()
 				.firstName("Mario")
 				.lastName("Rossi")
-				.fiscalCode("CGNNMO99A01F205A")
+				.fiscalCode("RSSMRA86D05F205W")
 				.birthPlace("Milano")
-				.code("205A")
-				.birthDay("01/01/1999")
+				.birthDay("05/04/1986")
 				.sex("M")
+				.code("205W")
 				.healthCareWorker(false)
 				.build();
 

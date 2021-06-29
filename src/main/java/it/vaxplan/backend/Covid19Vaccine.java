@@ -1,25 +1,30 @@
 package it.vaxplan.backend;
 
+import lombok.*;
+import lombok.experimental.Accessors;
+
+@EqualsAndHashCode(callSuper = true)
+@Data
+@NoArgsConstructor
+@Accessors(chain = true)
+@AllArgsConstructor
+@Builder
 public class Covid19Vaccine extends Vaccine {
 
-    User utente;
-
-    public Covid19Vaccine(User utente) {
-        this.utente = utente;
-    }
+    User user;
 
     /**
      * Create a new booking for a COVID-19 vaccine shot.
-     * @param sede Selected vaccine site
-     * @param data Selected vaccine date
+     * @param site Selected vaccine site
+     * @param date Selected vaccine date
      * @return Success status
      */
-    public boolean bookCovidVaccine(String sede, String data) {
+    public boolean bookCovidVaccine(String site, String date) {
         if (isEligible()) {
             if (availableSlots > 0) {
-                Booking p1 = new Booking(sede, data, "Covid-19", utente);
+                var b1 = new Booking(site, date, "Covid-19", user);
                 availableSlots--;
-                p1.addBooking(p1);
+                b1.addBooking(b1);
                 return true;
             }
             return false;
@@ -29,6 +34,6 @@ public class Covid19Vaccine extends Vaccine {
 
     @Override
     public boolean isEligible() {
-        return utente.isValid() && Integer.parseInt(utente.getYear()) < 2009;
+        return user.isValid() && Integer.parseInt(user.getYear()) < 2009;
     }
 }
