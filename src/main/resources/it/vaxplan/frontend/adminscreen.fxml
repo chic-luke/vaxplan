@@ -5,7 +5,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.vaxplan.frontend.AdminScreenController">
    <children>
       <Text layoutX="149.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaxplan Admin Panel" wrappingWidth="300.9952754974365">
@@ -13,8 +12,10 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Button fx:id="adminPanelDosesButton" layoutX="69.0" layoutY="90.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="Controllo dosi" />
-      <Button fx:id="adminPanelStatusButton" layoutX="69.0" layoutY="132.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="Stato campagna" />
+      <Button fx:id="adminPanelDosesButton" layoutX="300.0" layoutY="132.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="Varicella" />
+      <Button fx:id="adminPanelStatusButton" layoutX="69.0" layoutY="132.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="COVID-19" />
       <Button fx:id="logoutButton" layoutX="69.0" layoutY="349.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
+      <Text layoutX="85.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona campagna vaccinale" />
+      <Button fx:id="adminPanelStatusButton1" layoutX="69.0" layoutY="176.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="Influenza" />
    </children>
 </Pane>
