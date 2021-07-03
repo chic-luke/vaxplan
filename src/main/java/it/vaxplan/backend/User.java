@@ -30,7 +30,7 @@ public class User {
         var codiceFiscaleValido = "";
         String year = getYear();
         codiceFiscaleValido = codiceFiscaleValido.concat(toCheck(lastName)).concat(toCheck(firstName))
-                .concat("" + year.charAt(2) + year.charAt(3)).concat(checkMonth());
+                .concat("" + year.charAt(2) + year.charAt(3)).concat(String.valueOf(fiscalCodeMonth()));
         if (sex.equals("M"))
             codiceFiscaleValido = codiceFiscaleValido.concat(getDay());
         else {
@@ -41,24 +41,6 @@ public class User {
         return true;
     }
 
-    boolean isCodeValid() {
-        // Is it 14 chars long?
-        if (fiscalCode.length() != 14)
-            return false;
-        // Are the first 6 characters letters?
-        for (var i = 0; i < 6; ++i) {
-            if (!Character.isLetter(fiscalCode.charAt(i)) && !Character.isUpperCase(fiscalCode.charAt(i)))
-                return false;
-        }
-
-        // Are the next 2 characters valid numbers?
-
-        // regex
-
-
-
-        return true;
-    }
 
     // TODO fix
     /** Check the first 6 digits of the fiscal code which represent the full name.
@@ -113,32 +95,30 @@ public class User {
      * a month name with the corresponding letter on a fiscal code.
      * @return Letter associated to the month of birth.
      */
-    private String checkMonth() {
-        switch (getMonth()) {
-            case "01":
-                return "A";
-            case "02":
-                return "B";
-            case "03":
-                return "C";
-            case "04":
-                return "D";
-            case "05":
-                return "E";
-            case "06":
-                return "H";
-            case "07":
-                return "L";
-            case "08":
-                return "M";
-            case "09":
-                return "P";
-            case "10":
-                return "R";
-            case "11":
-                return "S";
+    private char fiscalCodeMonth() {
+        var currentMonth = Integer.parseInt(getMonth());
+
+        // Handle trivial cases
+        if (currentMonth > 0 && currentMonth <= 5) {
+            return (char) (64 + currentMonth);
+        }
+
+        // Handle special cases
+        switch (currentMonth) {
+            case 6:
+                return 'H';
+            case 7:
+                return 'L';
+            case 8:
+                return 'M';
+            case 9:
+                return 'P';
+            case 10:
+                return 'R';
+            case 11:
+                return 'S';
             default:
-                return "T";
+                return 'T';
         }
     }
 

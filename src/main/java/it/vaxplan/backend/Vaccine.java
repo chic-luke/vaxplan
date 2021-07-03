@@ -1,42 +1,23 @@
 package it.vaxplan.backend;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 @Data
-@NoArgsConstructor
 @Accessors(chain = true)
 @AllArgsConstructor
 abstract class Vaccine {
-
-    Map<User, Booking> bookings = new HashMap<>();
-    //ArrayList<String> sites = new ArrayList<String>();
-    //ArrayList<String> dates = new ArrayList<String>();
-    int availableSlots = 6;
+    /**
+     * Book a reservation for a vaccine.
+     * @return success status
+     */
+    public abstract boolean book(String site, String date);
 
     /**
      * Determines if a patient is eligible for a given vaccine campaign.
      * @return Truth value for whether a patient is eligible or not
      */
     public abstract boolean isEligible();
-
-    /*
-    public void readBufferSedi(Predicate<String> selector, ArrayList<String> save) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("prenotazioni.txt"));
-        String line = reader.readLine();
-        while(line != null)
-        {
-            for(String word: line.split("//W+"))
-                if(selector.test(word))
-                    save.add(word);
-
-            line = reader.readLine();
-        }
-    }
-    */
 }

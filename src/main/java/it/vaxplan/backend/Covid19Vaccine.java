@@ -3,6 +3,9 @@ package it.vaxplan.backend;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
+import java.util.LinkedList;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
@@ -10,8 +13,11 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Builder
 public class Covid19Vaccine extends Vaccine {
-
-    User user;
+    private User user;
+    private int availableDoses;
+    private int availableSlots;
+    private LinkedList<String> vaccinationSites = new LinkedList<>();
+    private LinkedList<Date> vaccinationSlots = new LinkedList<>();
 
     /**
      * Create a new booking for a COVID-19 vaccine shot.
@@ -19,10 +25,10 @@ public class Covid19Vaccine extends Vaccine {
      * @param date Selected vaccine date
      * @return Success status
      */
-    public boolean bookCovidVaccine(String site, String date) {
+    @Override
+    public boolean book(String site, String date) {
         if (isEligible()) {
             if (availableSlots > 0) {
-                // var b1 = new Booking(site, date, "Covid-19", user);
                 var b1 = Booking.builder()
                         .site(site)
                         .date(date)

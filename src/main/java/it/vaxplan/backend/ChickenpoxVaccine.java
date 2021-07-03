@@ -3,14 +3,21 @@ package it.vaxplan.backend;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Accessors(chain = true)
 @AllArgsConstructor
 public class ChickenpoxVaccine extends Vaccine {
-
-    User user;
+    private User user;
+    private int availableDoses;
+    private int availableSlots;
+    private LinkedList<String> vaccinationSites = new LinkedList<>();
+    private LinkedList<Date> vaccinationSlots = new LinkedList<>();
 
     /**
      * Book a chickenpox vaccine injection.
@@ -21,7 +28,6 @@ public class ChickenpoxVaccine extends Vaccine {
     public boolean chickenpoxVaccineBooking(String site, String date) {
         if (isEligible()) {
             if (availableSlots > 0) {
-                // var p1 = new Booking(site, date, "Varicella", utente);
                 var p1 = Booking.builder()
                         .site(site)
                         .date(date)
@@ -34,6 +40,11 @@ public class ChickenpoxVaccine extends Vaccine {
             }
             return false;
         }
+        return false;
+    }
+
+    @Override
+    public boolean book(String site, String date) {
         return false;
     }
 
