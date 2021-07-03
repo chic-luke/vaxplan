@@ -22,7 +22,13 @@ public class Covid19Vaccine extends Vaccine {
     public boolean bookCovidVaccine(String site, String date) {
         if (isEligible()) {
             if (availableSlots > 0) {
-                var b1 = new Booking(site, date, "Covid-19", user);
+                // var b1 = new Booking(site, date, "Covid-19", user);
+                var b1 = Booking.builder()
+                        .site(site)
+                        .date(date)
+                        .currentBooking("COVID-19")
+                        .user(user)
+                        .build();
                 availableSlots--;
                 b1.addBooking(b1);
                 return true;

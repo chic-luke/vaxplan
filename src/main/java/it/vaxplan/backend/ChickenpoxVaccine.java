@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 public class ChickenpoxVaccine extends Vaccine {
 
-    User utente;
+    User user;
 
     /**
      * Book a chickenpox vaccine injection.
@@ -21,7 +21,13 @@ public class ChickenpoxVaccine extends Vaccine {
     public boolean chickenpoxVaccineBooking(String site, String date) {
         if (isEligible()) {
             if (availableSlots > 0) {
-                var p1 = new Booking(site, date, "Varicella", utente);
+                // var p1 = new Booking(site, date, "Varicella", utente);
+                var p1 = Booking.builder()
+                        .site(site)
+                        .date(date)
+                        .currentBooking("Varicella")
+                        .user(user)
+                        .build();
                 availableSlots--;
                 p1.addBooking(p1);
                 return true;
@@ -33,6 +39,6 @@ public class ChickenpoxVaccine extends Vaccine {
 
     @Override
     public boolean isEligible() {
-        return utente.isValid() && Integer.parseInt(utente.getYear()) > 2003 && (utente.isHealthCareWorker());
+        return user.isValid() && Integer.parseInt(user.getYear()) > 2003 && (user.isHealthCareWorker());
     }
 }

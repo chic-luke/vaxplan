@@ -2,34 +2,25 @@ package it.vaxplan.backend;
 
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
+@Data
+@NoArgsConstructor
+@Accessors(chain = true)
+@AllArgsConstructor
+@Builder
 public class Booking {
 
-    String site, date, booking;
-    User user;
+    private String site;
+    private String date;
+    private String currentBooking;
+    private User user;
+
     ArrayList<Booking> bookings = new ArrayList<>();
-
-    public Booking(String site, String date, String booking, User user)
-    {
-        this.site = site;
-        this.date = date;
-        this.booking = booking;
-        this.user = user;
-    }
-
-    public String getSite()
-    {
-        return site;
-    }
-
-    public String getDate()
-    {
-        return date;
-    }
-
-    public String getBooking()
-    {
-        return booking;
-    }
 
     public void addBooking(Booking booking)
     {
