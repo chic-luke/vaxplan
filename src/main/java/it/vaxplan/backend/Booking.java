@@ -1,27 +1,34 @@
-package it.vaxplan.backend;
+package com.example;
 
-import java.util.LinkedList;
+import java.time.ZonedDateTime;
+import java.util.UUID;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
-@Accessors(chain = true)
-@AllArgsConstructor
 @Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Booking {
-    private String site;
-    private String date;
-    private String currentBooking;
-    private User user;
-    private LinkedList<Booking> bookings = new LinkedList<>();
 
-    public void addBooking(Booking booking)
-    {
-        bookings.add(booking);
-    }
+    private final UUID uuid = UUID.randomUUID();
+
+    @NotNull
+    private Patient patient;
+
+    @NotNull
+    private Vaccine vaccine;
+
+    @NotNull
+    private ZonedDateTime date;
+
+    @NotBlank
+    private String location;
+
 }
