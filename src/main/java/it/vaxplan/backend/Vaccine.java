@@ -1,4 +1,4 @@
-package com.example;
+package it.vaxplan.backend;
 
 import java.util.List;
 import java.util.Objects;

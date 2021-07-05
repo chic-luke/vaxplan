@@ -1,4 +1,4 @@
-package com.vaxplan.backend;
+package it.vaxplan.backend;
 
 /**
  * Hello world!

@@ -1,8 +1,7 @@
-package com.example;
+package it.vaxplan.backend;
 
 public class Constants {
 
-    // Lo so che in murica è diverso ma stica
-    public static long adultAgeTreshold = 18;
+    public static long adultAgeThreshold = 18;
 
 }

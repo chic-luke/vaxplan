@@ -1,4 +1,4 @@
-package com.example;
+package it.vaxplan.backend;
 
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -50,7 +50,7 @@ public class Patient {
     }
 
     public boolean isAdult() {
-        return getIntAge() > Constants.adultAgeTreshold;
+        return getIntAge() > Constants.adultAgeThreshold;
     }
 
 }
