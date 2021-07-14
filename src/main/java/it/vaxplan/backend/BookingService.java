@@ -18,8 +18,9 @@ public class BookingService {
     }
 
     public void addBooking(Booking booking) {
-        if (Validation.buildDefaultValidatorFactory().getValidator().validate(booking.getPatient()).isEmpty())
-            throw new IllegalArgumentException("Dati inseriti non validi");
+        // TODO resolve this NoProviderFoundException
+//        if (Validation.buildDefaultValidatorFactory().getValidator().validate(booking.getPatient()).isEmpty())
+//            throw new IllegalArgumentException("Dati inseriti non validi");
 
         if (booking.getVaccine().isPatientElegible(booking.getPatient())) {
             throw new IllegalArgumentException("Non sei idoneo per questo vaccino");

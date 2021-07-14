@@ -8,8 +8,9 @@ import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -30,15 +31,16 @@ public class VaccineCampaign {
     private final ZonedDateTime endDate;
 
     @NotNull
-    private final ZonedDateTime dailyStartTime;
+    private final LocalTime dailyStartTime;
 
     @NotNull
-    private final ZonedDateTime dailyEndTime;
+    private final LocalTime dailyEndTime;
 
     @NotEmpty
-    private final ArrayList<String> availableSites;
+    private final LinkedList<VaccineSite> availableSites = new LinkedList<>();
 
     private final Function<Patient, Boolean> patientElegibilityChecker;
+
 
     /**
      * Check if patient is eligible for the vaccine campaign.
@@ -53,7 +55,7 @@ public class VaccineCampaign {
      * Add a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to add to this campaign
      */
-    public void addVaccinationSite(String site) {
+    public void addVaccinationSite(VaccineSite site) {
         availableSites.add(site);
     }
 
@@ -61,7 +63,7 @@ public class VaccineCampaign {
      * Remove a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to remove from this campaign
      */
-    public void removeVaccinationSite(String site) {
+    public void removeVaccinationSite(VaccineSite site) {
         availableSites.stream().filter(b -> b.equals(site)).findFirst().ifPresent(availableSites::remove);
     }
 
