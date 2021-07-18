@@ -1,4 +1,4 @@
-package it.vaxplan.model;
+package it.vaxplan.backend;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

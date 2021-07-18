@@ -1,4 +1,4 @@
-package it.vaxplan.model;
+package it.vaxplan.backend;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,10 +17,6 @@ public class BookingService {
     }
 
     public void addBooking(Booking booking) {
-        // TODO resolve this NoProviderFoundException
-//        if (Validation.buildDefaultValidatorFactory().getValidator().validate(booking.getPatient()).isEmpty())
-//            throw new IllegalArgumentException("Dati inseriti non validi");
-
         if (booking.getVaccine().isPatientElegible(booking.getPatient())) {
             throw new IllegalArgumentException("Non sei idoneo per questo vaccino");
         }

@@ -1,4 +1,4 @@
-package it.vaxplan.model;
+package it.vaxplan.backend;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;

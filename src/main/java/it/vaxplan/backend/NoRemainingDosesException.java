@@ -1,2 +1,4 @@
-package it.vaxplan.backend;public class NoRemainingDosesException {
+package it.vaxplan.backend;
+
+public class NoRemainingDosesException extends RuntimeException {
 }

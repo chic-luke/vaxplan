@@ -1,4 +1,4 @@
-package it.vaxplan.model;
+package it.vaxplan.backend;
 
 import java.time.LocalTime;
 import java.util.LinkedList;
@@ -42,12 +42,16 @@ public class App
         System.out.println(bks);
 
         VaccineCampaign c1 = VaccineCampaign.builder()
-                .associatedVaccine(Vaccine.COVID)
+                .name("Campagna vaccinale COVID")
+                .vaccine(Vaccine.COVID)
+                .availableDoses(100)
                 .startDate(DateHandler.parseDate("15/06/2021", null))
                 .endDate(DateHandler.parseDate("01/01/2022", null))
                 .dailyStartTime(LocalTime.of(9, 0))
                 .dailyEndTime(LocalTime.of(20, 0))
                 .build();
+
+        c1.addBooking(b1);
 
         c1.addVaccinationSite(VaccineSite.builder().name("Ospedale Civile").city("Brescia").build());
         c1.addVaccinationSite(VaccineSite.builder().name("Niguarda").city("Milano").build());
@@ -64,7 +68,7 @@ public class App
 
         System.out.println("Available sites for Berscia: " + mySites);
 
-
-
+        System.out.println();
+        System.out.println(c1);
     }
 }

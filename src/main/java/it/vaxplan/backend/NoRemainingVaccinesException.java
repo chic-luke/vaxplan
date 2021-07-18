@@ -1,4 +1,4 @@
-package it.vaxplan.model;
+package it.vaxplan.backend;
 
 public class NoRemainingVaccinesException extends RuntimeException {
 
