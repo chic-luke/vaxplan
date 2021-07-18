@@ -1,4 +1,4 @@
-package it.vaxplan.backend;
+package it.vaxplan.model;
 
 public class Constants {
 

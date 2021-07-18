@@ -1,4 +1,4 @@
-package it.vaxplan.backend;
+package it.vaxplan.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,7 +13,7 @@ public class DateHandler {
      * @param date String formatted like "dd/mm/yyyy"
      * @return Corresponding ZoneDateTime object
      */
-    public static ZonedDateTime parse(String date, String time) {
+    public static ZonedDateTime parseDate(String date, String time) {
 
         var ld = LocalDate.parse(
                 date,

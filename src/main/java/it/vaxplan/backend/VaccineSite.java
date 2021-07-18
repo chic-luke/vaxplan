@@ -1,4 +1,4 @@
-package it.vaxplan.backend;
+package it.vaxplan.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

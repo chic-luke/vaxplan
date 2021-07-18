@@ -1,11 +1,10 @@
-package it.vaxplan.backend;
+package it.vaxplan.model;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-import javax.validation.Validation;
 import lombok.Getter;
 
 public class BookingService {

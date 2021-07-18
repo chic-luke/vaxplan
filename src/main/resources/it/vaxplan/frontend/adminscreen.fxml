@@ -1,21 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.vaxplan.frontend.AdminScreenController">
    <children>
-      <Text layoutX="149.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaxplan Admin Panel" wrappingWidth="300.9952754974365">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <Button fx:id="adminPanelDosesButton" layoutX="300.0" layoutY="132.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="Varicella" />
-      <Button fx:id="adminPanelStatusButton" layoutX="69.0" layoutY="132.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="COVID-19" />
-      <Button fx:id="logoutButton" layoutX="69.0" layoutY="349.0" mnemonicParsing="false" onAction="#logoutAction" text="Logout" />
-      <Text layoutX="85.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleziona campagna vaccinale" />
-      <Button fx:id="adminPanelStatusButton1" layoutX="69.0" layoutY="176.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="195.0" text="Influenza" />
+      <VBox layoutX="-2.0" prefHeight="400.0" prefWidth="609.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Gestione vaccini">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="160.0" top="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Gestisci una campagna vaccinale esistente">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="91.0" prefWidth="609.0">
+               <children>
+                  <Label text="Campagne in corso">
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="10.0" top="13.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="campaignList" prefHeight="24.0" prefWidth="390.0">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Button mnemonicParsing="false" text="OK">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Crea una nuova campagna vaccinale">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="24.0" prefWidth="169.0" text="Nuova campagna...">
+                     <HBox.margin>
+                        <Insets left="20.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="107.0" prefWidth="609.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="84.0" text="Logout">
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </Pane>

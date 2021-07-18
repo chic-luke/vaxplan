@@ -1,6 +1,4 @@
-package it.vaxplan.backend;
-
-import lombok.Getter;
+package it.vaxplan.model;
 
 public class IDChecker {
 
