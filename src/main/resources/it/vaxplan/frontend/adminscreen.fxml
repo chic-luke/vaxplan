@@ -40,7 +40,7 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="91.0" prefWidth="609.0">
+            <HBox fx:id="cmpParent" prefHeight="91.0" prefWidth="609.0">
                <children>
                   <Label text="Campagne in corso">
                      <HBox.margin>
@@ -52,7 +52,7 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button mnemonicParsing="false" text="OK">
+                  <Button fx:id="cmpsOK" mnemonicParsing="false" onAction="#okButtonAction" text="OK">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
@@ -83,7 +83,7 @@
             <HBox prefHeight="107.0" prefWidth="609.0" />
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="84.0" text="Logout">
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutAction" prefHeight="24.0" prefWidth="84.0" text="Logout">
                      <HBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </HBox.margin>
