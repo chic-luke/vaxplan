@@ -15,14 +15,11 @@ import java.util.ResourceBundle;
 
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.VaccineCampaignService;
-import javafx.scene.layout.HBox;
 
 public class AdminScreenController implements Initializable {
 
     @FXML
     public ComboBox<String> campaignList;
-    @FXML
-    public HBox cmpParent;
     @FXML
     public Button cmpsOK;
     @FXML
@@ -30,11 +27,7 @@ public class AdminScreenController implements Initializable {
 
     private LinkedList<String> tmpList = new LinkedList<>();
     private static boolean flag = false;
-
-    public void logoutAction(ActionEvent actionEvent) throws IOException {
-        LoginScreen.setRoot("welcome");
-    }
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         var vaccineCampaigns = VaccineCampaignService.getCampaigns();
@@ -77,8 +70,6 @@ public class AdminScreenController implements Initializable {
     }
 
     public void okButtonAction() {
-//        var selectedAction = campaignList.getSelectionModel().getSelectedItem();
-//        System.out.println(selectedAction);
         var selection = campaignList.getValue();
         System.out.println(selection);
     }
