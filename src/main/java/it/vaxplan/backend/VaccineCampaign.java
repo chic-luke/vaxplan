@@ -1,5 +1,6 @@
 package it.vaxplan.backend;
 
+import it.vaxplan.backend.exceptions.NoRemainingDosesException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -70,19 +71,6 @@ public class VaccineCampaign {
      */
     public void addDoses(int doses) {
         availableDoses += doses;
-    }
-
-    /**
-     * Remove an arbitrary number of doses from this campaign.
-     * Useful should there be anomalies that require discarding a number of doses.
-     * @param doses Number of doses to remove
-     */
-    public void removeDoses(int doses) {
-        if (doses > availableDoses) {
-            throw new IllegalArgumentException("You're trying to remove too many doses!");
-        }
-
-        availableDoses -= doses;
     }
 
     /**

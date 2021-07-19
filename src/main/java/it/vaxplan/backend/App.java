@@ -1,5 +1,8 @@
 package it.vaxplan.backend;
 
+import it.vaxplan.backend.service.BookingService;
+import it.vaxplan.backend.utils.DateHandler;
+
 import java.time.LocalTime;
 import java.util.LinkedList;
 
@@ -28,7 +31,7 @@ public class App
                 .patient(p1)
                 .vaccine(Vaccine.COVID)
                 .date(DateHandler.parseDate("01/09/2021", null))
-                .location("Milan")
+                .location("Fiera")
                 .build();
 
         System.out.println(b1.getDate());

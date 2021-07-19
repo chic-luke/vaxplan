@@ -1,7 +1,6 @@
 package it.vaxplan.frontend;
 
 import it.vaxplan.backend.Vaccine;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,29 +10,29 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import it.vaxplan.backend.VaccineCampaign;
-import it.vaxplan.backend.VaccineCampaignService;
+import it.vaxplan.backend.service.VaccineCampaignService;
 
 public class AdminScreenController implements Initializable {
 
     @FXML
-    public ComboBox<String> campaignList;
+    public ComboBox<String> campaignsBox;
     @FXML
     public Button cmpsOK;
     @FXML
     public Button logoutButton;
 
-    private LinkedList<String> tmpList = new LinkedList<>();
-    private static boolean flag = false;
-    
+    private final List<String> tmpList = new LinkedList<>();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         var vaccineCampaigns = VaccineCampaignService.getCampaigns();
 
         // Begin placeholder code
-        if (!flag) {
+        if (VaccineCampaignService.isEmpty()) {
             VaccineCampaign camp1 = VaccineCampaign.builder()
                     .name("COVID-19")
                     .vaccine(Vaccine.COVID)
@@ -52,7 +51,6 @@ public class AdminScreenController implements Initializable {
 
             VaccineCampaignService.addCampaign(camp1);
             VaccineCampaignService.addCampaign(camp2);
-            flag = true;
         }
         // End placeholder code
 
@@ -64,14 +62,15 @@ public class AdminScreenController implements Initializable {
 
         System.out.println(tmpList);
 
-        campaignList.setPromptText("Seleziona campagna vaccinale");
+        campaignsBox.setPromptText("Seleziona campagna vaccinale");
         clearComboBox();
-        campaignList.getItems().addAll(tmpList);
+        campaignsBox.getItems().addAll(tmpList);
     }
 
-    public void okButtonAction() {
-        var selection = campaignList.getValue();
+    public void okButtonAction() throws IOException {
+        var selection = campaignsBox.getValue();
         System.out.println(selection);
+        LoginScreen.setRoot("editCampaign");
     }
 
     public void logoutAction() throws IOException {
@@ -80,7 +79,7 @@ public class AdminScreenController implements Initializable {
     }
 
     public void clearComboBox() {
-        campaignList.getSelectionModel().clearSelection();
-        campaignList.getItems().clear();
+        campaignsBox.getSelectionModel().clearSelection();
+        campaignsBox.getItems().clear();
     }
 }

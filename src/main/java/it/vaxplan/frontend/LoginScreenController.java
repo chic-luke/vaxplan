@@ -1,5 +1,7 @@
 package it.vaxplan.frontend;
 
+import it.vaxplan.frontend.LoginScreen;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
