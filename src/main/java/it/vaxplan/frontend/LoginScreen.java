@@ -19,6 +19,7 @@ public class LoginScreen extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("welcome"));
+        stage.setTitle("Vaxplan");
         stage.setScene(scene);
         stage.show();
     }
