@@ -65,6 +65,7 @@ public class EditCampaignScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("UUID DOPO:" + Globals.campaignToEdit.getUuid());
         System.out.println("Editing:" + Globals.campaignToEdit);
 
         var dayRange = Arrays.stream(IntStream.rangeClosed(1, 30).toArray())
@@ -100,7 +101,7 @@ public class EditCampaignScreenController implements Initializable {
      * relative to the vaccine campaign which is currently being edited.
      */
     public void addDoses() {
-        if (dosesAddField.getText() != null)
+        if (!dosesAddField.getText().equals(""))
             Globals.campaignToEdit.addDoses(Integer.parseInt(dosesAddField.getText()));
     }
 
@@ -121,43 +122,49 @@ public class EditCampaignScreenController implements Initializable {
         var timeEndMinutes = timeEndMinutesBox.getValue();
 
         // Daily start time
-        if (timeStartHour != null && timeStartMinutes != null)
-            Globals.campaignToEdit.setDailyStartTime(LocalTime.of(timeStartHour, timeStartMinutes));
+        if (timeStartHour != null && timeStartMinutes != null) {
+            if (Globals.campaignToEdit.getDailyEndTime() != null &&
+                    Globals.campaignToEdit.getDailyEndTime().isBefore(LocalTime.of(timeStartHour, timeStartMinutes)))
+                throw new IllegalArgumentException();
+            else
+                Globals.campaignToEdit.setDailyStartTime(LocalTime.of(timeStartHour, timeStartMinutes));
+        }
         System.out.println(Globals.campaignToEdit.getDailyStartTime());
 
         // Daily end time
         if (timeEndHour != null && timeEndMinutes != null) {
-            if (timeStartHour != null && timeStartMinutes != null &&
-                    Globals.campaignToEdit.getDailyStartTime().isAfter(LocalTime.of(timeEndHour, timeEndMinutes))
-            ) {
+            if (Globals.campaignToEdit.getDailyStartTime() != null &&
+                    Globals.campaignToEdit.getDailyStartTime().isAfter(LocalTime.of(timeEndHour, timeEndMinutes)))
                 throw new IllegalArgumentException();
-            } else {
+            else
                 Globals.campaignToEdit.setDailyEndTime(LocalTime.of(timeEndHour, timeEndMinutes));
-            }
         }
         System.out.println(Globals.campaignToEdit.getDailyEndTime());
 
         // Start date
-        if (dateStartDay != null && dateStartMonth != null && dateStartYear != null)
-            Globals.campaignToEdit.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
+        if (dateStartDay != null && dateStartMonth != null && dateStartYear != null){
+            if (Globals.campaignToEdit.getEndDate() != null &&
+                    Globals.campaignToEdit.getEndDate().isBefore(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay)))
+                throw new IllegalArgumentException();
+            else
+                Globals.campaignToEdit.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
+        }
+
         System.out.println(Globals.campaignToEdit.getStartDate());
 
         // End date
         if (dateEndDay != null && dateEndMonth != null && dateEndYear != null) {
-            if (dateStartDay != null && dateStartMonth != null && dateStartYear != null &&
-                    Globals.campaignToEdit.getStartDate().isAfter(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay))
-            ) {
+            if (Globals.campaignToEdit.getStartDate() != null &&
+                    Globals.campaignToEdit.getStartDate().isAfter(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay)))
                 throw new IllegalArgumentException();
-            }
-        } else {
-            Globals.campaignToEdit.setEndDate(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay));
+            else
+                Globals.campaignToEdit.setEndDate(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay));
         }
         System.out.println(Globals.campaignToEdit.getEndDate());
     }
 
     public void okButtonAction() throws IOException {
-        if (!dosesAddField.getText().equals(""))
-            addDoses();
+        addDoses();
         setDateTime();
 
         backButtonAction();
