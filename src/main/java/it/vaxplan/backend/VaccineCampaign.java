@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
@@ -24,8 +25,8 @@ public class VaccineCampaign {
     private String name;
     private Vaccine vaccine;
     private int availableDoses;
-    private ZonedDateTime startDate;
-    private ZonedDateTime endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private LocalTime dailyStartTime;
     private LocalTime dailyEndTime;
     private final LinkedList<VaccineSite> availableSites = new LinkedList<>();
