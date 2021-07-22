@@ -68,8 +68,14 @@ public class AdminScreenController implements Initializable {
     }
 
     public void okButtonAction() throws IOException {
-        var selection = campaignsBox.getValue();
+        String selection = campaignsBox.getValue();
         System.out.println(selection);
+
+        for (VaccineCampaign vc: VaccineCampaignService.getCampaigns()) {
+            if (vc.getName().equals(selection))
+                Globals.campaignToEdit = vc;
+        }
+
         LoginScreen.setRoot("editCampaign");
     }
 
