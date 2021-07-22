@@ -19,8 +19,6 @@ public class EditCampaignScreenController implements Initializable {
     // Doses
     @FXML
     public TextField dosesAddField;
-    @FXML
-    public Button dosesAddOKButton;
 
     // Dates and time
     @FXML
@@ -93,7 +91,7 @@ public class EditCampaignScreenController implements Initializable {
     }
 
     public void backButtonAction() throws IOException {
-        LoginScreen.setRoot("adminscreen");
+        App.setRoot("adminscreen");
     }
 
     /**
@@ -149,7 +147,6 @@ public class EditCampaignScreenController implements Initializable {
             else
                 Globals.campaignToEdit.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
         }
-
         System.out.println(Globals.campaignToEdit.getStartDate());
 
         // End date

@@ -64,11 +64,6 @@
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="dosesAddOKButton" mnemonicParsing="false" onAction="#addDoses" text="OK">
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </Button>
                            </children>
                         </HBox>
                         <HBox />
