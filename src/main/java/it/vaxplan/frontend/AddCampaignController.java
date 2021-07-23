@@ -68,7 +68,7 @@ public class AddCampaignController implements Initializable {
     // Values to enter in vaccine campaign
     private String name;
     private Vaccine vaccine;
-    private int availableDoses;
+    private Integer availableDoses;
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalTime dailyStartTime;
@@ -101,10 +101,6 @@ public class AddCampaignController implements Initializable {
 
         // Initialize Vaccines ComboBox
         vaccineTypeComboBox.getItems().addAll(Vaccine.values());
-    }
-
-    public void backButtonAction() throws IOException {
-        App.setRoot("adminscreen");
     }
 
     public void setName() {
@@ -164,12 +160,15 @@ public class AddCampaignController implements Initializable {
 
     }
 
+    public void backButtonAction() throws IOException {
+        App.setRoot("adminscreen");
+    }
 
     public void confirmButtonAction() throws IOException {
         setName();
         setVaccine();
-        setDateTime();
         setDoses();
+        setDateTime();
 
         var newCampaign = new VaccineCampaign(name, vaccine, availableDoses, startDate, endDate, dailyStartTime,
                 dailyEndTime);
