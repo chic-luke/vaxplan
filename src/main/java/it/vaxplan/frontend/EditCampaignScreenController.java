@@ -90,6 +90,7 @@ public class EditCampaignScreenController implements Initializable {
         timeEndMinutesBox.getItems().addAll(minutesRange);
     }
 
+
     public void backButtonAction() throws IOException {
         App.setRoot("adminscreen");
     }
@@ -140,7 +141,7 @@ public class EditCampaignScreenController implements Initializable {
         System.out.println(Globals.campaignToEdit.getDailyEndTime());
 
         // Start date
-        if (dateStartDay != null && dateStartMonth != null && dateStartYear != null){
+        if (dateStartDay != null && dateStartMonth != null && dateStartYear != null) {
             if (Globals.campaignToEdit.getEndDate() != null &&
                     Globals.campaignToEdit.getEndDate().isBefore(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay)))
                 throw new IllegalArgumentException();
