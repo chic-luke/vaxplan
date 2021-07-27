@@ -53,18 +53,6 @@ public class AddCampaignController implements Initializable {
     @FXML
     public Button confirmButton;
 
-    // Values from comboboxes
-    private Integer dateStartDay;
-    private Integer dateStartMonth;
-    private Integer dateStartYear;
-    private Integer dateEndDay;
-    private Integer dateEndMonth;
-    private Integer dateEndYear;
-    private Integer timeStartHour;
-    private Integer timeStartMinutes;
-    private Integer timeEndHour;
-    private Integer timeEndMinutes;
-
     // Values to enter in vaccine campaign
     private String name;
     private Vaccine vaccine;
@@ -82,9 +70,9 @@ public class AddCampaignController implements Initializable {
                 .boxed().collect(Collectors.toList());
         var yearRange = Arrays.stream(IntStream.rangeClosed(2021, 2069).toArray())
                 .boxed().collect(Collectors.toList());
-        var hoursRange = Arrays.stream(IntStream.rangeClosed(1, 31).toArray())
+        var hoursRange = Arrays.stream(IntStream.rangeClosed(0, 31).toArray())
                 .boxed().collect(Collectors.toList());
-        var minutesRange = Arrays.stream(IntStream.rangeClosed(1, 59).toArray())
+        var minutesRange = Arrays.stream(IntStream.rangeClosed(0, 59).toArray())
                 .boxed().collect(Collectors.toList());
 
         // Initialize comboboxes
@@ -120,16 +108,17 @@ public class AddCampaignController implements Initializable {
 
     public void setDateTime() {
         // Populate fields with user input
-        dateStartDay = dateStartDayBox.getValue();
-        dateStartMonth = dateStartMonthBox.getValue();
-        dateStartYear = dateStartYearBox.getValue();
-        dateEndDay = dateEndDayBox.getValue();
-        dateEndMonth = dateEndMonthBox.getValue();
-        dateEndYear = dateEndYearBox.getValue();
-        timeStartHour = timeStartHourBox.getValue();
-        timeStartMinutes = timeStartMinutesBox.getValue();
-        timeEndHour = timeEndHourBox.getValue();
-        timeEndMinutes = timeEndMinutesBox.getValue();
+        // Values from comboboxes
+        var dateStartDay = dateStartDayBox.getValue();
+        var dateStartMonth = dateStartMonthBox.getValue();
+        var dateStartYear = dateStartYearBox.getValue();
+        var dateEndDay = dateEndDayBox.getValue();
+        var dateEndMonth = dateEndMonthBox.getValue();
+        var dateEndYear = dateEndYearBox.getValue();
+        var timeStartHour = timeStartHourBox.getValue();
+        var timeStartMinutes = timeStartMinutesBox.getValue();
+        var timeEndHour = timeEndHourBox.getValue();
+        var timeEndMinutes = timeEndMinutesBox.getValue();
 
         // Check and set begin and end dates
         if (dateStartYear != null && dateStartMonth != null && dateStartDay != null) {
