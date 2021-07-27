@@ -24,6 +24,8 @@ public class AdminScreenController implements Initializable {
     public Button cmpsOK;
     @FXML
     public Button logoutButton;
+    @FXML
+    public Button newCampaignButton;
 
     private final List<String> tmpList = new LinkedList<>();
 
@@ -73,15 +75,19 @@ public class AdminScreenController implements Initializable {
 
         for (VaccineCampaign vc: VaccineCampaignService.getCampaigns()) {
             if (vc.getName().equals(selection))
-                Globals.campaignToEdit = vc;
+                CampaignToEdit.campaign = vc;
         }
 
-        LoginScreen.setRoot("editCampaign");
+        App.setRoot("editCampaign");
     }
 
     public void logoutAction() throws IOException {
         clearComboBox();
-        LoginScreen.setRoot("welcome");
+        App.setRoot("welcome");
+    }
+
+    public void newVaccineCampaign() throws IOException {
+        App.setRoot("addCampaign");
     }
 
     public void clearComboBox() {

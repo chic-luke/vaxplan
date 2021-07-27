@@ -154,6 +154,10 @@ public class AddCampaignController implements Initializable {
         App.setRoot("adminscreen");
     }
 
+    public void moreButtonAction() throws IOException {
+        App.setRoot("AddCampaignMore");
+    }
+
     public void confirmButtonAction() throws IOException {
         setName();
         setVaccine();
