@@ -2,6 +2,7 @@ package it.vaxplan.frontend;
 
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -159,8 +160,10 @@ public class AddCampaignController implements Initializable {
         setDoses();
         setDateTime();
 
+        var bookings = new BookingService();
+
         var newCampaign = new VaccineCampaign(name, vaccine, availableDoses, startDate, endDate, dailyStartTime,
-                dailyEndTime);
+                dailyEndTime, bookings);
         VaccineCampaignService.addCampaign(newCampaign);
         System.out.println("Success!");
 

@@ -1,6 +1,7 @@
 package it.vaxplan.backend;
 
 import it.vaxplan.backend.exceptions.NoRemainingDosesException;
+import it.vaxplan.backend.service.BookingService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,10 +10,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.ZonedDateTime;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @Builder
@@ -29,13 +27,14 @@ public class VaccineCampaign {
     private LocalDate endDate;
     private LocalTime dailyStartTime;
     private LocalTime dailyEndTime;
-    private final LinkedList<VaccineSite> availableSites = new LinkedList<>();
-    private final List<Booking> bookings = new LinkedList<>();
+    private final Set<VaccineSite> availableSites = new TreeSet<>();
+    public BookingService bookings;
 
     /**
      * Add a booking to the list of bookings made to this vaccine campaign.
      * @param booking Booking to add
      */
+    /*
     public void addBooking(Booking booking) {
         if (availableDoses <= 0) {
             throw new NoRemainingDosesException();
@@ -48,13 +47,18 @@ public class VaccineCampaign {
         bookings.add(booking);
     }
 
+     */
+
     /**
      * Remove a booking from the list of bookings made to this vaccine campaign.
      * @param booking Bokoing to remove
      */
+    /*
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
+
+     */
 
     /**
      * Check if patient is eligible for the vaccine campaign.
