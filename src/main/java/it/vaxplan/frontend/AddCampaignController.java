@@ -64,7 +64,7 @@ public class AddCampaignController implements Initializable {
                 .boxed().collect(Collectors.toList());
         var yearRange = Arrays.stream(IntStream.rangeClosed(2021, 2069).toArray())
                 .boxed().collect(Collectors.toList());
-        var hoursRange = Arrays.stream(IntStream.rangeClosed(0, 31).toArray())
+        var hoursRange = Arrays.stream(IntStream.rangeClosed(0, 23).toArray())
                 .boxed().collect(Collectors.toList());
         var minutesRange = Arrays.stream(IntStream.rangeClosed(0, 59).toArray())
                 .boxed().collect(Collectors.toList());
