@@ -3,6 +3,7 @@ package it.vaxplan.backend;
 import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.utils.DateHandler;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.LinkedList;
 
@@ -48,26 +49,29 @@ public class App
                 .name("Campagna vaccinale COVID")
                 .vaccine(Vaccine.COVID)
                 .availableDoses(100)
-                .startDate(DateHandler.parseDate("15/06/2021", null))
-                .endDate(DateHandler.parseDate("01/01/2022", null))
+                // .startDate(DateHandler.parseDate("15/06/2021", null))
+                .startDate(LocalDate.of(2021, 5, 6))
+                // .endDate(DateHandler.parseDate("01/01/2022", null))
+                .endDate(LocalDate.of(2022, 1, 1))
                 .dailyStartTime(LocalTime.of(9, 0))
                 .dailyEndTime(LocalTime.of(20, 0))
                 .build();
 
-        c1.addBooking(b1);
+        c1.bookings = new BookingService();
+        c1.bookings.addBooking(b1);
 
-        c1.addVaccinationSite(VaccineSite.builder().name("Ospedale Civile").city("Brescia").build());
-        c1.addVaccinationSite(VaccineSite.builder().name("Niguarda").city("Milano").build());
-        c1.addVaccinationSite(VaccineSite.builder().name("Ospedale Luigi Secco").city("Milano").build());
-        c1.addVaccinationSite(VaccineSite.builder().name("Pronto Soccorso").city("Brescia").build());
+//        c1.addVaccinationSite(VaccineSite.builder().name("Ospedale Civile").city("Brescia").build());
+//        c1.addVaccinationSite(VaccineSite.builder().name("Niguarda").city("Milano").build());
+//        c1.addVaccinationSite(VaccineSite.builder().name("Ospedale Luigi Secco").city("Milano").build());
+//        c1.addVaccinationSite(VaccineSite.builder().name("Pronto Soccorso").city("Brescia").build());
 
         System.out.println(c1.getAvailableSites());
 
         var mySites = new LinkedList<VaccineSite>();
 
-        for (VaccineSite site: c1.getAvailableSites())
-            if (site.getCity().equals("Brescia"))
-                mySites.add(site);
+//        for (VaccineSite site: c1.getAvailableSites())
+//            if (site.getCity().equals("Brescia"))
+//                mySites.add(site);
 
         System.out.println("Available sites for Berscia: " + mySites);
 
