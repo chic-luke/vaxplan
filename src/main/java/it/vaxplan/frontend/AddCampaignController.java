@@ -54,14 +54,6 @@ public class AddCampaignController implements Initializable {
     @FXML
     public Button confirmButton;
 
-    // Values to enter in vaccine campaign
-    private String name;
-    private Vaccine vaccine;
-    private Integer availableDoses;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private LocalTime dailyStartTime;
-    private LocalTime dailyEndTime;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

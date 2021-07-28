@@ -3,8 +3,6 @@ package it.vaxplan.frontend;
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
 import lombok.*;
-import lombok.experimental.Accessors;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -36,7 +34,7 @@ public class CampaignToAdd {
     @Getter
     @Setter
     public static LocalTime dailyStartTime;
-    
+
     @Getter
     @Setter
     public static LocalTime dailyEndTime;
