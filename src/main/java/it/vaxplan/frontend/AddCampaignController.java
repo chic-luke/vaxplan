@@ -65,6 +65,7 @@ public class AddCampaignController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         var dayRange = Arrays.stream(IntStream.rangeClosed(1, 30).toArray())
                 .boxed().collect(Collectors.toList());
         var monthRange = Arrays.stream(IntStream.rangeClosed(1, 12).toArray())
@@ -94,17 +95,17 @@ public class AddCampaignController implements Initializable {
 
     public void setName() {
         if (!nameTextField.getText().equals(""))
-            name = nameTextField.getText();
+            CampaignToAdd.setName(nameTextField.getText());
     }
 
     public void setVaccine() {
         if (!vaccineTypeComboBox.getSelectionModel().isEmpty())
-            vaccine = vaccineTypeComboBox.getValue();
+            CampaignToAdd.setVaccine(vaccineTypeComboBox.getValue());
     }
 
     public void setDoses() {
         if (!dosesTextField.getText().equals(""))
-            availableDoses = Integer.parseInt(dosesTextField.getText());
+            CampaignToAdd.setAvailableDoses(Integer.parseInt(dosesTextField.getText()));
     }
 
     public void setDateTime() {
@@ -123,28 +124,28 @@ public class AddCampaignController implements Initializable {
 
         // Check and set begin and end dates
         if (dateStartYear != null && dateStartMonth != null && dateStartDay != null) {
-            startDate = LocalDate.of(dateStartYear, dateStartMonth, dateStartDay);
+            CampaignToAdd.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
         }
 
         if (dateEndYear != null && dateEndMonth != null && dateEndDay != null) {
-            endDate = LocalDate.of(dateEndYear, dateEndMonth, dateEndDay);
+            CampaignToAdd.setEndDate(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay));
         }
 
-        if (startDate.isAfter(endDate)) {
+        if (CampaignToAdd.getStartDate().isAfter(CampaignToAdd.getEndDate())) {
             throw new IllegalArgumentException();
         }
 
 
         // Set and check begin and end times
         if (timeStartHour != null && timeStartMinutes != null) {
-            dailyStartTime = LocalTime.of(timeStartHour, timeStartMinutes);
+            CampaignToAdd.setDailyStartTime(LocalTime.of(timeStartHour, timeStartMinutes));
         }
 
         if (timeEndHour != null && timeEndMinutes != null) {
-            dailyEndTime = LocalTime.of(timeEndHour, timeEndMinutes);
+            CampaignToAdd.setDailyEndTime(LocalTime.of(timeEndHour, timeEndMinutes));
         }
 
-        if (dailyStartTime.isAfter(dailyEndTime)) {
+        if (CampaignToAdd.getDailyStartTime().isAfter(CampaignToAdd.getDailyEndTime())) {
             throw new IllegalArgumentException();
         }
 
@@ -166,8 +167,10 @@ public class AddCampaignController implements Initializable {
 
         var bookings = new BookingService();
 
-        var newCampaign = new VaccineCampaign(name, vaccine, availableDoses, startDate, endDate, dailyStartTime,
-                dailyEndTime, bookings);
+        var newCampaign = new VaccineCampaign(CampaignToAdd.getName(), CampaignToAdd.getVaccine(),
+                CampaignToAdd.getAvailableDoses(), CampaignToAdd.getStartDate(), CampaignToAdd.getEndDate(),
+                CampaignToAdd.getDailyStartTime(), CampaignToAdd.getDailyEndTime(),
+                bookings);
         VaccineCampaignService.addCampaign(newCampaign);
         System.out.println("Success!");
 
