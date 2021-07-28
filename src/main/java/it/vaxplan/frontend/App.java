@@ -8,7 +8,7 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 
-public class LoginScreen extends Application {
+public class App extends Application {
 
     private static Scene scene;
 
@@ -29,7 +29,7 @@ public class LoginScreen extends Application {
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginScreen.class.getResource(fxml + ".fxml"));
+        var fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 }

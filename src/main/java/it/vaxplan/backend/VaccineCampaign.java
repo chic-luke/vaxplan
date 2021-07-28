@@ -27,7 +27,7 @@ public class VaccineCampaign {
     private LocalDate endDate;
     private LocalTime dailyStartTime;
     private LocalTime dailyEndTime;
-    private final Set<VaccineSite> availableSites = new TreeSet<>();
+    private final Set<String> availableSites;
     public BookingService bookings;
 
     /**
@@ -82,7 +82,7 @@ public class VaccineCampaign {
      * Add a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to add to this campaign
      */
-    public void addVaccinationSite(VaccineSite site) {
+    public void addVaccinationSite(String site) {
         availableSites.add(site);
     }
 
@@ -90,7 +90,7 @@ public class VaccineCampaign {
      * Remove a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to remove from this campaign
      */
-    public void removeVaccinationSite(VaccineSite site) {
+    public void removeVaccinationSite(String site) {
         availableSites.remove(site);
     }
 

@@ -1,13 +1,9 @@
 package it.vaxplan.backend.service;
 
 import it.vaxplan.backend.VaccineCampaign;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Keep track of the currently running vaccine campaigns.

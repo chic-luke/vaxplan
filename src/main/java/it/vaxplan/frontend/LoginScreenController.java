@@ -1,7 +1,5 @@
 package it.vaxplan.frontend;
 
-import it.vaxplan.frontend.LoginScreen;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,11 +17,11 @@ public class LoginScreenController {
         String inputString = idField.getText();
 
         if (inputString.equals("admin"))
-            LoginScreen.setRoot("adminscreen");
+            App.setRoot("adminscreen");
         else if (IDChecker.isIDRegistered(inputString))
-            LoginScreen.setRoot("citizenscreen");
+            App.setRoot("citizenscreen");
         else
-            LoginScreen.setRoot("registrationscreen");
+            App.setRoot("registrationscreen");
 
     }
 }
