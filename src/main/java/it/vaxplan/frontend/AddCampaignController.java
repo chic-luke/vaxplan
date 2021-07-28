@@ -87,17 +87,17 @@ public class AddCampaignController implements Initializable {
 
     public void setName() {
         if (!nameTextField.getText().equals(""))
-            CampaignToAdd.setName(nameTextField.getText());
+            CampaignToAdd.campaign.setName(nameTextField.getText());
     }
 
     public void setVaccine() {
         if (!vaccineTypeComboBox.getSelectionModel().isEmpty())
-            CampaignToAdd.setVaccine(vaccineTypeComboBox.getValue());
+            CampaignToAdd.campaign.setVaccine(vaccineTypeComboBox.getValue());
     }
 
     public void setDoses() {
         if (!dosesTextField.getText().equals(""))
-            CampaignToAdd.setAvailableDoses(Integer.parseInt(dosesTextField.getText()));
+            CampaignToAdd.campaign.setAvailableDoses(Integer.parseInt(dosesTextField.getText()));
     }
 
     public void setDateTime() {
@@ -116,28 +116,30 @@ public class AddCampaignController implements Initializable {
 
         // Check and set begin and end dates
         if (dateStartYear != null && dateStartMonth != null && dateStartDay != null) {
-            CampaignToAdd.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
+            CampaignToAdd.campaign.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
         }
 
         if (dateEndYear != null && dateEndMonth != null && dateEndDay != null) {
-            CampaignToAdd.setEndDate(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay));
+            CampaignToAdd.campaign.setEndDate(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay));
         }
 
-        if (CampaignToAdd.getStartDate().isAfter(CampaignToAdd.getEndDate())) {
-            throw new IllegalArgumentException();
-        }
+            if (CampaignToAdd.campaign.getEndDate() != null && CampaignToAdd.campaign.getStartDate() != null &&
+                    CampaignToAdd.campaign.getStartDate().isAfter(CampaignToAdd.campaign.getEndDate())) {
+                throw new IllegalArgumentException();
+            }
 
 
         // Set and check begin and end times
         if (timeStartHour != null && timeStartMinutes != null) {
-            CampaignToAdd.setDailyStartTime(LocalTime.of(timeStartHour, timeStartMinutes));
+            CampaignToAdd.campaign.setDailyStartTime(LocalTime.of(timeStartHour, timeStartMinutes));
         }
 
         if (timeEndHour != null && timeEndMinutes != null) {
-            CampaignToAdd.setDailyEndTime(LocalTime.of(timeEndHour, timeEndMinutes));
+            CampaignToAdd.campaign.setDailyEndTime(LocalTime.of(timeEndHour, timeEndMinutes));
         }
 
-        if (CampaignToAdd.getDailyStartTime().isAfter(CampaignToAdd.getDailyEndTime())) {
+        if (CampaignToAdd.campaign.getDailyStartTime() != null && CampaignToAdd.campaign.getDailyEndTime() != null &&
+                CampaignToAdd.campaign.getDailyStartTime().isAfter(CampaignToAdd.campaign.getDailyEndTime())) {
             throw new IllegalArgumentException();
         }
 
@@ -148,6 +150,10 @@ public class AddCampaignController implements Initializable {
     }
 
     public void moreButtonAction() throws IOException {
+        setName();
+        setVaccine();
+        setDoses();
+        setDateTime();
         App.setRoot("AddCampaignMore");
     }
 
@@ -159,9 +165,13 @@ public class AddCampaignController implements Initializable {
 
         var bookings = new BookingService();
 
-        var newCampaign = new VaccineCampaign(CampaignToAdd.getName(), CampaignToAdd.getVaccine(),
-                CampaignToAdd.getAvailableDoses(), CampaignToAdd.getStartDate(), CampaignToAdd.getEndDate(),
-                CampaignToAdd.getDailyStartTime(), CampaignToAdd.getDailyEndTime(),
+        System.out.println("Start date " + CampaignToAdd.campaign.getStartDate());
+        System.out.println(CampaignToAdd.campaign);
+
+        var newCampaign = new VaccineCampaign(CampaignToAdd.campaign.getName(), CampaignToAdd.campaign.getVaccine(),
+                CampaignToAdd.campaign.getAvailableDoses(), CampaignToAdd.campaign.getStartDate(), CampaignToAdd.campaign.getEndDate(),
+                CampaignToAdd.campaign.getDailyStartTime(), CampaignToAdd.campaign.getDailyEndTime(),
+                CampaignToAdd.campaign.availableSites,
                 bookings);
         VaccineCampaignService.addCampaign(newCampaign);
         System.out.println("Success!");

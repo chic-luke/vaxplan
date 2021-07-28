@@ -87,6 +87,7 @@ public class AdminScreenController implements Initializable {
     }
 
     public void newVaccineCampaign() throws IOException {
+        CampaignToAdd.campaign = new CampaignToAddFields();
         App.setRoot("addCampaign");
     }
 

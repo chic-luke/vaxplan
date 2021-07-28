@@ -15,6 +15,8 @@ public class AddCampaignExtraController implements Initializable {
     @FXML
     public TextField siteTextBox;
     @FXML
+    public Button addSiteButton;
+    @FXML
     public ComboBox<String> sitesComboBox;
     @FXML
     public Button sitesComboBoxRefreshButton;
@@ -30,10 +32,30 @@ public class AddCampaignExtraController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        showSites();
     }
 
     public void backButtonAction() throws IOException {
         App.setRoot("addCampaign");
     }
+
+    public void addSite() {
+        if (!siteTextBox.getText().equals("")) {
+            CampaignToAdd.campaign.availableSites.add(siteTextBox.getText());
+            siteTextBox.clear();
+        }
+    }
+
+    public void showSites() {
+        if (!CampaignToAdd.campaign.availableSites.isEmpty()) {
+            sitesComboBox.getItems().clear();
+            sitesComboBox.getItems().addAll(CampaignToAdd.campaign.availableSites);
+        }
+    }
+
+    public void confirmButtonAction() throws IOException {
+
+        backButtonAction();
+    }
+
 }
