@@ -1,9 +1,11 @@
 package it.vaxplan.frontend;
 
+import it.vaxplan.backend.PatientCategories;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -12,6 +14,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -60,6 +64,16 @@ public class EditCampaignScreenController implements Initializable {
     @FXML
     public Button okButton3;
 
+    // Patient categories
+    @FXML
+    public ListView<PatientCategories> availableCategoriesList;
+    @FXML
+    public ListView<PatientCategories> selectedCategoriesList;
+    @FXML
+    public Button addCategoryButton;
+    @FXML
+    public Button removeCategoryButton;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -88,6 +102,9 @@ public class EditCampaignScreenController implements Initializable {
         timeStartMinutesBox.getItems().addAll(minutesRange);
         timeEndHourBox.getItems().addAll(hoursRange);
         timeEndMinutesBox.getItems().addAll(minutesRange);
+
+        // Initialize patient categories ListView
+        availableCategoriesList.getItems().addAll(PatientCategories.values());
     }
 
 
@@ -161,13 +178,32 @@ public class EditCampaignScreenController implements Initializable {
         System.out.println(CampaignToEdit.campaign.getEndDate());
     }
 
-    public void moreButtonAction() throws IOException {
-        App.setRoot("AddCampaignMore");
+    public void addCategory() {
+        var toAdd = availableCategoriesList.getSelectionModel().getSelectedItem();
+        selectedCategoriesList.getItems().add(toAdd);
+        availableCategoriesList.getItems().remove(toAdd);
+        selectedCategoriesList.refresh();
+        availableCategoriesList.refresh();
+    }
+
+    public void removeCategory() {
+        var toRemove = selectedCategoriesList.getSelectionModel().getSelectedItem();
+        availableCategoriesList.getItems().add(toRemove);
+        selectedCategoriesList.getItems().remove(toRemove);
+        selectedCategoriesList.refresh();
+        availableCategoriesList.refresh();
+    }
+
+    public void setCategories() {
+        Set<PatientCategories> setToAdd = new TreeSet<>();
+        setToAdd.addAll(selectedCategoriesList.getItems());
+        CampaignToEdit.campaign.setPatientCategories(setToAdd);
     }
 
     public void okButtonAction() throws IOException {
         addDoses();
         setDateTime();
+        setCategories();
 
         backButtonAction();
     }
