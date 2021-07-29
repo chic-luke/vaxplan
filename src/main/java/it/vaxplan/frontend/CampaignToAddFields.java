@@ -1,5 +1,6 @@
 package it.vaxplan.frontend;
 
+import it.vaxplan.backend.PatientCategories;
 import it.vaxplan.backend.Vaccine;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -45,6 +46,10 @@ public class CampaignToAddFields {
     private LocalTime dailyEndTime;
 
     public final Set<String> availableSites = new TreeSet<>();
+
+    @Getter
+    @Setter
+    private Set<PatientCategories> patientCategories = new TreeSet<>();
 
     @Override
     public String toString() {

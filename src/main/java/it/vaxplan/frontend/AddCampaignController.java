@@ -149,12 +149,16 @@ public class AddCampaignController implements Initializable {
         App.setRoot("adminscreen");
     }
 
-    public void moreButtonAction() throws IOException {
+    public void showSitesScreen() throws IOException {
         setName();
         setVaccine();
         setDoses();
         setDateTime();
         App.setRoot("AddCampaignMore");
+    }
+
+    public void showCategoriesScreen() throws IOException {
+        App.newWindow("categoriesScreen");
     }
 
     public void confirmButtonAction() throws IOException {
@@ -171,8 +175,8 @@ public class AddCampaignController implements Initializable {
         var newCampaign = new VaccineCampaign(CampaignToAdd.campaign.getName(), CampaignToAdd.campaign.getVaccine(),
                 CampaignToAdd.campaign.getAvailableDoses(), CampaignToAdd.campaign.getStartDate(), CampaignToAdd.campaign.getEndDate(),
                 CampaignToAdd.campaign.getDailyStartTime(), CampaignToAdd.campaign.getDailyEndTime(),
-                CampaignToAdd.campaign.availableSites,
-                bookings);
+                CampaignToAdd.campaign.availableSites,  bookings,
+                CampaignToAdd.campaign.getPatientCategories());
         VaccineCampaignService.addCampaign(newCampaign);
         System.out.println("Success!");
 

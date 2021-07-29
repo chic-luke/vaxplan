@@ -29,6 +29,7 @@ public class VaccineCampaign {
     private LocalTime dailyEndTime;
     private final Set<String> availableSites;
     public BookingService bookings;
+    private Set<PatientCategories> patientCategories;
 
     /**
      * Add a booking to the list of bookings made to this vaccine campaign.
@@ -108,6 +109,7 @@ public class VaccineCampaign {
                 "Data di fine: " + endDate + "\n" +
                 "Dalle ore: " + dailyStartTime + "\n" +
                 "Alle ore: " + dailyEndTime + "\n" +
+                "Per le seguenti categorie di pazienti: " + patientCategories + "\n" +
                 "Nei seguenti ambulatori: " + availableSites + "\n" +
                 "Prenotazioni effettuate: " + bookings;
     }

@@ -54,7 +54,6 @@ public class AddCampaignExtraController implements Initializable {
     }
 
     public void confirmButtonAction() throws IOException {
-
         backButtonAction();
     }
 
