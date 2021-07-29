@@ -7,6 +7,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -49,7 +50,7 @@ public class CampaignToAddFields {
 
     @Getter
     @Setter
-    private Set<PatientCategories> patientCategories = new TreeSet<>();
+    private Set<PatientCategories> patientCategories = new HashSet<>();
 
     @Override
     public String toString() {

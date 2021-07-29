@@ -12,10 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -195,7 +192,7 @@ public class EditCampaignScreenController implements Initializable {
     }
 
     public void setCategories() {
-        Set<PatientCategories> setToAdd = new TreeSet<>();
+        Set<PatientCategories> setToAdd = new HashSet<>();
         setToAdd.addAll(selectedCategoriesList.getItems());
         CampaignToEdit.campaign.setPatientCategories(setToAdd);
     }
