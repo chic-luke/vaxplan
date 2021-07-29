@@ -12,14 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.vaxplan.frontend.AddCampaignExtraController">
    <children>
       <ToolBar layoutY="353.0" prefHeight="40.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0">
         <items>
           <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" text="Indietro" />
             <Region prefHeight="29.0" prefWidth="435.0" />
-            <Button fx:id="confirmButton" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" text="Conferma" />
+            <Button fx:id="confirmButton" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#confirmButtonAction" text="Conferma" />
         </items>
       </ToolBar>
       <VBox prefHeight="359.0" prefWidth="600.0">
@@ -53,6 +52,11 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="addSiteButton" mnemonicParsing="false" onAction="#addSite" text="Aggiungi">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox>
@@ -65,12 +69,12 @@
                         <Insets bottom="30.0" left="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox fx:id="sitesComboBox" prefWidth="150.0" promptText="Ambulatori...">
+                  <ComboBox fx:id="sitesComboBox" onAction="#showSites" prefWidth="150.0" promptText="Ambulatori...">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button fx:id="sitesComboBoxRefreshButton" mnemonicParsing="false" text="Aggiorna" />
+                  <Button fx:id="sitesComboBoxRefreshButton" mnemonicParsing="false" onAction="#showSites" text="Aggiorna" />
                </children>
             </HBox>
             <HBox>
