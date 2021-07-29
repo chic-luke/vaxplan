@@ -113,7 +113,7 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </ComboBox>
-                              <ComboBox fx:id="dateStartYearBox" layoutX="152.0" layoutY="10.0" prefHeight="24.0" prefWidth="57.0" promptText="y">
+                              <ComboBox fx:id="dateStartYearBox" layoutX="152.0" layoutY="10.0" prefHeight="24.0" prefWidth="83.0" promptText="y">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
@@ -140,7 +140,7 @@
                                     <Insets right="5.0" />
                                  </HBox.margin>
                               </ComboBox>
-                              <ComboBox fx:id="dateEndYearBox" layoutX="109.0" layoutY="10.0" prefHeight="24.0" prefWidth="57.0" promptText="y">
+                              <ComboBox fx:id="dateEndYearBox" layoutX="109.0" layoutY="10.0" prefHeight="24.0" prefWidth="83.0" promptText="y">
                                  <HBox.margin>
                                     <Insets right="5.0" />
                                  </HBox.margin>
