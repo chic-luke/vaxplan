@@ -73,7 +73,7 @@ public class Registrationscreen implements Initializable {
 
     }
      */
-    
+
 
     public void setFiscalCode(){
         if(IDChecker.isValidID(fiscalCode.getText()) && !fiscalCode.getText().equals(""))
