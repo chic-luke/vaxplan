@@ -38,8 +38,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="17.0" prefWidth="255.0" />
-                        <Button mnemonicParsing="false" text="OK">
+                        <TextField fx:id="nameTextField" prefHeight="17.0" prefWidth="255.0" />
+                        <Button fx:id="nameOK" mnemonicParsing="false" text="OK">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -53,8 +53,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="24.0" prefWidth="255.0" />
-                        <Button mnemonicParsing="false" text="OK">
+                        <TextField fx:id="surnameTextField" prefHeight="24.0" prefWidth="255.0" />
+                        <Button fx:id="surnameOK" mnemonicParsing="false" text="OK">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -68,13 +68,13 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox prefHeight="24.0" prefWidth="73.0" />
-                        <ComboBox prefHeight="24.0" prefWidth="73.0">
+                        <ComboBox fx:id="birthDay" prefHeight="24.0" prefWidth="73.0" />
+                        <ComboBox fx:id="birthMonth" prefHeight="24.0" prefWidth="73.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </ComboBox>
-                        <ComboBox prefHeight="24.0" prefWidth="106.0">
+                        <ComboBox fx:id="birthYear" prefHeight="24.0" prefWidth="106.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -90,8 +90,8 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="24.0" prefWidth="255.0" />
-                  <Button mnemonicParsing="false" text="OK">
+                  <TextField fx:id="bornWhere" prefHeight="24.0" prefWidth="255.0" />
+                  <Button fx:id="bornWhereOK" mnemonicParsing="false" text="OK">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -105,8 +105,8 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="24.0" prefWidth="255.0" />
-                  <Button mnemonicParsing="false" text="OK">
+                  <TextField fx:id="fiscalCode" prefHeight="24.0" prefWidth="255.0" />
+                  <Button fx:id="fiscalCodeOK" mnemonicParsing="false" text="OK">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -117,9 +117,9 @@
       </VBox>
       <HBox layoutX="12.0" layoutY="358.0" prefHeight="24.0" prefWidth="579.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
+            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
             <Region prefHeight="24.0" prefWidth="415.0" />
-            <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="110.0" text="Conferma" />
+            <Button fx:id="confirmButton" mnemonicParsing="false" prefHeight="24.0" prefWidth="110.0" text="Conferma" />
          </children>
       </HBox>
    </children>
