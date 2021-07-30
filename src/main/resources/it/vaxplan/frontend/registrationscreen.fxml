@@ -117,9 +117,9 @@
       </VBox>
       <HBox layoutX="12.0" layoutY="358.0" prefHeight="24.0" prefWidth="579.0">
          <children>
-            <Button fx:id="backButton" mnemonicParsing="false" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
+            <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
             <Region prefHeight="24.0" prefWidth="415.0" />
-            <Button fx:id="confirmButton" mnemonicParsing="false" prefHeight="24.0" prefWidth="110.0" text="Conferma" />
+            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="24.0" prefWidth="110.0" text="Conferma" />
          </children>
       </HBox>
    </children>

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -58,7 +59,13 @@ public class Registrationscreen implements Initializable {
         birthDay.getItems().addAll(dayDates);
         birthMonth.getItems().addAll(monthDates);
         birthYear.getItems().addAll(yearDates);
+    }
 
-        
+    public void backButtonAction() throws IOException {
+        App.setRoot("welcome");
+    }
+
+    public void confirmButtonAction() throws  IOException{
+        App.setRoot("registrationSecondScreen");
     }
 }
