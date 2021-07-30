@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import it.vaxplan.backend.IDChecker;
+
 public class Registrationscreen implements Initializable {
 
     //User things
@@ -59,6 +61,23 @@ public class Registrationscreen implements Initializable {
         birthDay.getItems().addAll(dayDates);
         birthMonth.getItems().addAll(monthDates);
         birthYear.getItems().addAll(yearDates);
+    }
+
+    /*public void setName() {
+        if(!nameTextField.getText().equals(""))
+
+    }
+
+    public void setSurname() {
+        if(!surnameTextField.getText().equals(""))
+
+    }
+     */
+    
+
+    public void setFiscalCode(){
+        if(IDChecker.isValidID(fiscalCode.getText()) && !fiscalCode.getText().equals(""))
+            System.out.println("Fiscal code check all right");
     }
 
     public void backButtonAction() throws IOException {
