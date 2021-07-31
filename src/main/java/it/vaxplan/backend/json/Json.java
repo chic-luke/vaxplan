@@ -60,7 +60,7 @@ public class Json {
      * @return JsonNode value converted to String
      * @throws JsonProcessingException If errors occoured processing JSON
      */
-    public static String jsonToString(JsonNode node) throws JsonProcessingException {
+    public static String stringify(JsonNode node) throws JsonProcessingException {
         return generateString(node, false);
     }
 

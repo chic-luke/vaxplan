@@ -38,10 +38,10 @@ public class PatientService {
 
     /**
      * Remove all the Patients in a Collection from the set of patients
-     * @param patientsToAdd Collection of Patients to remove
+     * @param patientsToRemove Collection of Patients to remove
      */
-    public void removePatients(Collection<Patient> patientsToAdd) {
-        patients.removeAll(patientsToAdd);
+    public void removePatients(Collection<Patient> patientsToRemove) {
+        patients.removeAll(patientsToRemove);
     }
 
 }
