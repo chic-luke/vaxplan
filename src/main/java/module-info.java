@@ -14,4 +14,5 @@ module it.vaxplan {
     opens it.vaxplan.frontend to javafx.fxml;
     exports it.vaxplan to com.fasterxml.jackson.databind;
     exports it.vaxplan.backend.json to com.fasterxml.jackson.databind;
+    exports it.vaxplan.backend to com.fasterxml.jackson.databind;
 }
