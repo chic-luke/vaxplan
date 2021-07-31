@@ -53,4 +53,16 @@ public class Patient {
         return getIntAge() > Constants.adultAgeThreshold;
     }
 
+    @Override
+    public String toString() {
+        return "firstName: " + firstName + "\n" +
+                "lastName: " + lastName + "\n" +
+                "fiscalCode: " + fiscalCode + "\n" +
+                "birthPlace: " + birthPlace + "\n" +
+                "birthDay: " + birthDay + "\n" +
+                "sex: " + sex + "\n" +
+                "code: " + "placeholder" + "\n" +
+                "isHealthCareWorker: " + healthCareWorker + "\n";
+    }
+
 }
