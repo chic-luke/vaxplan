@@ -21,12 +21,14 @@ public class App extends Application {
         scene = new Scene(loadFXML("welcome"));
         stage.setTitle("Vaxplan");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
     public static void newWindow(String fxml) throws IOException {
         var stage = new Stage();
         stage.setScene(new Scene(loadFXML(fxml)));
+        stage.setResizable(false);
         stage.show();
     }
 
