@@ -1,6 +1,7 @@
 package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import it.vaxplan.backend.Sex;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,6 +33,17 @@ class JsonTest {
             "    }\n" +
             "  ]\n" +
             "}";
+
+    private String patientTest = "{\n" +
+            "    \"firstName\": \"Mario\",\n" +
+            "    \"lastName\": \"Rossi\",\n" +
+            "    \"fiscalCode\": \"RSSMRA86D05F205W\",\n" +
+            "    \"birthPlace\": \"Milano\",\n" +
+            "    \"birthDay\": \"05/04/1986\",\n" +
+            "    \"sex\": \"MALE\",\n" +
+            "    \"code\": \"205W\",\n" +
+            "    \"isHealthCareWorker\": false\n" +
+            "  }";
 
     @Test
     void parse() throws JsonProcessingException {
@@ -97,6 +109,33 @@ class JsonTest {
             System.out.println("Is in print : " + bp.isInPrint());
             System.out.println("Date : " + bp.getPublishDate());
         }
+    }
+
+    @Test
+    void patientJsonToPOJO() throws JsonProcessingException {
+        var node = Json.parse(patientTest);
+        var pojo = Json.fromJson(node, PatientObject.class);
+
+        System.out.println(pojo);
+        assertEquals("Mario", pojo.getFirstName());
+        assertEquals("Rossi", pojo.getLastName());
+        assertEquals("RSSMRA86D05F205W", pojo.getFiscalCode());
+        assertEquals("Milano", pojo.getBirthPlace());
+        assertEquals(Sex.MALE, pojo.getSex());
+        assertEquals("205W", pojo.getCode());
+        assertEquals(false, pojo.isHealthCareWorker());
+    }
+
+    @Test
+    void patientPOJOtoClass() throws JsonProcessingException {
+        var testPatient = PatientFromJson.createPatient();
+
+        assertEquals("Mario", testPatient.getFirstName());
+        assertEquals("Rossi", testPatient.getLastName());
+        assertEquals("RSSMRA86D05F205W", testPatient.getFiscalCode());
+        assertEquals("Milano", testPatient.getBirthPlace());
+        assertEquals(Sex.MALE, testPatient.getSex());
+        assertEquals(false, testPatient.isHealthCareWorker());
     }
 
 }
