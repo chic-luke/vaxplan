@@ -57,8 +57,8 @@ public class App
                 .dailyEndTime(LocalTime.of(20, 0))
                 .build();
 
-        c1.bookings = new BookingService();
-        c1.bookings.addBooking(b1);
+//        c1.bookings = new BookingService();
+//        c1.bookings.addBooking(b1);
 
 //        c1.addVaccinationSite(VaccineSite.builder().name("Ospedale Civile").city("Brescia").build());
 //        c1.addVaccinationSite(VaccineSite.builder().name("Niguarda").city("Milano").build());

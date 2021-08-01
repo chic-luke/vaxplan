@@ -1,10 +1,10 @@
-package it.vaxplan.backend.json;
+package it.vaxplan.backend.json.pojo;
 
 import it.vaxplan.backend.Sex;
 import lombok.Getter;
 import lombok.Setter;
 
-public class PatientObject {
+public class PatientPOJO {
 
     @Getter
     @Setter

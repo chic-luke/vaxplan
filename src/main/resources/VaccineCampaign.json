@@ -1,0 +1,11 @@
+[
+  {
+    "name": "CampagnaTest1",
+    "Vaccine": "COVID-19",
+    "availableDoses": 1000,
+    "startDate": "2021-08-01",
+    "endDate": "2021-08-30",
+    "dailyStartTime": "09:00",
+    "dailyEndTime": "20:30"
+  }
+]

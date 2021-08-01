@@ -28,39 +28,10 @@ public class VaccineCampaign {
     private LocalTime dailyStartTime;
     private LocalTime dailyEndTime;
     private final Set<String> availableSites;
-    public BookingService bookings;
+    private BookingService bookings;
     private Set<PatientCategories> patientCategories;
 
-    /**
-     * Add a booking to the list of bookings made to this vaccine campaign.
-     * @param booking Booking to add
-     */
-    /*
-    public void addBooking(Booking booking) {
-        if (availableDoses <= 0) {
-            throw new NoRemainingDosesException();
-        }
-
-        if (booking.getVaccine().isPatientElegible(booking.getPatient())) {
-            throw new IllegalArgumentException("Non sei idoneo per questo vaccino");
-        }
-
-        bookings.add(booking);
-    }
-
-     */
-
-    /**
-     * Remove a booking from the list of bookings made to this vaccine campaign.
-     * @param booking Bokoing to remove
-     */
-    /*
-    public void removeBooking(Booking booking) {
-        bookings.remove(booking);
-    }
-
-     */
-
+    
     /**
      * Check if patient is eligible for the vaccine campaign.
      * @param patient patient to check for eligibility

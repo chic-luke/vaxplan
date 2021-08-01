@@ -1,0 +1,41 @@
+package it.vaxplan.backend.json;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
+import it.vaxplan.backend.service.BookingService;
+import it.vaxplan.backend.service.VaccineCampaignService;
+
+import java.util.HashSet;
+
+public class VaccineCampaignFromJson {
+
+    public static void getVaccineCampaignsFromJson() throws JsonProcessingException {
+        var jsonInputHandler = new IOHandler();
+        var jsonAsString = jsonInputHandler.jsonToString("VaccineCampaign");
+
+        var node = Json.parse(jsonAsString);
+
+        // Temporary VaccineCampaignService until a real one is implemented
+        var testService = new VaccineCampaignService();
+        for (var campaignIt = node.elements(); campaignIt.hasNext();) {
+            var campaign = campaignIt.next();
+            // Handle below
+            testService.addCampaign(createVaccineCampaign(campaign));
+        }
+    }
+
+    public static VaccineCampaign createVaccineCampaign(JsonNode node) throws JsonProcessingException {
+        var pojo = Json.fromJson(node, VaccineCampaignPOJO.class);
+
+        var campaign = new VaccineCampaign(pojo.getName(), pojo.getVaccine(), pojo.getAvailableDoses(),
+                pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
+                new HashSet<>(), new BookingService(), new HashSet<>());
+
+        System.out.println(campaign);
+
+        return campaign;
+    }
+
+}
