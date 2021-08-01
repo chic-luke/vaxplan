@@ -15,4 +15,5 @@ module it.vaxplan {
     exports it.vaxplan to com.fasterxml.jackson.databind;
     exports it.vaxplan.backend.json to com.fasterxml.jackson.databind;
     exports it.vaxplan.backend to com.fasterxml.jackson.databind;
+    exports it.vaxplan.backend.json.pojo to com.fasterxml.jackson.databind;
 }

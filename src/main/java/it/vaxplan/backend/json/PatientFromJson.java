@@ -3,6 +3,7 @@ package it.vaxplan.backend.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import it.vaxplan.backend.Patient;
+import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.service.PatientService;
 
 import java.time.ZonedDateTime;
@@ -32,7 +33,7 @@ public class PatientFromJson {
     }
 
     public static Patient createPatient(JsonNode node) throws JsonProcessingException {
-        var pojo = Json.fromJson(node, PatientObject.class);
+        var pojo = Json.fromJson(node, PatientPOJO.class);
 
         return new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
                 pojo.getBirthPlace(), ZonedDateTime.now(), pojo.getSex(), pojo.isHealthCareWorker());

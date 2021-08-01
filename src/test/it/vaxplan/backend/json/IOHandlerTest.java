@@ -20,4 +20,5 @@ class IOHandlerTest {
         System.out.println(jsonAsString);
         assertEquals(jsonTestString, jsonAsString);
     }
+
 }

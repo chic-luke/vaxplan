@@ -2,6 +2,7 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.Sex;
+import it.vaxplan.backend.json.pojo.PatientPOJO;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -114,7 +115,7 @@ class JsonTest {
     @Test
     void patientJsonToPOJO() throws JsonProcessingException {
         var node = Json.parse(patientTest);
-        var pojo = Json.fromJson(node, PatientObject.class);
+        var pojo = Json.fromJson(node, PatientPOJO.class);
 
         System.out.println(pojo);
         assertEquals("Mario", pojo.getFirstName());
