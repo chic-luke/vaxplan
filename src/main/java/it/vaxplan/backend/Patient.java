@@ -55,7 +55,8 @@ public class Patient {
 
     @Override
     public String toString() {
-        return "firstName: " + firstName + "\n" +
+        return "----Patient----" + "\n" +
+                "firstName: " + firstName + "\n" +
                 "lastName: " + lastName + "\n" +
                 "fiscalCode: " + fiscalCode + "\n" +
                 "birthPlace: " + birthPlace + "\n" +

@@ -1,33 +1,41 @@
 package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import it.vaxplan.backend.Patient;
+import it.vaxplan.backend.service.PatientService;
 
 import java.time.ZonedDateTime;
 
 public class PatientFromJson {
 
-    public static Patient createPatient() throws JsonProcessingException {
-        String patientTest = "{\n" +
-                "    \"firstName\": \"Mario\",\n" +
-                "    \"lastName\": \"Rossi\",\n" +
-                "    \"fiscalCode\": \"RSSMRA86D05F205W\",\n" +
-                "    \"birthPlace\": \"Milano\",\n" +
-                "    \"birthDay\": \"05/04/1986\",\n" +
-                "    \"sex\": \"MALE\",\n" +
-                "    \"code\": \"205W\",\n" +
-                "    \"isHealthCareWorker\": false\n" +
-                "  }";
+    public static void getPatientsFromJson() throws JsonProcessingException {
+        // Get JSON file and save it in a String
+        var jsonInputHandler = new IOHandler();
+        var jsonAsString = jsonInputHandler.jsonToString("User");
 
-        var node = Json.parse(patientTest);
+        // Get Jackson JsonNode from String
+        var node = Json.parse(jsonAsString);
+
+        // Iterate through all the objects in the JSON file and create a corresponsing
+        // Patient object for each
+
+        // Temporary PatientService until a real one is implemented
+        var testService = new PatientService();
+        for (var userIt = node.elements(); userIt.hasNext();) {
+            var user = userIt.next();
+            // Handle below
+            testService.addPatient(createPatient(user));
+        }
+
+        System.out.println(testService.getPatients());
+    }
+
+    public static Patient createPatient(JsonNode node) throws JsonProcessingException {
         var pojo = Json.fromJson(node, PatientObject.class);
 
-        var newPatient = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
+        return new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
                 pojo.getBirthPlace(), ZonedDateTime.now(), pojo.getSex(), pojo.isHealthCareWorker());
-
-        System.out.println(newPatient);
-
-        return newPatient;
     }
 
 }

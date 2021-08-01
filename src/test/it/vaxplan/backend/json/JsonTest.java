@@ -76,7 +76,7 @@ class JsonTest {
 
         var node = Json.toJson(pojo);
 
-        System.out.println(Json.jsonToString(node));
+        System.out.println(Json.stringify(node));
     }
 
     @Test
@@ -128,14 +128,29 @@ class JsonTest {
 
     @Test
     void patientPOJOtoClass() throws JsonProcessingException {
-        var testPatient = PatientFromJson.createPatient();
+        var node = Json.parse(patientTest);
+        var testPatient = PatientFromJson.createPatient(node);
 
         assertEquals("Mario", testPatient.getFirstName());
         assertEquals("Rossi", testPatient.getLastName());
         assertEquals("RSSMRA86D05F205W", testPatient.getFiscalCode());
         assertEquals("Milano", testPatient.getBirthPlace());
         assertEquals(Sex.MALE, testPatient.getSex());
-        assertEquals(false, testPatient.isHealthCareWorker());
+        assertFalse(testPatient.isHealthCareWorker());
+    }
+
+    @Test
+    void testUserJson() throws JsonProcessingException {
+        var jsonInputHandler = new IOHandler();
+        var jsonAsString = jsonInputHandler.jsonToString("User");
+
+        var node = Json.parse(jsonAsString);
+
+        for (var userIt = node.elements(); userIt.hasNext();) {
+            var user = userIt.next();
+            System.out.println(user.get("firstName"));
+        }
+
     }
 
 }
