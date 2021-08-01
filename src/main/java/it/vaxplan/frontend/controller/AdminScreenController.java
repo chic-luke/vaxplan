@@ -1,6 +1,10 @@
-package it.vaxplan.frontend;
+package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.Vaccine;
+import it.vaxplan.frontend.App;
+import it.vaxplan.frontend.CampaignToAdd;
+import it.vaxplan.frontend.CampaignToAddFields;
+import it.vaxplan.frontend.CampaignToEdit;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

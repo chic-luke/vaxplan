@@ -1,5 +1,6 @@
-package it.vaxplan.frontend;
+package it.vaxplan.frontend.controller;
 
+import it.vaxplan.frontend.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -9,15 +10,16 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import it.vaxplan.backend.IDChecker;
 
-public class Registrationscreen implements Initializable {
+public class RegistrationScreenController implements Initializable {
 
-    //User things
+    //User fields
     @FXML
     public TextField nameTextField;
     @FXML
@@ -40,6 +42,7 @@ public class Registrationscreen implements Initializable {
     public TextField fiscalCode;
     @FXML
     public Button fiscalCodeOK;
+
     //back and confirm button
     @FXML
     public Button backButton;
@@ -54,29 +57,18 @@ public class Registrationscreen implements Initializable {
                 .boxed().collect(Collectors.toList());
         var monthDates = Arrays.stream(IntStream.rangeClosed(1, 12).toArray())
                 .boxed().collect(Collectors.toList());
-        var yearDates = Arrays.stream(IntStream.rangeClosed(1900, 2021).toArray())
+        var yearDates = Arrays.stream(IntStream.rangeClosed(1900, Calendar.getInstance().get(Calendar.YEAR))
+                .toArray())
                 .boxed().collect(Collectors.toList());
 
-        //Initialisation comboboxes
+        // Initialize comboboxes
         birthDay.getItems().addAll(dayDates);
         birthMonth.getItems().addAll(monthDates);
         birthYear.getItems().addAll(yearDates);
     }
 
-    /*public void setName() {
-        if(!nameTextField.getText().equals(""))
-
-    }
-
-    public void setSurname() {
-        if(!surnameTextField.getText().equals(""))
-
-    }
-     */
-
-
     public void setFiscalCode(){
-        if(IDChecker.isValidID(fiscalCode.getText()) && !fiscalCode.getText().equals(""))
+        if (IDChecker.isValidID(fiscalCode.getText()) && !fiscalCode.getText().equals(""))
             System.out.println("Fiscal code check all right");
     }
 

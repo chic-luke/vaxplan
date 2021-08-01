@@ -1,5 +1,6 @@
-package it.vaxplan.frontend;
+package it.vaxplan.frontend.controller;
 
+import it.vaxplan.frontend.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegistrationSecondScreenHandler implements Initializable {
+public class RegistrationScreenExtraController implements Initializable {
 
     @FXML
     public Button backButton;
