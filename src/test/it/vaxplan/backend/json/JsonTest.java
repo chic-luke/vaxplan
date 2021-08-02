@@ -2,6 +2,9 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.Sex;
+import it.vaxplan.backend.json.pojo.AuthorPOJO;
+import it.vaxplan.backend.json.pojo.BookPOJO;
+import it.vaxplan.backend.json.pojo.DayPOJO;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import org.junit.jupiter.api.Test;
 
