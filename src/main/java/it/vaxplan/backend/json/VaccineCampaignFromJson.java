@@ -12,7 +12,7 @@ import java.util.HashSet;
 public class VaccineCampaignFromJson {
 
     public static void getVaccineCampaignsFromJson() throws JsonProcessingException {
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("VaccineCampaign");
 
         var node = Json.parse(jsonAsString);

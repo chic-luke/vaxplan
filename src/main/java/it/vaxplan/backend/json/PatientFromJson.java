@@ -12,7 +12,7 @@ public class PatientFromJson {
 
     public static void getPatientsFromJson() throws JsonProcessingException {
         // Get JSON file and save it in a String
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
 
         // Get Jackson JsonNode from String

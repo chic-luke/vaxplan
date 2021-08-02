@@ -1,7 +1,7 @@
 package it.vaxplan.backend;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import it.vaxplan.backend.json.IOHandler;
+import it.vaxplan.backend.json.JsonIOHandler;
 import it.vaxplan.backend.json.Json;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ class IDCheckerTest {
 
     @Test
     void fiscalCodeJsonValidityChecker() throws JsonProcessingException {
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
 
         var node = Json.parse(jsonAsString);
@@ -42,7 +42,7 @@ class IDCheckerTest {
     @Test
     void lookUp() throws JsonProcessingException {
         var testFiscalCode = "SPSCRN99P09A944U";
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
         var flag = false;
 

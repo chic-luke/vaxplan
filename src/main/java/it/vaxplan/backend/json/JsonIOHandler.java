@@ -2,7 +2,7 @@ package it.vaxplan.backend.json;
 
 import java.io.*;
 
-public class IOHandler {
+public class JsonIOHandler {
 
     public String jsonToString(String filename) {
         var out = new StringBuilder();

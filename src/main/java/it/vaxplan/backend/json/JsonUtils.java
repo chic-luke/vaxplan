@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class JsonUtils {
 
     public static boolean lookUp(String filename, String field, String query) throws JsonProcessingException {
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString(filename);
 
         var node = Json.parse(jsonAsString);
