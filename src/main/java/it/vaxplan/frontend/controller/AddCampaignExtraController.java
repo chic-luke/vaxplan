@@ -5,7 +5,7 @@ import it.vaxplan.frontend.CampaignToAdd;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -19,17 +19,9 @@ public class AddCampaignExtraController implements Initializable {
     @FXML
     public Button addSiteButton;
     @FXML
-    public ComboBox<String> sitesComboBox;
-    @FXML
     public Button sitesComboBoxRefreshButton;
     @FXML
-    public ComboBox<String> patientCategoriesComboBox;
-    @FXML
-    public Button patientCategoriesComboBoxRefreshButton;
-    @FXML
-    public ComboBox<String> categoriesComboBox;
-    @FXML
-    public Button categoriesComboBoxRefreshButton;
+    public ListView<String> sitesListView;
 
 
     @Override
@@ -60,8 +52,8 @@ public class AddCampaignExtraController implements Initializable {
      */
     public void showSites() {
         if (!CampaignToAdd.campaign.availableSites.isEmpty()) {
-            sitesComboBox.getItems().clear();
-            sitesComboBox.getItems().addAll(CampaignToAdd.campaign.availableSites);
+            sitesListView.getItems().clear();
+            sitesListView.getItems().addAll(CampaignToAdd.campaign.availableSites);
         }
     }
 
