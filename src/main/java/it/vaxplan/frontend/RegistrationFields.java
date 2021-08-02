@@ -1,4 +1,5 @@
-package it.vaxplan.frontend;
+package it.vaxplan.frontend.controller;
 
 public class RegistrationFields {
+
 }

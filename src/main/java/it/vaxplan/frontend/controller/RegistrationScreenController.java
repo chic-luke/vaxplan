@@ -1,6 +1,8 @@
 package it.vaxplan.frontend.controller;
 
+import it.vaxplan.backend.exceptions.InvalidFiscalCodeException;
 import it.vaxplan.frontend.App;
+import it.vaxplan.frontend.RegistrationFieldsSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -23,11 +25,7 @@ public class RegistrationScreenController implements Initializable {
     @FXML
     public TextField nameTextField;
     @FXML
-    public Button nameOK;
-    @FXML
     public TextField surnameTextField;
-    @FXML
-    public Button surnameOK;
     @FXML
     public ComboBox<Integer> birthDay;
     @FXML
@@ -37,17 +35,13 @@ public class RegistrationScreenController implements Initializable {
     @FXML
     public TextField bornWhere;
     @FXML
-    public Button bornWhereOK;
-    @FXML
     public TextField fiscalCode;
-    @FXML
-    public Button fiscalCodeOK;
 
     //back and confirm button
     @FXML
     public Button backButton;
     @FXML
-    public Button confirmButton;
+    public Button nextButton;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -57,7 +51,8 @@ public class RegistrationScreenController implements Initializable {
                 .boxed().collect(Collectors.toList());
         var monthDates = Arrays.stream(IntStream.rangeClosed(1, 12).toArray())
                 .boxed().collect(Collectors.toList());
-        var yearDates = Arrays.stream(IntStream.rangeClosed(1900, Calendar.getInstance().get(Calendar.YEAR))
+        var yearDates = Arrays.stream(IntStream.rangeClosed(Calendar.getInstance().get(Calendar.YEAR) - 120,
+                Calendar.getInstance().get(Calendar.YEAR))
                 .toArray())
                 .boxed().collect(Collectors.toList());
 
@@ -68,8 +63,12 @@ public class RegistrationScreenController implements Initializable {
     }
 
     public void setFiscalCode(){
-        if (IDChecker.isValidID(fiscalCode.getText()) && !fiscalCode.getText().equals(""))
+        if (IDChecker.isFiscalCodeValid(fiscalCode.getText()) && !fiscalCode.getText().equals("")) {
             System.out.println("Fiscal code check all right");
+            RegistrationFieldsSingleton.registrationFields.setFiscalCode(fiscalCode.getText());
+        } else {
+            throw new InvalidFiscalCodeException();
+        }
     }
 
     public void backButtonAction() throws IOException {

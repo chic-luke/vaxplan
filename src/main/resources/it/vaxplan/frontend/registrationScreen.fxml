@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
@@ -13,14 +14,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.vaxplan.frontend.controller.RegistrationScreenController">
    <children>
-      <VBox layoutX="12.0" prefHeight="313.0" prefWidth="579.0">
+      <VBox layoutX="-6.0" layoutY="-7.0" prefHeight="353.0" prefWidth="635.0">
          <children>
-            <HBox prefHeight="129.0" prefWidth="607.0">
+            <HBox prefHeight="96.0" prefWidth="579.0">
                <children>
                   <Region prefHeight="129.0" prefWidth="195.0" />
-                  <Label alignment="CENTER" centerShape="false" contentDisplay="CENTER" prefHeight="124.0" prefWidth="231.0" text="BENVENUTO">
+                  <Label alignment="CENTER" centerShape="false" contentDisplay="CENTER" prefHeight="124.0" prefWidth="231.0" text="Registrazione">
                      <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets bottom="40.0" top="40.0" />
                      </HBox.margin>
                      <font>
                         <Font size="31.0" />
@@ -37,13 +38,14 @@
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Label>
-                        <TextField fx:id="nameTextField" prefHeight="17.0" prefWidth="255.0" />
-                        <Button fx:id="nameOK" mnemonicParsing="false" text="OK">
+                        <TextField fx:id="nameTextField" prefHeight="17.0" prefWidth="255.0">
                            <HBox.margin>
                               <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
+                           </HBox.margin></TextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="38.0" prefWidth="607.0">
@@ -52,13 +54,14 @@
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Label>
-                        <TextField fx:id="surnameTextField" prefHeight="24.0" prefWidth="255.0" />
-                        <Button fx:id="surnameOK" mnemonicParsing="false" text="OK">
+                        <TextField fx:id="surnameTextField" prefHeight="24.0" prefWidth="255.0">
                            <HBox.margin>
                               <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
+                           </HBox.margin></TextField>
                      </children>
                   </HBox>
                   <HBox prefHeight="43.0" prefWidth="607.0">
@@ -67,14 +70,20 @@
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="birthDay" prefHeight="24.0" prefWidth="73.0" />
-                        <ComboBox fx:id="birthMonth" prefHeight="24.0" prefWidth="73.0">
+                        <ComboBox fx:id="birthDay" prefHeight="24.0" prefWidth="73.0" promptText="d">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></ComboBox>
+                        <ComboBox fx:id="birthMonth" prefHeight="24.0" prefWidth="73.0" promptText="m">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </ComboBox>
-                        <ComboBox fx:id="birthYear" prefHeight="24.0" prefWidth="106.0">
+                        <ComboBox fx:id="birthYear" prefHeight="24.0" prefWidth="106.0" promptText="y">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -89,13 +98,14 @@
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="bornWhere" prefHeight="24.0" prefWidth="255.0" />
-                  <Button fx:id="bornWhereOK" mnemonicParsing="false" text="OK">
+                  <TextField fx:id="bornWhere" prefHeight="24.0" prefWidth="255.0">
                      <HBox.margin>
                         <Insets left="10.0" />
-                     </HBox.margin>
-                  </Button>
+                     </HBox.margin></TextField>
                </children>
             </HBox>
             <HBox prefHeight="43.0" prefWidth="607.0">
@@ -104,23 +114,25 @@
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="fiscalCode" prefHeight="24.0" prefWidth="255.0" />
-                  <Button fx:id="fiscalCodeOK" mnemonicParsing="false" onAction="#setFiscalCode" text="OK">
+                  <TextField fx:id="fiscalCode" prefHeight="24.0" prefWidth="255.0">
                      <HBox.margin>
                         <Insets left="10.0" />
-                     </HBox.margin>
-                  </Button>
+                     </HBox.margin></TextField>
                </children>
             </HBox>
+            <HBox prefHeight="37.0" prefWidth="579.0" />
          </children>
       </VBox>
-      <HBox layoutX="12.0" layoutY="358.0" prefHeight="24.0" prefWidth="579.0">
-         <children>
+      <ToolBar layoutY="360.0" prefHeight="40.0" prefWidth="629.0" AnchorPane.bottomAnchor="0.0">
+         <items>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
-            <Region prefHeight="24.0" prefWidth="415.0" />
-            <Button fx:id="confirmButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="24.0" prefWidth="110.0" text="Conferma" />
-         </children>
-      </HBox>
+            <Region prefHeight="29.0" prefWidth="431.0" />
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="24.0" prefWidth="88.0" text="Avanti" />
+         </items>
+      </ToolBar>
    </children>
 </AnchorPane>
