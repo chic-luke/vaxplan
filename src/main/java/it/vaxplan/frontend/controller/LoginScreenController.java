@@ -19,12 +19,9 @@ public class LoginScreenController {
 
         if (inputString.equals("admin"))
             App.setRoot("adminscreen");
-        /*else if (IDChecker.isIDRegistered(inputString))
-            App.setRoot("citizenscreen");
-         */
-        else if(inputString.equals("GVNGRN85D16F839W"))
+        else if (IDChecker.isIDRegistered(inputString))
             App.setRoot("citizenScreen");
         else
-            App.setRoot("registrationscreen");
+            App.setRoot("registrationScreen");
     }
 }

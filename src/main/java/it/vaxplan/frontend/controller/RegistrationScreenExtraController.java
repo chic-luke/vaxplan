@@ -21,7 +21,7 @@ public class RegistrationScreenExtraController implements Initializable {
     }
 
     public void backButtonAction() throws IOException {
-        App.setRoot("registrationscreen");
+        App.setRoot("registrationScreen");
     }
 
     public void confirmButtonAction() throws  IOException{
