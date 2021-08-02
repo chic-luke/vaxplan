@@ -1,4 +1,7 @@
 package it.vaxplan.frontend;
 
-public class RegistrationFields {
+public class RegistrationFieldsSingleton {
+
+    public static RegistrationFields registrationFields;
+
 }

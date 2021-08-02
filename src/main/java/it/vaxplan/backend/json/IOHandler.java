@@ -4,10 +4,6 @@ import java.io.*;
 
 public class IOHandler {
 
-    public static void main(String[] args) {
-
-    }
-
     public String jsonToString(String filename) {
         var out = new StringBuilder();
 

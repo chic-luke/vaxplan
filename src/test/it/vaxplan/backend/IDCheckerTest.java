@@ -39,4 +39,22 @@ class IDCheckerTest {
         }
     }
 
+    @Test
+    void lookUp() throws JsonProcessingException {
+        var testFiscalCode = "SPSCRN99P09A944U";
+        var jsonInputHandler = new IOHandler();
+        var jsonAsString = jsonInputHandler.jsonToString("User");
+        var flag = false;
+
+        var node = Json.parse(jsonAsString);
+
+        for (var userIt = node.elements(); userIt.hasNext();) {
+            var user = userIt.next();
+            System.out.println(user.get("fiscalCode").asText().equals(testFiscalCode));
+            flag = user.get("fiscalCode").asText().equals(testFiscalCode);
+        }
+
+        assertTrue(flag);
+    }
+
 }
