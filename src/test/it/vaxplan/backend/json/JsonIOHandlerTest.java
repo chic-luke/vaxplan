@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IOHandlerTest {
+class JsonIOHandlerTest {
 
     private final String jsonTestString = "[\n" +
             "  {\n" +
@@ -15,7 +15,7 @@ class IOHandlerTest {
 
     @Test
     void jsonToString() {
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("test");
         System.out.println(jsonAsString);
         assertEquals(jsonTestString, jsonAsString);

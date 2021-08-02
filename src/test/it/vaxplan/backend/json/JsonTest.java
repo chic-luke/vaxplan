@@ -145,7 +145,7 @@ class JsonTest {
 
     @Test
     void testUserJson() throws JsonProcessingException {
-        var jsonInputHandler = new IOHandler();
+        var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
 
         var node = Json.parse(jsonAsString);
