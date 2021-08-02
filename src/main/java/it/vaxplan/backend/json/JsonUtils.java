@@ -4,6 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class JsonUtils {
 
+    /**
+     * Try to find a match between a query and the value of a given field in a given JSON
+     * @param filename JSON to search through
+     * @param field JSON field to evaluate
+     * @param query Query to check against
+     * @return Whether query was found in filename as field
+     * @throws JsonProcessingException If JSON processing fails
+     */
     public static boolean lookUp(String filename, String field, String query) throws JsonProcessingException {
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString(filename);

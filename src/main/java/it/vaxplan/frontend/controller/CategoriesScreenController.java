@@ -30,6 +30,10 @@ public class CategoriesScreenController implements Initializable {
         availableCategoriesList.getItems().addAll(PatientCategories.values());
     }
 
+    /**
+     * Adds a category of patients selected from the list visible on the left to the list
+     * visiable on the right
+     */
     public void addCategory() {
         var toAdd = availableCategoriesList.getSelectionModel().getSelectedItem();
         selectedCategoriesList.getItems().add(toAdd);
@@ -38,6 +42,10 @@ public class CategoriesScreenController implements Initializable {
         availableCategoriesList.refresh();
     }
 
+    /**
+     * Removes a category of patient selected in the second list from the list of
+     * eligible patient categories and move it back to the list on the left
+     */
     public void removeCategory() {
         var toRemove = selectedCategoriesList.getSelectionModel().getSelectedItem();
         availableCategoriesList.getItems().add(toRemove);
@@ -46,6 +54,10 @@ public class CategoriesScreenController implements Initializable {
         availableCategoriesList.refresh();
     }
 
+    /**
+     * Saves the contents of the list of available patient categories (on the right)
+     * in a Set and adds it to the current vaccine campaign
+     */
     public void confirmButtonAction() {
         Set<PatientCategories> setToAdd = new TreeSet<>();
         setToAdd.addAll(selectedCategoriesList.getItems());

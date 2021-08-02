@@ -45,10 +45,19 @@ public class Patient {
 
     private boolean healthCareWorker;
 
+    /**
+     * Gets the age of a patient by calculating the amount of time between
+     * the current moment and the patient's birthday
+     * @return Patient's age
+     */
     public long getIntAge() {
         return ChronoUnit.YEARS.between(ZonedDateTime.now(), birthDay);
     }
 
+    /**
+     * Checks whether a patient is an adult, which means over the age of adultAgeThreshold
+     * @return Whether the patient is adult
+     */
     public boolean isAdult() {
         return getIntAge() > Constants.adultAgeThreshold;
     }

@@ -25,10 +25,19 @@ public class BookingService {
         bookings.add(booking);
     }
 
+    /**
+     * Remove booking from the list of bookings according to the Booking object
+     * @param booking Booking to remove
+     */
     public void removeBooking(Booking booking) {
         bookings.remove(booking);
     }
 
+    /**
+     * Remove booking from the list of bookings according to the UUID of the Booking
+     * to remove
+     * @param uuid UUID of the Booking to remove
+     */
     public void removeBooking(UUID uuid) {
         Objects.requireNonNull(uuid);
         bookings.stream().filter(b -> b.getUuid().equals(uuid)).findFirst().ifPresent(bookings::remove);

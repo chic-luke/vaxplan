@@ -37,10 +37,17 @@ public class AddCampaignExtraController implements Initializable {
         showSites();
     }
 
+    /**
+     * Goes back to the previous screen when the back button is pressed.
+     * @throws IOException
+     */
     public void backButtonAction() throws IOException {
         App.setRoot("addCampaign");
     }
 
+    /**
+     * Adds a new vaccination site according to the contents of the associated TextBox
+     */
     public void addSite() {
         if (!siteTextBox.getText().equals("")) {
             CampaignToAdd.campaign.availableSites.add(siteTextBox.getText());
@@ -48,6 +55,9 @@ public class AddCampaignExtraController implements Initializable {
         }
     }
 
+    /**
+     * Show a list contaning the currently selected vaccination sites
+     */
     public void showSites() {
         if (!CampaignToAdd.campaign.availableSites.isEmpty()) {
             sitesComboBox.getItems().clear();
@@ -55,6 +65,10 @@ public class AddCampaignExtraController implements Initializable {
         }
     }
 
+    /**
+     * Go back to the previous view
+     * @throws IOException
+     */
     public void confirmButtonAction() throws IOException {
         backButtonAction();
     }

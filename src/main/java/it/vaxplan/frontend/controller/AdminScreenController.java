@@ -73,6 +73,11 @@ public class AdminScreenController implements Initializable {
         campaignsBox.getItems().addAll(tmpList);
     }
 
+    /**
+     * Opens the view to edit the selected vaccine campaign to the currently
+     * selected campaign in the ComboBox
+     * @throws IOException
+     */
     public void okButtonAction() throws IOException {
         String selection = campaignsBox.getValue();
         System.out.println(selection);
@@ -85,16 +90,27 @@ public class AdminScreenController implements Initializable {
         App.setRoot("editCampaign");
     }
 
+    /**
+     * Goes back to the welcome screen
+     * @throws IOException
+     */
     public void logoutAction() throws IOException {
         clearComboBox();
         App.setRoot("welcome");
     }
 
+    /**
+     * Goes to the view to create a new vaccine campaign
+     * @throws IOException
+     */
     public void newVaccineCampaign() throws IOException {
         CampaignToAdd.campaign = new CampaignToAddFields();
         App.setRoot("addCampaign");
     }
 
+    /**
+     * Clears the selection and content of the ComboBox objects on this view
+     */
     public void clearComboBox() {
         campaignsBox.getSelectionModel().clearSelection();
         campaignsBox.getItems().clear();

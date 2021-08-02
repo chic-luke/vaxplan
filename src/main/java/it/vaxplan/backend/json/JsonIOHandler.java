@@ -4,6 +4,12 @@ import java.io.*;
 
 public class JsonIOHandler {
 
+    /**
+     * Read a JSON file placed in the resources folder and return its contents
+     * as String
+     * @param filename Name of the JSON file to parse (without extension)
+     * @return Contents of filename as String
+     */
     public String jsonToString(String filename) {
         var out = new StringBuilder();
 

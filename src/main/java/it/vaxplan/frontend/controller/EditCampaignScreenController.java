@@ -107,6 +107,10 @@ public class EditCampaignScreenController implements Initializable {
     }
 
 
+    /**
+     * Goes back to the previous view
+     * @throws IOException
+     */
     public void backButtonAction() throws IOException {
         App.setRoot("adminscreen");
     }
@@ -177,6 +181,11 @@ public class EditCampaignScreenController implements Initializable {
         System.out.println(CampaignToEdit.campaign.getEndDate());
     }
 
+    /**
+     * This method gets called from the patients categories tab.
+     * Adds a category of patients selected from the list visible on the left to the list
+     * visiable on the right
+     */
     public void addCategory() {
         var toAdd = availableCategoriesList.getSelectionModel().getSelectedItem();
         selectedCategoriesList.getItems().add(toAdd);
@@ -185,6 +194,11 @@ public class EditCampaignScreenController implements Initializable {
         availableCategoriesList.refresh();
     }
 
+    /**
+     * This method gets called from the patients categories tab.
+     * Removes a category of patient selected in the second list from the list of
+     * eligible patient categories and move it back to the list on the left
+     */
     public void removeCategory() {
         var toRemove = selectedCategoriesList.getSelectionModel().getSelectedItem();
         availableCategoriesList.getItems().add(toRemove);
@@ -193,12 +207,21 @@ public class EditCampaignScreenController implements Initializable {
         availableCategoriesList.refresh();
     }
 
+    /**
+     * Saves the contents of the list of available patient categories (on the right)
+     * in a Set and adds it to the current vaccine campaign
+     */
     public void setCategories() {
         Set<PatientCategories> setToAdd = new HashSet<>();
         setToAdd.addAll(selectedCategoriesList.getItems());
         CampaignToEdit.campaign.setPatientCategories(setToAdd);
     }
 
+    /**
+     * Processes the inputs of the various objects in this view, adds them to the
+     * current VaccineCampaign and then goes back to the preview view
+     * @throws IOException
+     */
     public void okButtonAction() throws IOException {
         addDoses();
         setDateTime();

@@ -13,8 +13,17 @@ public class LoginScreenController {
     public TextField idField;
     public Button loginButton;
 
+    /**
+     * Handles input to the login text field.
+     * If it contains the word "admin", it loads the administration view.
+     * If it contains a valid fiscal code belonging to a patient registered to the system,
+     * it loads the citizen view.
+     * If it contains an invalid fiscal code, it prompts the user to register themselves
+     * to the system.
+     * @throws IOException
+     */
     @FXML
-    private void checkLogin(ActionEvent actionEvent) throws IOException {
+    private void checkLogin() throws IOException {
         String inputString = idField.getText();
 
         if (inputString.equals("admin"))

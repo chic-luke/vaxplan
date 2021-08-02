@@ -21,7 +21,7 @@ import it.vaxplan.backend.IDChecker;
 
 public class RegistrationScreenController implements Initializable {
 
-    //User fields
+    // User fields
     @FXML
     public TextField nameTextField;
     @FXML
@@ -37,7 +37,7 @@ public class RegistrationScreenController implements Initializable {
     @FXML
     public TextField fiscalCode;
 
-    //back and confirm button
+    // Back and confirm buttons
     @FXML
     public Button backButton;
     @FXML
@@ -62,6 +62,10 @@ public class RegistrationScreenController implements Initializable {
         birthYear.getItems().addAll(yearDates);
     }
 
+    /**
+     * Sets the Fiscal Code field acocrding to the contents of the fiscal code TextField,
+     * after validating it and confirming it's indeed a valid Italian fiscal code.
+     */
     public void setFiscalCode(){
         if (IDChecker.isFiscalCodeValid(fiscalCode.getText()) && !fiscalCode.getText().equals("")) {
             System.out.println("Fiscal code check all right");
@@ -71,10 +75,18 @@ public class RegistrationScreenController implements Initializable {
         }
     }
 
+    /**
+     * Goes back to the welcome screen
+     * @throws IOException
+     */
     public void backButtonAction() throws IOException {
         App.setRoot("welcome");
     }
 
+    /**
+     * Saves the current user input and then proceeds to the next view
+     * @throws IOException
+     */
     public void confirmButtonAction() throws  IOException{
         App.setRoot("registrationSecondScreen");
     }

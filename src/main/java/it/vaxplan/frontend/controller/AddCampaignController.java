@@ -87,21 +87,35 @@ public class AddCampaignController implements Initializable {
         vaccineTypeComboBox.getItems().addAll(Vaccine.values());
     }
 
+    /**
+     * Set the name of a vaccine according to the contents of the name TextField
+     */
     public void setName() {
         if (!nameTextField.getText().equals(""))
             CampaignToAdd.campaign.setName(nameTextField.getText());
     }
 
+    /**
+     * Sets the vaccine type according to the selection in the vaccine ComboBox
+     */
     public void setVaccine() {
         if (!vaccineTypeComboBox.getSelectionModel().isEmpty())
             CampaignToAdd.campaign.setVaccine(vaccineTypeComboBox.getValue());
     }
 
+    /**
+     * Sets the number of doses available for a vaccine according to the contents
+     * of the doses TextField
+     */
     public void setDoses() {
         if (!dosesTextField.getText().equals(""))
             CampaignToAdd.campaign.setAvailableDoses(Integer.parseInt(dosesTextField.getText()));
     }
 
+    /**
+     * Set the vaccination campaign's start and end dates as well as the daily start
+     * and end times according to the selection in the associated ComboBoxes
+     */
     public void setDateTime() {
         // Populate fields with user input
         // Values from comboboxes
@@ -147,10 +161,20 @@ public class AddCampaignController implements Initializable {
 
     }
 
+    /**
+     * Goes back to the previous screen when the back button is pressed.
+     * @throws IOException
+     */
     public void backButtonAction() throws IOException {
         App.setRoot("adminscreen");
     }
 
+    /**
+     * Show the view where the operator can select what vaccination sites this
+     * campaign is available in, after grabbing inputs from the current view and
+     * memorizing them
+     * @throws IOException
+     */
     public void showSitesScreen() throws IOException {
         setName();
         setVaccine();
@@ -159,10 +183,20 @@ public class AddCampaignController implements Initializable {
         App.setRoot("AddCampaignMore");
     }
 
+    /**
+     * Opens a new window containing the view where the operator can choose what
+     * categories of patients are eligible for this specific campaign
+     * @throws IOException
+     */
     public void showCategoriesScreen() throws IOException {
         App.newWindow("categoriesScreen");
     }
 
+    /**
+     * Create a new VaccineCampaign object, add it to the VaccinationCampaignService
+     * and go back to the previous view
+     * @throws IOException
+     */
     public void confirmButtonAction() throws IOException {
         setName();
         setVaccine();

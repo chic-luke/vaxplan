@@ -26,10 +26,20 @@ public enum Vaccine {
         this.patientElegibilityChecker = patientElegibilityChecker;
     }
 
+    /**
+     * Checks whether a Patient is eligible for a Vaccine
+     * @param patient Patient to check eligibility for
+     * @return Whether patient is eligible
+     */
     public boolean isPatientElegible(Patient patient) {
         return Objects.isNull(patientElegibilityChecker) || patientElegibilityChecker.apply(patient);
     }
 
+    /**
+     * Get a List of all the available vaccines for a given virus
+     * @param virusName Name of the virus to return all available vaccines for
+     * @return List of available vaccines for a given virus
+     */
     public List<Vaccine> getVaccinesByVirusName(String virusName) {
         return Stream.of(Vaccine.values()).filter(v -> v.getVirusName().equals(virusName)).collect(Collectors.toList());
     }

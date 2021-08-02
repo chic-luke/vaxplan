@@ -20,11 +20,20 @@ public class RegistrationScreenExtraController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    /**
+     * Goes back to the previous view
+     * @throws IOException
+     */
     public void backButtonAction() throws IOException {
         App.setRoot("registrationScreen");
     }
 
-    public void confirmButtonAction() throws  IOException{
+    /**
+     * Constructs a Patient object according to the input, adds it to
+     * PatientService and then goes back to the welcome screen
+     * @throws IOException
+     */
+    public void confirmButtonAction() throws IOException{
         App.setRoot("welcome");
     }
 

@@ -11,6 +11,11 @@ import java.util.HashSet;
 
 public class VaccineCampaignFromJson {
 
+    /**
+     * Initialize VaccineCampaignService with a set of Patients with information obtained
+     * by parsing VaccineCampaign.json
+     * @throws JsonProcessingException If JSON processing fails
+     */
     public static void getVaccineCampaignsFromJson() throws JsonProcessingException {
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("VaccineCampaign");
@@ -26,6 +31,12 @@ public class VaccineCampaignFromJson {
         }
     }
 
+    /**
+     * Create and return a VaccineCampaign object from a JsonNode
+     * @param node JsonNode to bind to POJO class
+     * @return Resulting VaccineCampaign object
+     * @throws JsonProcessingException If JSON processing fails
+     */
     public static VaccineCampaign createVaccineCampaign(JsonNode node) throws JsonProcessingException {
         var pojo = Json.fromJson(node, VaccineCampaignPOJO.class);
 
