@@ -30,11 +30,10 @@ public class VaccineCampaignFromJson {
         var node = Json.parse(jsonAsString);
 
         // Temporary VaccineCampaignService until a real one is implemented
-        var testService = new VaccineCampaignService();
         for (var campaignIt = node.elements(); campaignIt.hasNext();) {
             var campaign = campaignIt.next();
             // Handle below
-            testService.addCampaign(createVaccineCampaign(campaign));
+            VaccineCampaignService.addCampaign(createVaccineCampaign(campaign));
         }
     }
 
