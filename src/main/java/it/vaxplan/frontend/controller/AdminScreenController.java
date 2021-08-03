@@ -62,7 +62,6 @@ public class AdminScreenController implements Initializable {
 
         tmpList.clear();
         for (VaccineCampaign c: vaccineCampaigns) {
-            System.out.println("Name: " + c.getName());
             tmpList.add(c.getName());
         }
 
@@ -76,7 +75,7 @@ public class AdminScreenController implements Initializable {
     /**
      * Opens the view to edit the selected vaccine campaign to the currently
      * selected campaign in the ComboBox
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void okButtonAction() throws IOException {
         String selection = campaignsBox.getValue();
@@ -92,7 +91,7 @@ public class AdminScreenController implements Initializable {
 
     /**
      * Goes back to the welcome screen
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void logoutAction() throws IOException {
         clearComboBox();
@@ -101,7 +100,7 @@ public class AdminScreenController implements Initializable {
 
     /**
      * Goes to the view to create a new vaccine campaign
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void newVaccineCampaign() throws IOException {
         CampaignToAdd.campaign = new CampaignToAddFields();

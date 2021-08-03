@@ -31,7 +31,7 @@ public class AddCampaignExtraController implements Initializable {
 
     /**
      * Goes back to the previous screen when the back button is pressed.
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void backButtonAction() throws IOException {
         App.setRoot("addCampaign");
@@ -59,7 +59,7 @@ public class AddCampaignExtraController implements Initializable {
 
     /**
      * Go back to the previous view
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void confirmButtonAction() throws IOException {
         backButtonAction();

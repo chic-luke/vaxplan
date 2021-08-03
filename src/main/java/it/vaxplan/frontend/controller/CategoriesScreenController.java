@@ -59,8 +59,7 @@ public class CategoriesScreenController implements Initializable {
      * in a Set and adds it to the current vaccine campaign
      */
     public void confirmButtonAction() {
-        Set<PatientCategories> setToAdd = new TreeSet<>();
-        setToAdd.addAll(selectedCategoriesList.getItems());
+        Set<PatientCategories> setToAdd = new TreeSet<>(selectedCategoriesList.getItems());
         CampaignToAdd.campaign.setPatientCategories(setToAdd);
     }
 

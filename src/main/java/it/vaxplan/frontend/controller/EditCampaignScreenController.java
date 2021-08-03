@@ -76,8 +76,6 @@ public class EditCampaignScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("UUID DOPO:" + CampaignToEdit.campaign.getUuid());
-        System.out.println("Editing:" + CampaignToEdit.campaign);
 
         var dayRange = Arrays.stream(IntStream.rangeClosed(1, 30).toArray())
                 .boxed().collect(Collectors.toList());
@@ -109,7 +107,7 @@ public class EditCampaignScreenController implements Initializable {
 
     /**
      * Goes back to the previous view
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void backButtonAction() throws IOException {
         App.setRoot("adminscreen");
@@ -148,7 +146,6 @@ public class EditCampaignScreenController implements Initializable {
             else
                 CampaignToEdit.campaign.setDailyStartTime(LocalTime.of(timeStartHour, timeStartMinutes));
         }
-        System.out.println(CampaignToEdit.campaign.getDailyStartTime());
 
         // Daily end time
         if (timeEndHour != null && timeEndMinutes != null) {
@@ -158,7 +155,6 @@ public class EditCampaignScreenController implements Initializable {
             else
                 CampaignToEdit.campaign.setDailyEndTime(LocalTime.of(timeEndHour, timeEndMinutes));
         }
-        System.out.println(CampaignToEdit.campaign.getDailyEndTime());
 
         // Start date
         if (dateStartDay != null && dateStartMonth != null && dateStartYear != null) {
@@ -168,7 +164,6 @@ public class EditCampaignScreenController implements Initializable {
             else
                 CampaignToEdit.campaign.setStartDate(LocalDate.of(dateStartYear, dateStartMonth, dateStartDay));
         }
-        System.out.println(CampaignToEdit.campaign.getStartDate());
 
         // End date
         if (dateEndDay != null && dateEndMonth != null && dateEndYear != null) {
@@ -178,7 +173,7 @@ public class EditCampaignScreenController implements Initializable {
             else
                 CampaignToEdit.campaign.setEndDate(LocalDate.of(dateEndYear, dateEndMonth, dateEndDay));
         }
-        System.out.println(CampaignToEdit.campaign.getEndDate());
+
     }
 
     /**
@@ -212,15 +207,14 @@ public class EditCampaignScreenController implements Initializable {
      * in a Set and adds it to the current vaccine campaign
      */
     public void setCategories() {
-        Set<PatientCategories> setToAdd = new HashSet<>();
-        setToAdd.addAll(selectedCategoriesList.getItems());
+        Set<PatientCategories> setToAdd = new HashSet<>(selectedCategoriesList.getItems());
         CampaignToEdit.campaign.setPatientCategories(setToAdd);
     }
 
     /**
      * Processes the inputs of the various objects in this view, adds them to the
      * current VaccineCampaign and then goes back to the preview view
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void okButtonAction() throws IOException {
         addDoses();

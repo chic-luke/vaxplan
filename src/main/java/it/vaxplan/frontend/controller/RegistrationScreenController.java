@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import it.vaxplan.backend.IDChecker;
+import it.vaxplan.backend.utils.IDChecker;
 
 public class RegistrationScreenController implements Initializable {
 
@@ -77,7 +77,7 @@ public class RegistrationScreenController implements Initializable {
 
     /**
      * Goes back to the welcome screen
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void backButtonAction() throws IOException {
         App.setRoot("welcome");
@@ -85,7 +85,7 @@ public class RegistrationScreenController implements Initializable {
 
     /**
      * Saves the current user input and then proceeds to the next view
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void confirmButtonAction() throws  IOException{
         App.setRoot("registrationSecondScreen");

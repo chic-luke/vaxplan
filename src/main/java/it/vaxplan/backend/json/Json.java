@@ -46,7 +46,7 @@ public class Json {
      * @param currentClass Class ti bind to
      * @param <A> Input object
      * @return Input object, after binding
-     * @throws JsonProcessingException
+     * @throws JsonProcessingException should the parsing fail
      */
     public static <A> A fromJson(JsonNode node, Class<A> currentClass) throws JsonProcessingException {
         return objectMapper.treeToValue(node, currentClass);

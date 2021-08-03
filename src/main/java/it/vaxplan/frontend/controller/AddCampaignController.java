@@ -163,7 +163,7 @@ public class AddCampaignController implements Initializable {
 
     /**
      * Goes back to the previous screen when the back button is pressed.
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void backButtonAction() throws IOException {
         App.setRoot("adminscreen");
@@ -173,7 +173,7 @@ public class AddCampaignController implements Initializable {
      * Show the view where the operator can select what vaccination sites this
      * campaign is available in, after grabbing inputs from the current view and
      * memorizing them
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void showSitesScreen() throws IOException {
         setName();
@@ -186,7 +186,7 @@ public class AddCampaignController implements Initializable {
     /**
      * Opens a new window containing the view where the operator can choose what
      * categories of patients are eligible for this specific campaign
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void showCategoriesScreen() throws IOException {
         App.newWindow("categoriesScreen");
@@ -195,7 +195,7 @@ public class AddCampaignController implements Initializable {
     /**
      * Create a new VaccineCampaign object, add it to the VaccinationCampaignService
      * and go back to the previous view
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void confirmButtonAction() throws IOException {
         setName();
@@ -205,16 +205,12 @@ public class AddCampaignController implements Initializable {
 
         var bookings = new BookingService();
 
-        System.out.println("Start date " + CampaignToAdd.campaign.getStartDate());
-        System.out.println(CampaignToAdd.campaign);
-
         var newCampaign = new VaccineCampaign(CampaignToAdd.campaign.getName(), CampaignToAdd.campaign.getVaccine(),
                 CampaignToAdd.campaign.getAvailableDoses(), CampaignToAdd.campaign.getStartDate(), CampaignToAdd.campaign.getEndDate(),
                 CampaignToAdd.campaign.getDailyStartTime(), CampaignToAdd.campaign.getDailyEndTime(),
                 CampaignToAdd.campaign.availableSites,  bookings,
                 CampaignToAdd.campaign.getPatientCategories());
         VaccineCampaignService.addCampaign(newCampaign);
-        System.out.println("Success!");
 
         backButtonAction();
     }

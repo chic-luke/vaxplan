@@ -22,7 +22,7 @@ public class RegistrationScreenExtraController implements Initializable {
 
     /**
      * Goes back to the previous view
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void backButtonAction() throws IOException {
         App.setRoot("registrationScreen");
@@ -31,7 +31,7 @@ public class RegistrationScreenExtraController implements Initializable {
     /**
      * Constructs a Patient object according to the input, adds it to
      * PatientService and then goes back to the welcome screen
-     * @throws IOException
+     * @throws IOException if FXML file is not found
      */
     public void confirmButtonAction() throws IOException{
         App.setRoot("welcome");
