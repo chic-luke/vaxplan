@@ -1,6 +1,7 @@
 package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.PatientCategories;
+import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToEdit;
@@ -225,6 +226,9 @@ public class EditCampaignScreenController implements Initializable {
         addDoses();
         setDateTime();
         setCategories();
+
+        // Write all vaccine campaigns to file
+        Sync.writeVaccineCampaignServiceToJson();
 
         backButtonAction();
     }

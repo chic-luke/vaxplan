@@ -2,6 +2,8 @@ package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.json.Json;
+import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 import it.vaxplan.frontend.App;
@@ -211,6 +213,9 @@ public class AddCampaignController implements Initializable {
                 CampaignToAdd.campaign.availableSites,  bookings,
                 CampaignToAdd.campaign.getPatientCategories());
         VaccineCampaignService.addCampaign(newCampaign);
+
+        // Write all vaccine campaigns to file
+        Sync.writeVaccineCampaignServiceToJson();
 
         backButtonAction();
     }
