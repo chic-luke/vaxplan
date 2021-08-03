@@ -1,16 +1,18 @@
 package it.vaxplan.frontend.controller;
 
+import it.vaxplan.backend.IDChecker;
 import it.vaxplan.frontend.App;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
-import it.vaxplan.backend.IDChecker;
 
 public class LoginScreenController {
+
+    @FXML
     public TextField idField;
+    @FXML
     public Button loginButton;
 
     /**
@@ -20,7 +22,7 @@ public class LoginScreenController {
      * it loads the citizen view.
      * If it contains an invalid fiscal code, it prompts the user to register themselves
      * to the system.
-     * @throws IOException
+     * @throws IOException If XML file is not found
      */
     @FXML
     private void checkLogin() throws IOException {
