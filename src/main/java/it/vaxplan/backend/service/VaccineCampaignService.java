@@ -10,6 +10,13 @@ import java.util.LinkedList;
  */
 public class VaccineCampaignService {
 
+    /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private VaccineCampaignService() {
+        throw new IllegalArgumentException("Utility class (global service)");
+    }
+
     @Getter
     private static final LinkedList<VaccineCampaign> campaigns = new LinkedList<>();
 

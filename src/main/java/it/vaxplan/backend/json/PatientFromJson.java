@@ -35,15 +35,14 @@ public class PatientFromJson {
         // Patient object for each
 
         // Temporary PatientService until a real one is implemented
-        var testService = new PatientService();
         for (var userIt = node.elements(); userIt.hasNext();) {
             var user = userIt.next();
             // Handle below
-            testService.addPatient(createPatient(user));
+            PatientService.addPatient(createPatient(user));
             result = true;
         }
 
-        System.out.println(testService.getPatients());
+        System.out.println(PatientService.getPatients());
         return result;
     }
 
