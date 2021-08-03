@@ -9,6 +9,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ public class VaccineCampaign {
     private LocalDate endDate;
     private LocalTime dailyStartTime;
     private LocalTime dailyEndTime;
-    private final Set<String> availableSites;
+    private final Set<VaccineSite> availableSites;
     private BookingService bookings;
     private Set<PatientCategories> patientCategories;
 
@@ -54,7 +55,7 @@ public class VaccineCampaign {
      * Add a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to add to this campaign
      */
-    public void addVaccinationSite(String site) {
+    public void addVaccinationSite(VaccineSite site) {
         availableSites.add(site);
     }
 
@@ -62,8 +63,16 @@ public class VaccineCampaign {
      * Remove a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to remove from this campaign
      */
-    public void removeVaccinationSite(String site) {
+    public void removeVaccinationSite(VaccineSite site) {
         availableSites.remove(site);
+    }
+
+    /**
+     * Add a Collection of sites to the list of vaccination sites
+     * @param sites Sites to add
+     */
+    public void addAllVaccinationSites(Collection<VaccineSite> sites) {
+        availableSites.addAll(sites);
     }
 
     /**

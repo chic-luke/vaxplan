@@ -7,6 +7,7 @@ import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.backend.service.VaccineCampaignService;
+import it.vaxplan.backend.service.VaccineSiteService;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -82,6 +83,14 @@ class SyncTest {
 
         System.out.println(PatientService.getPatients());
         assertFalse(PatientService.getPatients().isEmpty());
+    }
+
+    @Test
+    void initVaccineSiteServiceSuccess() throws JsonProcessingException {
+        Sync.initVaccineSiteServiceFromJson();
+
+        System.out.println(VaccineSiteService.getSites());
+        assertFalse(VaccineSiteService.isEmpty());
     }
 
 }

@@ -2,6 +2,7 @@ package it.vaxplan.frontend;
 
 import it.vaxplan.backend.PatientCategories;
 import it.vaxplan.backend.Vaccine;
+import it.vaxplan.backend.VaccineSite;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -46,7 +47,9 @@ public class CampaignToAddFields {
     @Setter
     private LocalTime dailyEndTime;
 
-    public final Set<String> availableSites = new TreeSet<>();
+    @Getter
+    @Setter
+    public Set<VaccineSite> availableSites = new HashSet<>();
 
     @Getter
     @Setter

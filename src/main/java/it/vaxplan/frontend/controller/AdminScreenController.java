@@ -1,6 +1,7 @@
 package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.Vaccine;
+import it.vaxplan.backend.json.Sync;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToAdd;
 import it.vaxplan.frontend.CampaignToAddFields;
@@ -13,12 +14,14 @@ import javafx.scene.control.ComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.service.VaccineCampaignService;
+import lombok.SneakyThrows;
 
 public class AdminScreenController implements Initializable {
 
@@ -33,9 +36,11 @@ public class AdminScreenController implements Initializable {
 
     private final List<String> tmpList = new LinkedList<>();
 
+    @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         var vaccineCampaigns = VaccineCampaignService.getCampaigns();
+        Sync.initVaccineSiteServiceFromJson();
 
         // Begin placeholder code
         if (VaccineCampaignService.isEmpty()) {
@@ -45,6 +50,7 @@ public class AdminScreenController implements Initializable {
                     .availableDoses(1000)
                     .dailyStartTime(LocalTime.of(9, 0))
                     .dailyEndTime(LocalTime.of(20, 0))
+                    .availableSites(new HashSet<>())
                     .build();
 
             VaccineCampaign camp2 = VaccineCampaign.builder()
@@ -53,6 +59,7 @@ public class AdminScreenController implements Initializable {
                     .availableDoses(1000)
                     .dailyStartTime(LocalTime.of(9, 0))
                     .dailyEndTime(LocalTime.of(20, 0))
+                    .availableSites(new HashSet<>())
                     .build();
 
             VaccineCampaignService.addCampaign(camp1);

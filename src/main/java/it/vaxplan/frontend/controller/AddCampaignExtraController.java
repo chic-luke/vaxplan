@@ -1,5 +1,6 @@
 package it.vaxplan.frontend.controller;
 
+import it.vaxplan.backend.VaccineSite;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToAdd;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class AddCampaignExtraController implements Initializable {
@@ -42,7 +44,9 @@ public class AddCampaignExtraController implements Initializable {
      */
     public void addSite() {
         if (!siteTextBox.getText().equals("")) {
-            CampaignToAdd.campaign.availableSites.add(siteTextBox.getText());
+            var newSite = new VaccineSite();
+            newSite.setName(siteTextBox.getText());
+            CampaignToAdd.campaign.availableSites.add(newSite);
             siteTextBox.clear();
         }
     }
@@ -52,8 +56,11 @@ public class AddCampaignExtraController implements Initializable {
      */
     public void showSites() {
         if (!CampaignToAdd.campaign.availableSites.isEmpty()) {
+            var availableSitesList = new LinkedList<VaccineSite>();
+            availableSitesList.addAll(CampaignToAdd.campaign.getAvailableSites());
+
             sitesListView.getItems().clear();
-            sitesListView.getItems().addAll(CampaignToAdd.campaign.availableSites);
+            sitesListView.getItems().addAll(String.valueOf(availableSitesList));
         }
     }
 

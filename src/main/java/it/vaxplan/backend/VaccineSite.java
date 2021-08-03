@@ -11,16 +11,14 @@ import javax.validation.constraints.NotNull;
 @Builder
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class VaccineSite implements Comparable<String> {
+public class VaccineSite {
 
     @NotNull
     private String name;
 
-    @NotNull
-    private String city;
-
     @Override
-    public int compareTo(String s) {
-        return 0;
+    public String toString() {
+        return name;
     }
+
 }

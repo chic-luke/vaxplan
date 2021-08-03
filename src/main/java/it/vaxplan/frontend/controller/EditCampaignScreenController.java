@@ -1,8 +1,11 @@
 package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.PatientCategories;
+import it.vaxplan.backend.Vaccine;
+import it.vaxplan.backend.VaccineSite;
 import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.service.PatientService;
+import it.vaxplan.backend.service.VaccineSiteService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToEdit;
 import javafx.fxml.FXML;
@@ -75,9 +78,20 @@ public class EditCampaignScreenController implements Initializable {
     @FXML
     public Button removeCategoryButton;
 
+    // Vaccination sites
+    @FXML
+    public ListView<VaccineSite> availableSitesList;
+    @FXML
+    public ListView<VaccineSite> selectedSitesList;
+    @FXML
+    public Button addSiteButton;
+    @FXML
+    public Button removeSiteButton;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(CampaignToEdit.campaign);
 
         var dayRange = Arrays.stream(IntStream.rangeClosed(1, 30).toArray())
                 .boxed().collect(Collectors.toList());
@@ -106,6 +120,17 @@ public class EditCampaignScreenController implements Initializable {
         availableCategoriesList.getItems().addAll(PatientCategories.values());
         if (CampaignToEdit.campaign.getPatientCategories() != null) {
             selectedCategoriesList.getItems().addAll(CampaignToEdit.campaign.getPatientCategories());
+        }
+
+        // Initialize vaccine campaign listViews
+        if (!VaccineSiteService.isEmpty()) {
+            availableSitesList.getItems().addAll(VaccineSiteService.getSites());
+        }
+        if (CampaignToEdit.campaign.getAvailableSites() != null) {
+            selectedSitesList.getItems().addAll(CampaignToEdit.campaign.getAvailableSites());
+        }
+        for (VaccineSite site: selectedSitesList.getItems()) {
+            availableSitesList.getItems().remove(site);
         }
 
     }
@@ -218,6 +243,41 @@ public class EditCampaignScreenController implements Initializable {
     }
 
     /**
+     * Adds a vaccination site selected from the list visible on the left to the list
+     * visible on the right
+     */
+    public void addSite() {
+        var toAdd = availableSitesList.getSelectionModel().getSelectedItem();
+        selectedSitesList.getItems().add(toAdd);
+        availableSitesList.getItems().remove(toAdd);
+        selectedSitesList.refresh();
+        availableSitesList.refresh();
+    }
+
+    /**
+     * Removes a vaccination site selected in the second list from the list of
+     * selected vaccination sites and move it back to the list on the left
+     */
+    public void removeSite() {
+        var toRemove = selectedSitesList.getSelectionModel().getSelectedItem();
+        availableSitesList.getItems().add(toRemove);
+        selectedSitesList.getItems().remove(toRemove);
+        selectedSitesList.refresh();
+        availableSitesList.refresh();
+    }
+
+    /**
+     * Saves the contents of the list of available vaccination sites (on the right)
+     * in a Set and adds it to the current vaccine campaign
+     */
+    public void setVaccineSites() {
+        Set<VaccineSite> setToAdd = new HashSet<>(selectedSitesList.getItems());
+        if (!setToAdd.isEmpty()) {
+            CampaignToEdit.campaign.addAllVaccinationSites(setToAdd);
+        }
+    }
+
+    /**
      * Processes the inputs of the various objects in this view, adds them to the
      * current VaccineCampaign and then goes back to the preview view
      * @throws IOException if FXML file is not found
@@ -226,6 +286,7 @@ public class EditCampaignScreenController implements Initializable {
         addDoses();
         setDateTime();
         setCategories();
+        setVaccineSites();
 
         // Write all vaccine campaigns to file
         Sync.writeVaccineCampaignServiceToJson();

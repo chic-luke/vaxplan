@@ -3,12 +3,16 @@ package it.vaxplan.backend.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import it.vaxplan.backend.Patient;
+import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.VaccineSite;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
+import it.vaxplan.backend.json.pojo.VaccineSitePOJO;
 import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.backend.service.VaccineCampaignService;
+import it.vaxplan.backend.service.VaccineSiteService;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -129,6 +133,27 @@ public class Sync {
                     pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isHealthCareWorker());
 
             PatientService.addPatient(newPatient);
+        }
+
+    }
+
+    /**
+     * Initialize VaccineSiteService with contents from VaccineSite.json
+     * (located in resources)
+     */
+    public static void initVaccineSiteServiceFromJson() throws JsonProcessingException {
+        var jio = new JsonIOHandler();
+        var fileOutput = jio.jsonToString("VaccineSites");
+        var node = Json.parse(fileOutput);
+
+        for (var siteIt = node.elements(); siteIt.hasNext();) {
+            var site = siteIt.next();
+
+            var pojo = Json.fromJson(site, VaccineSitePOJO.class);
+
+            var newSite = new VaccineSite(pojo.getName());
+
+            VaccineSiteService.addSite(newSite);
         }
 
     }

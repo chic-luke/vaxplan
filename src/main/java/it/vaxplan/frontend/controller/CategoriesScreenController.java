@@ -32,7 +32,7 @@ public class CategoriesScreenController implements Initializable {
 
     /**
      * Adds a category of patients selected from the list visible on the left to the list
-     * visiable on the right
+     * visible on the right
      */
     public void addCategory() {
         var toAdd = availableCategoriesList.getSelectionModel().getSelectedItem();
