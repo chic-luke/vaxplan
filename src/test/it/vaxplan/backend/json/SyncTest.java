@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class SyncTest {
 
@@ -40,5 +40,11 @@ class SyncTest {
         VaccineCampaignService.addCampaign(newCampaign2);
 
         Sync.writeVaccineCampaignServiceToJson();
+    }
+
+    @Test
+    void initVaccineCampaignServiceSuccess() throws JsonProcessingException {
+        Sync.initVaccineCampaignServiceFromJson();
+        assertFalse(VaccineCampaignService.isEmpty());
     }
 }
