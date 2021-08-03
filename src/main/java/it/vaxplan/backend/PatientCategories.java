@@ -13,7 +13,7 @@ public enum PatientCategories {
     SCHOOL_WORKER("Personale scolastico"),
     LAW_ENFORCEMENT_WORKER("Forze dell'ordine");
 
-    private String string;
+    private final String string;
 
     PatientCategories(String name) {
         string = name;

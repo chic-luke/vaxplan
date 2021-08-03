@@ -11,6 +11,13 @@ import java.time.ZonedDateTime;
 public class PatientFromJson {
 
     /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private PatientFromJson() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
+    /**
      * Initialize PatientService with a set of Patients with information obtained
      * by parsing User.json
      * @throws JsonProcessingException If JSON processing fails

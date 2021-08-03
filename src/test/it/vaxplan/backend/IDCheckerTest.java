@@ -3,6 +3,7 @@ package it.vaxplan.backend;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.json.JsonIOHandler;
 import it.vaxplan.backend.json.Json;
+import it.vaxplan.backend.utils.IDChecker;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

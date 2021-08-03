@@ -1,6 +1,6 @@
 package it.vaxplan.frontend.controller;
 
-import it.vaxplan.backend.IDChecker;
+import it.vaxplan.backend.utils.IDChecker;
 import it.vaxplan.frontend.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

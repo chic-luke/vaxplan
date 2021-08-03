@@ -1,9 +1,16 @@
-package it.vaxplan.backend;
+package it.vaxplan.backend.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.json.JsonUtils;
 
 public class IDChecker {
+
+    /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private IDChecker() {
+        throw new IllegalArgumentException("Utility class");
+    }
 
     /**
      * Checks of a given Italian fiscal code is valid according to a regular expression

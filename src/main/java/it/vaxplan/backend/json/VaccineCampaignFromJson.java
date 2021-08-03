@@ -12,6 +12,13 @@ import java.util.HashSet;
 public class VaccineCampaignFromJson {
 
     /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private VaccineCampaignFromJson() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
+    /**
      * Initialize VaccineCampaignService with a set of Patients with information obtained
      * by parsing VaccineCampaign.json
      * @throws JsonProcessingException If JSON processing fails

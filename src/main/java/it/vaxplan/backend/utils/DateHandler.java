@@ -9,6 +9,13 @@ import java.time.format.DateTimeFormatter;
 public class DateHandler {
 
     /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private DateHandler() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
+    /**
      * Parses a date string into a ZoneDateTime object
      * @param date String formatted like "dd/mm/yyyy"
      * @return Corresponding ZoneDateTime object
@@ -36,7 +43,5 @@ public class DateHandler {
     public static ZonedDateTime joinDateTime(LocalDate date, LocalTime time) {
         return ZonedDateTime.of(date, time, ZoneId.of("UTC+2"));
     }
-
-
 
 }

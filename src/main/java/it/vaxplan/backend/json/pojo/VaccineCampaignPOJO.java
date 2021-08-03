@@ -1,6 +1,5 @@
 package it.vaxplan.backend.json.pojo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import it.vaxplan.backend.Vaccine;
 import lombok.Getter;
 import lombok.Setter;

@@ -9,6 +9,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
  */
 public class Json {
 
+    /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private Json() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
     private static ObjectMapper objectMapper = getDefaultObjectMapper();
 
     /**

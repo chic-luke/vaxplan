@@ -1,6 +1,5 @@
 package it.vaxplan.backend;
 
-import it.vaxplan.backend.exceptions.NoRemainingDosesException;
 import it.vaxplan.backend.service.BookingService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +9,8 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.Set;
+import java.util.UUID;
 
 @Data
 @Builder

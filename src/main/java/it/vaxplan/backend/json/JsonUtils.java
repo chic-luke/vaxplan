@@ -5,6 +5,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 public class JsonUtils {
 
     /**
+     * This is an utility class, it's not meant to be instantiated.
+     */
+    private JsonUtils() {
+        throw new IllegalArgumentException("Utility class");
+    }
+
+    /**
      * Try to find a match between a query and the value of a given field in a given JSON
      * @param filename JSON to search through
      * @param field JSON field to evaluate
