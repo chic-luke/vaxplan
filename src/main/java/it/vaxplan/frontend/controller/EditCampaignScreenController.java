@@ -1,6 +1,7 @@
 package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.PatientCategories;
+import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToEdit;
 import javafx.fxml.FXML;
@@ -100,8 +101,12 @@ public class EditCampaignScreenController implements Initializable {
         timeEndHourBox.getItems().addAll(hoursRange);
         timeEndMinutesBox.getItems().addAll(minutesRange);
 
-        // Initialize patient categories ListView
+        // Initialize patient categories ListViews
         availableCategoriesList.getItems().addAll(PatientCategories.values());
+        if (CampaignToEdit.campaign.getPatientCategories() != null) {
+            selectedCategoriesList.getItems().addAll(CampaignToEdit.campaign.getPatientCategories());
+        }
+
     }
 
 
