@@ -39,4 +39,29 @@ public class JsonIOHandler {
         return out.toString();
     }
 
+    public void writeJsonToFile(String json, String filename) throws IOException {
+        var file = new File("src/main/resources/" + filename + ".json");
+
+        if (file.exists()) {
+            // Overwrite the existing file
+            System.out.println("File exists!");
+            FileOutputStream fos = new FileOutputStream(file, false);
+            fos.write(json.getBytes());
+            fos.close();
+        } else {
+            // Create a new file
+            try {
+                System.out.println(file.createNewFile());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Write content of json to file
+            var writer = new FileWriter(file);
+            writer.write(json);
+            writer.close();
+        }
+
+    }
+
 }

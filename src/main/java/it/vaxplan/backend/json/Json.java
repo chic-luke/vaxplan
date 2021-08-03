@@ -2,6 +2,8 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
@@ -94,6 +96,20 @@ public class Json {
             objectWriter = objectWriter.with(SerializationFeature.INDENT_OUTPUT);
 
         return objectWriter.writeValueAsString(node);
+    }
+
+    /**
+     * Add a JSON object to a JSON array
+     * @param pojo POJO containing the object to add
+     * @param node JsonNode to add the new node to
+     * @return JsonNode with the new node added
+     * @throws JsonProcessingException if JSON processing fails
+     */
+    public static JsonNode addPojoToJsonArray(Object pojo, JsonNode node) throws JsonProcessingException {
+        ArrayNode aNode = node.deepCopy();
+        aNode.addPOJO(pojo);
+        var stage2 = Json.prettyPrint(aNode);
+        return parse(stage2);
     }
 
 }
