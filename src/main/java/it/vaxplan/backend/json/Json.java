@@ -1,9 +1,11 @@
 package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
@@ -110,6 +112,14 @@ public class Json {
         aNode.addPOJO(pojo);
         var stage2 = Json.prettyPrint(aNode);
         return parse(stage2);
+    }
+
+    /**
+     * Create a new, empty ArrayNode object
+     * @return new ArrayNode
+     */
+    public static ArrayNode createArrayNode() {
+        return objectMapper.createArrayNode();
     }
 
 }

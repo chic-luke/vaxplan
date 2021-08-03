@@ -27,6 +27,15 @@ public enum Vaccine {
     }
 
     /**
+     * Return a human-readable String associated to each enum element as String
+     * @return virusName field of enum element
+     */
+    @Override
+    public String toString() {
+        return this.virusName;
+    }
+
+    /**
      * Checks whether a Patient is eligible for a Vaccine
      * @param patient Patient to check eligibility for
      * @return Whether patient is eligible

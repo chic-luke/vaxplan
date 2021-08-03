@@ -1,11 +1,17 @@
-[
-  {
-    "name": "CampagnaTest1",
-    "Vaccine": "COVID-19",
-    "availableDoses": 1000,
-    "startDate": "2021-08-01",
-    "endDate": "2021-08-30",
-    "dailyStartTime": "09:00",
-    "dailyEndTime": "20:30"
-  }
-]
+[ {
+  "name" : "Example",
+  "vaccine" : "COVID",
+  "availableDoses" : 100,
+  "startDate" : [ 2021, 8, 1 ],
+  "endDate" : [ 2022, 1, 1 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ]
+}, {
+  "name" : "COVID",
+  "vaccine" : "COVID",
+  "availableDoses" : 111,
+  "startDate" : [ 2021, 8, 1 ],
+  "endDate" : [ 2022, 1, 1 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ]
+} ]
