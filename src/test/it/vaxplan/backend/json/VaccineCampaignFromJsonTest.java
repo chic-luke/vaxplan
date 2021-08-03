@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VaccineCampaignFromJsonTest {
 
     @Test
-    void getVaccineCampaignsFromJson() throws JsonProcessingException {
+    void vaccineCampaignJsonToServiceSuccess() throws JsonProcessingException {
         VaccineCampaignFromJson.getVaccineCampaignsFromJson();
     }
 

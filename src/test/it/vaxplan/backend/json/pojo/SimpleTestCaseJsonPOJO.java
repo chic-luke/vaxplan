@@ -1,4 +1,4 @@
-package it.vaxplan.backend.json;
+package it.vaxplan.backend.json.pojo;
 
 import lombok.Getter;
 import lombok.Setter;

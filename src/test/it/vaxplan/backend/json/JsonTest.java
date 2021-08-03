@@ -2,43 +2,19 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.Sex;
-import it.vaxplan.backend.json.pojo.AuthorPOJO;
-import it.vaxplan.backend.json.pojo.BookPOJO;
-import it.vaxplan.backend.json.pojo.DayPOJO;
-import it.vaxplan.backend.json.pojo.PatientPOJO;
+import it.vaxplan.backend.json.pojo.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class JsonTest {
 
-    private String jsonSourceTest = "{\n" +
+    private final String jsonTestSource0 = "{\n" +
             "  \"title\": \"Test String\",\n" +
             "  \"author\": \"Test --Author\"\n" +
             "}";
 
-    private String dayScenario1 = "{\n" +
-            "  \"date\": \"2021-07-30\",\n" +
-            "  \"name\": \"July 30th\"\n" +
-            "}";
-
-    private String authorBookScenario = "{\n" +
-            "  \"authorName\": \"ExampleAuthor\",\n" +
-            "  \"books\": [\n" +
-            "    {\n" +
-            "      \"title\": \"title1\",\n" +
-            "      \"inPrint\": true,\n" +
-            "      \"publishDate\": \"2020-06-10\"\n" +
-            "    },\n" +
-            "    {\n" +
-            "      \"title\": \"title2\",\n" +
-            "      \"inPrint\": false,\n" +
-            "      \"publishDate\": \"2021-01-01\"\n" +
-            "    }\n" +
-            "  ]\n" +
-            "}";
-
-    private String patientTest = "{\n" +
+    private final String jsonTestSource3 = "{\n" +
             "    \"firstName\": \"Mario\",\n" +
             "    \"lastName\": \"Rossi\",\n" +
             "    \"fiscalCode\": \"RSSMRA86D05F205W\",\n" +
@@ -50,21 +26,21 @@ class JsonTest {
             "  }";
 
     @Test
-    void parse() throws JsonProcessingException {
-        var node = Json.parse(jsonSourceTest);
+    void jsonStringToJsonNodeSuccess() throws JsonProcessingException {
+        var node = Json.parse(jsonTestSource0);
         assertEquals("Test String", node.get("title").asText());
     }
 
     @Test
-    void fromJson() throws JsonProcessingException {
-        var node = Json.parse(jsonSourceTest);
+    void jsonNodeToPojoSuccess() throws JsonProcessingException {
+        var node = Json.parse(jsonTestSource0);
         var pojo = Json.fromJson(node, SimpleTestCaseJsonPOJO.class);
 
         assertEquals("Test String", pojo.getTitle());
     }
 
     @Test
-    void toJson() {
+    void pojoToJsonNodeSuccess() {
         var pojo = new SimpleTestCaseJsonPOJO();
         pojo.setTitle("New Title set using toJson");
 
@@ -74,36 +50,61 @@ class JsonTest {
     }
 
     @Test
-    void jsonToString() throws JsonProcessingException {
+    void pojoToStringSuccess() throws JsonProcessingException {
         var pojo = new SimpleTestCaseJsonPOJO();
         pojo.setTitle("New Title set using toJson");
 
         var node = Json.toJson(pojo);
 
-        System.out.println(Json.stringify(node));
+        assertEquals("{\"title\":\"New Title set using toJson\"}",
+                Json.stringify(node));
     }
 
     @Test
-    void prettyPrint() throws JsonProcessingException {
+    void pojoToStringPrettyPrintSuccess() throws JsonProcessingException {
         var pojo = new SimpleTestCaseJsonPOJO();
         pojo.setTitle("New Title set using toJson");
 
         var node = Json.toJson(pojo);
+
+        var expected = "{\n" +
+                "  \"title\" : \"New Title set using toJson\"\n" +
+                "}";
 
         System.out.println(Json.prettyPrint(node));
+        assertEquals(expected, Json.prettyPrint(node));
     }
 
     @Test
-    void dayTestScenario1() throws JsonProcessingException {
-        var node = Json.parse(dayScenario1);
+    void example1StringToPojoSuccess() throws JsonProcessingException {
+        String jsonTestSource1 = "{\n" +
+                "  \"date\": \"2021-07-30\",\n" +
+                "  \"name\": \"July 30th\"\n" +
+                "}";
+        var node = Json.parse(jsonTestSource1);
         var pojo = Json.fromJson(node, DayPOJO.class);
 
         assertEquals("2021-07-30", pojo.getDate().toString());
     }
 
     @Test
-    void setAuthorBookScenario1() throws JsonProcessingException {
-        var node = Json.parse(authorBookScenario);
+    void jsonStringParseArrayToPojoSuccess() throws JsonProcessingException {
+        String jsonTestSource2 = "{\n" +
+                "  \"authorName\": \"ExampleAuthor\",\n" +
+                "  \"books\": [\n" +
+                "    {\n" +
+                "      \"title\": \"title1\",\n" +
+                "      \"inPrint\": true,\n" +
+                "      \"publishDate\": \"2020-06-10\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"title\": \"title2\",\n" +
+                "      \"inPrint\": false,\n" +
+                "      \"publishDate\": \"2021-01-01\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}";
+        var node = Json.parse(jsonTestSource2);
         var pojo = Json.fromJson(node, AuthorPOJO.class);
 
         System.out.println("Author : " + pojo.getAuthorName());
@@ -116,8 +117,8 @@ class JsonTest {
     }
 
     @Test
-    void patientJsonToPOJO() throws JsonProcessingException {
-        var node = Json.parse(patientTest);
+    void patientJsonObjectToPojoSuccess() throws JsonProcessingException {
+        var node = Json.parse(jsonTestSource3);
         var pojo = Json.fromJson(node, PatientPOJO.class);
 
         System.out.println(pojo);
@@ -127,12 +128,12 @@ class JsonTest {
         assertEquals("Milano", pojo.getBirthPlace());
         assertEquals(Sex.MALE, pojo.getSex());
         assertEquals("205W", pojo.getCode());
-        assertEquals(false, pojo.isHealthCareWorker());
+        assertFalse(pojo.isHealthCareWorker());
     }
 
     @Test
-    void patientPOJOtoClass() throws JsonProcessingException {
-        var node = Json.parse(patientTest);
+    void jsonObjectToPatientClassSuccess() throws JsonProcessingException {
+        var node = Json.parse(jsonTestSource3);
         var testPatient = PatientFromJson.createPatient(node);
 
         assertEquals("Mario", testPatient.getFirstName());
@@ -144,7 +145,7 @@ class JsonTest {
     }
 
     @Test
-    void testUserJson() throws JsonProcessingException {
+    void userJsonParsedCorrectly() throws JsonProcessingException {
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
 

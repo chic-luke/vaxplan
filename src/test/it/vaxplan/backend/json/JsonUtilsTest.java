@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JsonUtilsTest {
 
     @Test
-    void lookUp() throws JsonProcessingException {
+    void fiscalCodeFoundInUserJson() throws JsonProcessingException {
         var filename = "User";
         var field = "fiscalCode";
         var query = "GRDGNN76T04H501O";

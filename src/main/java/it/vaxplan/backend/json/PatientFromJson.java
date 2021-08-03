@@ -22,10 +22,11 @@ public class PatientFromJson {
      * by parsing User.json
      * @throws JsonProcessingException If JSON processing fails
      */
-    public static void getPatientsFromJson() throws JsonProcessingException {
+    public static boolean getPatientsFromJson() throws JsonProcessingException {
         // Get JSON file and save it in a String
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
+        var result = false;
 
         // Get Jackson JsonNode from String
         var node = Json.parse(jsonAsString);
@@ -39,9 +40,11 @@ public class PatientFromJson {
             var user = userIt.next();
             // Handle below
             testService.addPatient(createPatient(user));
+            result = true;
         }
 
         System.out.println(testService.getPatients());
+        return result;
     }
 
     /**

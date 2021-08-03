@@ -6,18 +6,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class JsonIOHandlerTest {
 
-    private final String jsonTestString = "[\n" +
-            "  {\n" +
-            "    \"title\": \"test\",\n" +
-            "    \"isTest\": true\n" +
-            "  }\n" +
-            "]";
-
     @Test
-    void jsonToString() {
+    void jsonConvertsToStringCorrectly() {
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("test");
         System.out.println(jsonAsString);
+        String jsonTestString = "[\n" +
+                "  {\n" +
+                "    \"title\": \"test\",\n" +
+                "    \"isTest\": true\n" +
+                "  }\n" +
+                "]";
         assertEquals(jsonTestString, jsonAsString);
     }
 

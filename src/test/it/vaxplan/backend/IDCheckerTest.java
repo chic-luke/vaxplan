@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class IDCheckerTest {
 
     @Test
-    void fiscalCodeJsonValidityChecker() throws JsonProcessingException {
+    void allFiscalCodesInJsonShouldBeValid() throws JsonProcessingException {
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
 
@@ -27,7 +27,7 @@ class IDCheckerTest {
     }
 
     @Test
-    void checkFalsePositives() {
+    void idCheckerDetectsFalsePositives() {
         var fps = new ArrayList<String>();
         fps.add("TEST");
         fps.add("SPSCRN99P09A944U478FNHUJS");
@@ -41,7 +41,7 @@ class IDCheckerTest {
     }
 
     @Test
-    void lookUp() throws JsonProcessingException {
+    void fiscalCodeIsFoundInJson() throws JsonProcessingException {
         var testFiscalCode = "SPSCRN99P09A944U";
         var jsonInputHandler = new JsonIOHandler();
         var jsonAsString = jsonInputHandler.jsonToString("User");
