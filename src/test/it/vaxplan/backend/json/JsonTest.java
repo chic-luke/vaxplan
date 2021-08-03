@@ -26,6 +26,17 @@ class JsonTest {
             "    \"isHealthCareWorker\": false\n" +
             "  }";
 
+    private final String jsonTestSource4 = "{\n" +
+            "  \"firstName\" : \"Elena\",\n" +
+            "  \"lastName\" : \"Rossi\",\n" +
+            "  \"fiscalCode\" : \"RSSLNE99A66F205S\",\n" +
+            "  \"birthPlace\" : \"Milano\",\n" +
+            "  \"birthDay\" : [ 1999, 1, 26 ],\n" +
+            "  \"sex\" : \"FEMALE\",\n" +
+            "  \"code\" : \"RSSLNE99A66F205S\",\n" +
+            "  \"healthCareWorker\" : false\n" +
+            "}";
+
     @Test
     void jsonStringToJsonNodeSuccess() throws JsonProcessingException {
         var node = Json.parse(jsonTestSource0);
@@ -119,29 +130,29 @@ class JsonTest {
 
     @Test
     void patientJsonObjectToPojoSuccess() throws JsonProcessingException {
-        var node = Json.parse(jsonTestSource3);
+        var node = Json.parse(jsonTestSource4);
         var pojo = Json.fromJson(node, PatientPOJO.class);
 
         System.out.println(pojo);
-        assertEquals("Mario", pojo.getFirstName());
+        assertEquals("Elena", pojo.getFirstName());
         assertEquals("Rossi", pojo.getLastName());
-        assertEquals("RSSMRA86D05F205W", pojo.getFiscalCode());
+        assertEquals("RSSLNE99A66F205S", pojo.getFiscalCode());
         assertEquals("Milano", pojo.getBirthPlace());
-        assertEquals(Sex.MALE, pojo.getSex());
-        assertEquals("205W", pojo.getCode());
+        assertEquals(Sex.FEMALE, pojo.getSex());
+        assertEquals("RSSLNE99A66F205S", pojo.getCode());
         assertFalse(pojo.isHealthCareWorker());
     }
 
     @Test
     void jsonObjectToPatientClassSuccess() throws JsonProcessingException {
-        var node = Json.parse(jsonTestSource3);
+        var node = Json.parse(jsonTestSource4);
         var testPatient = PatientFromJson.createPatient(node);
 
-        assertEquals("Mario", testPatient.getFirstName());
+        assertEquals("Elena", testPatient.getFirstName());
         assertEquals("Rossi", testPatient.getLastName());
-        assertEquals("RSSMRA86D05F205W", testPatient.getFiscalCode());
+        assertEquals("RSSLNE99A66F205S", testPatient.getFiscalCode());
         assertEquals("Milano", testPatient.getBirthPlace());
-        assertEquals(Sex.MALE, testPatient.getSex());
+        assertEquals(Sex.FEMALE, testPatient.getSex());
         assertFalse(testPatient.isHealthCareWorker());
     }
 

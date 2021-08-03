@@ -1,11 +1,10 @@
 package it.vaxplan.backend.json;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JsonIOHandlerTest {
 
@@ -35,7 +34,7 @@ class JsonIOHandlerTest {
 
         io.writeJsonToFile(json, "TestJson2");
 
-        assertEquals(json, io.jsonToString("TestJson"));
+        assertEquals(json, io.jsonToString("TestJson2"));
     }
 
 }

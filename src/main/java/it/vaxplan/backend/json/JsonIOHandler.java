@@ -40,15 +40,16 @@ public class JsonIOHandler {
     }
 
     public void writeJsonToFile(String json, String filename) throws IOException {
+        String filePath = "src/main/resources/" + filename + ".json";
         var file = new File("src/main/resources/" + filename + ".json");
 
         if (file.exists()) {
             // Overwrite the existing file
             System.out.println("File exists!");
+            new FileOutputStream(filePath).close();
             FileOutputStream fos = new FileOutputStream(file, false);
             fos.write(json.getBytes());
             fos.close();
-        } else {
             // Create a new file
             try {
                 System.out.println(file.createNewFile());

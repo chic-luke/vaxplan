@@ -1,5 +1,6 @@
 package it.vaxplan.backend;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.UUID;
@@ -9,10 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 @Data
@@ -36,7 +34,8 @@ public class Patient {
     private String birthPlace;
 
     @PastOrPresent
-    private ZonedDateTime birthDay;
+    @Getter
+    private LocalDate birthDay;
 
     @NotNull
     private Sex sex;

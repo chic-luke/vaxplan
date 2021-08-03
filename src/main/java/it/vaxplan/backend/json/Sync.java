@@ -3,10 +3,11 @@ package it.vaxplan.backend.json;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import it.vaxplan.backend.Patient;
-import it.vaxplan.backend.PatientCategories;
 import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
 import it.vaxplan.backend.service.BookingService;
+import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 
 import java.io.IOException;
@@ -73,6 +74,61 @@ public class Sync {
                     new HashSet<>(), new BookingService(), new HashSet<>());
 
             VaccineCampaignService.addCampaign(newCampaign);
+        }
+
+    }
+
+    /**
+     * Write the contents of PatientService to Patient.json
+     * (located in resources)
+     * @throws IOException if I/O operations fail
+     */
+    public static void writePatientServiceToJson() throws IOException {
+        var jio = new JsonIOHandler();
+        JsonNode serviceNode = Json.createArrayNode();
+
+        // Create JSON from PatientService
+        for (Patient p: PatientService.getPatients()) {
+            // Create POJO class from current Patient
+            var pojo = new PatientPOJO();
+            pojo.setFirstName(p.getFirstName());
+            pojo.setLastName(p.getLastName());
+            pojo.setFiscalCode(p.getFiscalCode());
+            pojo.setBirthPlace(p.getBirthPlace());
+            pojo.setBirthDay(p.getBirthDay());
+            pojo.setSex(p.getSex());
+            pojo.setCode(p.getFiscalCode());
+            pojo.setHealthCareWorker(p.isHealthCareWorker());
+
+            // Add POJO to file JSON array
+            serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
+        }
+
+        // Convert node into String
+        var output = Json.prettyPrint(serviceNode);
+
+        // Write said JSON String to file
+        jio.writeJsonToFile(output, "Patient");
+    }
+
+    /**
+     * Initialize PatientService with contents from VaccineCampaign.json
+     * (located in resources)
+     */
+    public static void initPatientServiceFromJson() throws JsonProcessingException {
+        var jio = new JsonIOHandler();
+        var fileOutput = jio.jsonToString("Patient");
+        var node = Json.parse(fileOutput);
+
+        for (var patientIt = node.elements(); patientIt.hasNext();) {
+            var patient = patientIt.next();
+
+            var pojo = Json.fromJson(patient, PatientPOJO.class);
+
+            var newPatient = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
+                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isHealthCareWorker());
+
+            PatientService.addPatient(newPatient);
         }
 
     }

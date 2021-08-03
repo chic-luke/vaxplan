@@ -4,6 +4,8 @@ import it.vaxplan.backend.Sex;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 public class PatientPOJO {
 
     @Getter
@@ -21,6 +23,10 @@ public class PatientPOJO {
     @Getter
     @Setter
     private String birthPlace;
+
+    @Setter
+    @Getter
+    private LocalDate birthDay;
 
     @Getter
     @Setter

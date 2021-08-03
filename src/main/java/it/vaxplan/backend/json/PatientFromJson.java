@@ -6,6 +6,7 @@ import it.vaxplan.backend.Patient;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.service.PatientService;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 public class PatientFromJson {
@@ -25,7 +26,7 @@ public class PatientFromJson {
     public static boolean getPatientsFromJson() throws JsonProcessingException {
         // Get JSON file and save it in a String
         var jsonInputHandler = new JsonIOHandler();
-        var jsonAsString = jsonInputHandler.jsonToString("User");
+        var jsonAsString = jsonInputHandler.jsonToString("Patient");
         var result = false;
 
         // Get Jackson JsonNode from String
@@ -56,7 +57,7 @@ public class PatientFromJson {
         var pojo = Json.fromJson(node, PatientPOJO.class);
 
         return new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                pojo.getBirthPlace(), ZonedDateTime.now(), pojo.getSex(), pojo.isHealthCareWorker());
+                pojo.getBirthPlace(), LocalDate.now(), pojo.getSex(), pojo.isHealthCareWorker());
     }
 
 }

@@ -1,8 +1,11 @@
 package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import it.vaxplan.backend.Patient;
+import it.vaxplan.backend.Sex;
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 import org.junit.jupiter.api.Test;
 
@@ -47,4 +50,38 @@ class SyncTest {
         Sync.initVaccineCampaignServiceFromJson();
         assertFalse(VaccineCampaignService.isEmpty());
     }
+
+    @Test
+    void writePatientServiceToJsonSuccess() throws IOException {
+        var patient0 = Patient.builder()
+                .firstName("Armando")
+                .lastName("Bianchi")
+                .birthDay(LocalDate.of(2000, 2, 10))
+                .sex(Sex.MALE)
+                .fiscalCode("BNCRND00B10F205G")
+                .healthCareWorker(true)
+                .build();
+
+        var patient1 = Patient.builder()
+                .firstName("Elena")
+                .lastName("Rossi")
+                .birthDay(LocalDate.of(1999, 1, 26))
+                .sex(Sex.FEMALE)
+                .fiscalCode("RSSLNE99A66F205S")
+                .build();
+
+        PatientService.addPatient(patient0);
+        PatientService.addPatient(patient1);
+
+        Sync.writePatientServiceToJson();
+    }
+
+    @Test
+    void initPatientServiceSuccess() throws JsonProcessingException {
+        Sync.initPatientServiceFromJson();
+
+        System.out.println(PatientService.getPatients());
+        assertFalse(PatientService.getPatients().isEmpty());
+    }
+
 }
