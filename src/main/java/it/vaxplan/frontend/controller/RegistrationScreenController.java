@@ -1,8 +1,12 @@
 package it.vaxplan.frontend.controller;
 
+import it.vaxplan.backend.Patient;
+import it.vaxplan.backend.Sex;
 import it.vaxplan.backend.exceptions.InvalidFiscalCodeException;
+import it.vaxplan.backend.json.Sync;
+import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
-import it.vaxplan.frontend.RegistrationFieldsSingleton;
+import it.vaxplan.frontend.RegistrationData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,6 +15,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.ResourceBundle;
@@ -36,6 +41,8 @@ public class RegistrationScreenController implements Initializable {
     public TextField bornWhere;
     @FXML
     public TextField fiscalCode;
+    @FXML
+    public ComboBox<Sex> sexComboBox;
 
     // Back and confirm buttons
     @FXML
@@ -60,6 +67,9 @@ public class RegistrationScreenController implements Initializable {
         birthDay.getItems().addAll(dayDates);
         birthMonth.getItems().addAll(monthDates);
         birthYear.getItems().addAll(yearDates);
+
+        // Initialize Sex ComboBox
+        sexComboBox.getItems().addAll(Sex.values());
     }
 
     /**
@@ -69,9 +79,32 @@ public class RegistrationScreenController implements Initializable {
     public void setFiscalCode(){
         if (IDChecker.isFiscalCodeValid(fiscalCode.getText()) && !fiscalCode.getText().equals("")) {
             System.out.println("Fiscal code check all right");
-            RegistrationFieldsSingleton.registrationFields.setFiscalCode(fiscalCode.getText());
+            RegistrationData.fields.setFiscalCode(fiscalCode.getText());
         } else {
             throw new InvalidFiscalCodeException();
+        }
+    }
+
+    public void setFields() {
+        if (!nameTextField.getText().equals("")) {
+            RegistrationData.fields.setFirstName(nameTextField.getText());
+        }
+
+        if (!surnameTextField.getText().equals("")) {
+            RegistrationData.fields.setLastName(surnameTextField.getText());
+        }
+
+        if (birthDay.getValue() != null && birthMonth.getValue() != null && birthYear.getValue() != null) {
+            RegistrationData.fields.setBirthDay(
+                    LocalDate.of(birthYear.getValue(), birthMonth.getValue(), birthDay.getValue()));
+        }
+
+        if (!bornWhere.getText().equals("")) {
+            RegistrationData.fields.setBirthPlace(bornWhere.getText());
+        }
+
+        if (sexComboBox.getValue() != null) {
+            RegistrationData.fields.setSex(sexComboBox.getValue());
         }
     }
 
@@ -87,7 +120,35 @@ public class RegistrationScreenController implements Initializable {
      * Saves the current user input and then proceeds to the next view
      * @throws IOException if FXML file is not found
      */
-    public void confirmButtonAction() throws  IOException{
-        App.setRoot("registrationSecondScreen");
+    public void confirmButtonAction() throws IOException {
+        // Grab inputs
+        setFields();
+        setFiscalCode();
+
+        // Create temporary patient to check against (DO NOT REGISTER THIS OBJECT)
+        var tmpPatient = Patient.builder()
+                .firstName(RegistrationData.fields.getFirstName())
+                .lastName(RegistrationData.fields.getLastName())
+                .fiscalCode(RegistrationData.fields.getFiscalCode())
+                .birthPlace(RegistrationData.fields.getBirthPlace())
+                .birthDay(RegistrationData.fields.getBirthDay())
+                .sex(RegistrationData.fields.getSex())
+                .build();
+
+        // If currently input information matches with an actual citizen, add that citizen to the set of
+        // patients
+        if (IDChecker.isRegisterDataCorrect(tmpPatient)) {
+            System.out.println("Data is CORRECT!");
+            var patient = IDChecker.getCitizen(RegistrationData.fields.getFiscalCode());
+            System.out.println(patient);
+            PatientService.addPatient(patient);
+            Sync.writePatientServiceToJson();
+            RegistrationData.registeredPatient = patient;
+
+            // Go to registration confirmation screen
+            App.setRoot("registrationSecondScreen");
+        }
+
+
     }
 }

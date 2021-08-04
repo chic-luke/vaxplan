@@ -10,10 +10,7 @@ import it.vaxplan.backend.json.pojo.BookingPOJO;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
 import it.vaxplan.backend.json.pojo.VaccineSitePOJO;
-import it.vaxplan.backend.service.BookingService;
-import it.vaxplan.backend.service.PatientService;
-import it.vaxplan.backend.service.VaccineCampaignService;
-import it.vaxplan.backend.service.VaccineSiteService;
+import it.vaxplan.backend.service.*;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -106,7 +103,12 @@ public class Sync {
             pojo.setBirthDay(p.getBirthDay());
             pojo.setSex(p.getSex());
             pojo.setCode(p.getFiscalCode());
+            pojo.setAtHighRisk(p.isAtHighRisk());
             pojo.setHealthCareWorker(p.isHealthCareWorker());
+            pojo.setSchoolWorker(p.isSchoolWorker());
+            pojo.setLawEnforcementWorker(p.isLawEnforcementWorker());
+            pojo.setCaretaer(p.isCaretaker());
+            pojo.setCohabiting(p.isCohabiting());
 
             // Add POJO to file JSON array
             serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
@@ -212,6 +214,28 @@ public class Sync {
             BookingService.addBooking(newBooking);
         }
 
+    }
+
+    /**
+     * Initialize CitizenService with contents from Citizens.json
+     */
+    public static void initCitizenServiceFromJson() throws JsonProcessingException {
+        var jio = new JsonIOHandler();
+        var fileOutput = jio.jsonToString("Citizens");
+        var node = Json.parse(fileOutput);
+
+        for (var bookingIt = node.elements(); bookingIt.hasNext();) {
+            var booking = bookingIt.next();
+
+            var pojo = Json.fromJson(booking, PatientPOJO.class);
+
+            var newCitizen = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
+                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
+                    pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
+                    pojo.isCohabiting());
+
+            CitizenService.addCitizen(newCitizen);
+        }
     }
 
 }

@@ -52,13 +52,21 @@
                         <Insets bottom="30.0" left="20.0" right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="idField" prefHeight="24.0" prefWidth="374.0" />
+                  <TextField fx:id="idField" prefHeight="24.0" prefWidth="374.0" promptText="Codice fiscale" />
                </children>
             </HBox>
             <HBox>
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#checkLogin" text="Invia" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#checkLogin" text="Login">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="registrationButton" layoutX="289.0" layoutY="10.0" mnemonicParsing="false" onAction="#registrationButtonAction" text="Registrati">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
                   <Region HBox.hgrow="ALWAYS" />
                </children>
             </HBox>

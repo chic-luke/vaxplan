@@ -13,17 +13,17 @@
   "cohabiting" : false,
   "healthCareWorker" : false
 }, {
-  "firstName" : "Elena",
-  "lastName" : "Rossi",
-  "fiscalCode" : "RSSLNE99A66F205S",
-  "birthPlace" : "Milano",
-  "birthDay" : [ 1999, 1, 26 ],
-  "sex" : "FEMALE",
-  "code" : "RSSLNE99A66F205S",
-  "atHighRisk" : true,
+  "firstName" : "Armando",
+  "lastName" : "Bianchi",
+  "fiscalCode" : "BNCRND00B10F205G",
+  "birthPlace" : "Brescia",
+  "birthDay" : [ 2000, 2, 10 ],
+  "sex" : "MALE",
+  "code" : "BNCRND00B10F205G",
+  "atHighRisk" : false,
   "schoolWorker" : false,
   "lawEnforcementWorker" : false,
-  "caretaer" : true,
+  "caretaer" : false,
   "cohabiting" : false,
-  "healthCareWorker" : false
+  "healthCareWorker" : true
 } ]

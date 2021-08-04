@@ -2,10 +2,7 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.*;
-import it.vaxplan.backend.service.BookingService;
-import it.vaxplan.backend.service.PatientService;
-import it.vaxplan.backend.service.VaccineCampaignService;
-import it.vaxplan.backend.service.VaccineSiteService;
+import it.vaxplan.backend.service.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -299,6 +296,15 @@ class SyncTest {
         c1.addBooking(b1);
         Sync.writeVaccineCampaignServiceToJson();
 
+    }
+
+    @Test
+    void initCitizenServiceFromJsonCorrect() throws JsonProcessingException {
+        Sync.initCitizenServiceFromJson();
+
+        System.out.println(CitizenService.getCitizens());
+
+        assertFalse(CitizenService.getCitizens().isEmpty());
     }
 
 }

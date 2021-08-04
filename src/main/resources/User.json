@@ -68,5 +68,20 @@
     "sex": "FEMALE",
     "code": "944U",
     "isHealthCareWorker": false
+  },
+  {
+    "firstName" : "Elena",
+    "lastName" : "Rossi",
+    "fiscalCode" : "RSSLNE99A66F205S",
+    "birthPlace" : "Milano",
+    "birthDay" : [ 1999, 1, 26 ],
+    "sex" : "FEMALE",
+    "code" : "RSSLNE99A66F205S",
+    "atHighRisk" : true,
+    "schoolWorker" : false,
+    "lawEnforcementWorker" : false,
+    "caretaer" : true,
+    "cohabiting" : false,
+    "healthCareWorker" : false
   }
 ]

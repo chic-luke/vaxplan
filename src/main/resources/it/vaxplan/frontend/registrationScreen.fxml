@@ -124,14 +124,30 @@
                      </HBox.margin></TextField>
                </children>
             </HBox>
-            <HBox prefHeight="37.0" prefWidth="579.0" />
+            <HBox layoutX="10.0" layoutY="276.0" prefHeight="43.0" prefWidth="607.0">
+               <children>
+                  <Label text="Sesso:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="sexComboBox" prefWidth="150.0" promptText="Sesso">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <ToolBar layoutY="360.0" prefHeight="40.0" prefWidth="629.0" AnchorPane.bottomAnchor="0.0">
          <items>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
             <Region prefHeight="29.0" prefWidth="431.0" />
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="24.0" prefWidth="88.0" text="Avanti" />
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="24.0" prefWidth="88.0" text="Conferma" />
          </items>
       </ToolBar>
    </children>

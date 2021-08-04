@@ -1,7 +1,10 @@
 package it.vaxplan.frontend;
 
+import it.vaxplan.backend.Sex;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 public class RegistrationFields {
 
@@ -15,15 +18,7 @@ public class RegistrationFields {
 
     @Getter
     @Setter
-    private Integer birthDay;
-
-    @Getter
-    @Setter
-    private Integer birthMonth;
-
-    @Getter
-    @Setter
-    private Integer birthYear;
+    private LocalDate birthDay;
 
     @Getter
     @Setter
@@ -32,5 +27,9 @@ public class RegistrationFields {
     @Getter
     @Setter
     private String fiscalCode;
+
+    @Getter
+    @Setter
+    private Sex sex;
 
 }
