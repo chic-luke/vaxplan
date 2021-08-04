@@ -1,14 +1,20 @@
 package it.vaxplan.frontend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.utils.IDChecker;
 import it.vaxplan.frontend.App;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginScreenController {
+public class LoginScreenController implements Initializable {
 
     @FXML
     public TextField idField;
@@ -34,5 +40,28 @@ public class LoginScreenController {
             App.setRoot("citizenScreen");
         else
             App.setRoot("registrationScreen");
+    }
+
+    @SneakyThrows
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        syncData();
+    }
+
+    /**
+     * Read data from JSON files into Java data structures
+     */
+    public void syncData() throws JsonProcessingException {
+        // Sync Vaccine Sites
+        Sync.initVaccineSiteServiceFromJson();
+
+        // Sync Vaccine campaigns
+        Sync.initVaccineCampaignServiceFromJson();
+
+        // Sync patient database
+        Sync.initPatientServiceFromJson();
+
+        // Sync bookings
+        Sync.initBookingServiceFromJson();
     }
 }

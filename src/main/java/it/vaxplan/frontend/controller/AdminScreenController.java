@@ -1,5 +1,6 @@
 package it.vaxplan.frontend.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.json.Sync;
 import it.vaxplan.frontend.App;
@@ -40,7 +41,6 @@ public class AdminScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         var vaccineCampaigns = VaccineCampaignService.getCampaigns();
-        Sync.initVaccineSiteServiceFromJson();
 
         // Begin placeholder code
         if (VaccineCampaignService.isEmpty()) {
@@ -78,6 +78,7 @@ public class AdminScreenController implements Initializable {
         clearComboBox();
         campaignsBox.getItems().addAll(tmpList);
     }
+
 
     /**
      * Opens the view to edit the selected vaccine campaign to the currently

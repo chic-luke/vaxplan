@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -38,8 +39,30 @@ class SyncTest {
                 .vaccine(Vaccine.COVID)
                 .build();
 
+        var categories = new HashSet<PatientCategories>();
+        categories.add(PatientCategories.AT_HIGH_RISK);
+        categories.add(PatientCategories.AGE_OVER_80);
+
+        var sites = new HashSet<VaccineSite>();
+        var site = new VaccineSite("Ambulatorio");
+        sites.add(site);
+
+        var testCampaign = VaccineCampaign.builder()
+                .name("Test Case Campaign")
+                .vaccine(Vaccine.COVID)
+                .startDate(LocalDate.of(2021, 2, 3))
+                .endDate(LocalDate.of(2021, 4, 10))
+                .dailyStartTime(LocalTime.of(8, 30))
+                .dailyEndTime(LocalTime.of(20, 30))
+                .availableDoses(400)
+                .patientCategories(categories)
+                .availableSites(sites)
+                .build();
+
+
         VaccineCampaignService.addCampaign(newCampaign);
         VaccineCampaignService.addCampaign(newCampaign2);
+        VaccineCampaignService.addCampaign(testCampaign);
 
         Sync.writeVaccineCampaignServiceToJson();
     }
@@ -101,6 +124,10 @@ class SyncTest {
                 .sex(Sex.MALE)
                 .birthPlace("Milano")
                 .healthCareWorker(true)
+                .caretaker(false)
+                .lawEnforcementWorker(false)
+                .cohabiting(false)
+                .schoolWorker(false)
                 .build();
 
         var c1 = VaccineCampaign.builder()

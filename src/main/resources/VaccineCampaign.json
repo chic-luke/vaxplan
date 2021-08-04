@@ -1,25 +1,45 @@
 [ {
-  "name" : "COVID-19",
-  "vaccine" : "COVID",
-  "availableDoses" : 1000,
-  "startDate" : null,
-  "endDate" : null,
-  "dailyStartTime" : [ 9, 0 ],
-  "dailyEndTime" : [ 20, 0 ]
-}, {
-  "name" : "Chickenpox",
-  "vaccine" : "CHICKENPOX",
-  "availableDoses" : 1000,
-  "startDate" : null,
-  "endDate" : null,
-  "dailyStartTime" : [ 9, 0 ],
-  "dailyEndTime" : [ 20, 0 ]
-}, {
-  "name" : "Coso",
+  "name" : "Example",
   "vaccine" : "COVID",
   "availableDoses" : 100,
-  "startDate" : [ 2021, 4, 3 ],
-  "endDate" : [ 2022, 2, 4 ],
-  "dailyStartTime" : [ 3, 6 ],
-  "dailyEndTime" : [ 9, 7 ]
+  "startDate" : [ 2021, 8, 1 ],
+  "endDate" : [ 2022, 1, 1 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ],
+  "availableSites" : null,
+  "patientCategories" : null
+}, {
+  "name" : "COVID",
+  "vaccine" : "COVID",
+  "availableDoses" : 111,
+  "startDate" : [ 2021, 8, 1 ],
+  "endDate" : [ 2022, 1, 1 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ],
+  "availableSites" : null,
+  "patientCategories" : null
+}, {
+  "name" : "Test Case Campaign",
+  "vaccine" : "COVID",
+  "availableDoses" : 400,
+  "startDate" : [ 2021, 2, 3 ],
+  "endDate" : [ 2021, 4, 10 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ],
+  "availableSites" : [ {
+    "name" : "Ambulatorio"
+  } ],
+  "patientCategories" : [ "AT_HIGH_RISK", "AGE_OVER_80" ]
+}, {
+  "name" : "Protezione Varicella",
+  "vaccine" : "CHICKENPOX",
+  "availableDoses" : 1250,
+  "startDate" : [ 2021, 8, 4 ],
+  "endDate" : [ 2022, 8, 4 ],
+  "dailyStartTime" : [ 10, 0 ],
+  "dailyEndTime" : [ 21, 30 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  } ],
+  "patientCategories" : [ "ADULT" ]
 } ]

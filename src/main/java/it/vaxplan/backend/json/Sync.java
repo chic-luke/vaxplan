@@ -47,6 +47,8 @@ public class Sync {
             pojo.setEndDate(c.getEndDate());
             pojo.setDailyStartTime(c.getDailyStartTime());
             pojo.setDailyEndTime(c.getDailyEndTime());
+            pojo.setAvailableSites(c.getAvailableSites());
+            pojo.setPatientCategories(c.getPatientCategories());
 
             // Add POJO to file JSON array
             serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
@@ -76,7 +78,7 @@ public class Sync {
 
             var newCampaign = new VaccineCampaign(pojo.getName(), pojo.getVaccine(), pojo.getAvailableDoses(),
                     pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
-                    new HashSet<>(), new HashSet<>());
+                    pojo.getAvailableSites(), pojo.getPatientCategories());
 
             VaccineCampaignService.addCampaign(newCampaign);
         }
