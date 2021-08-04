@@ -1,10 +1,8 @@
 package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.PatientCategories;
-import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineSite;
 import it.vaxplan.backend.json.Sync;
-import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.backend.service.VaccineSiteService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToEdit;
@@ -91,7 +89,7 @@ public class EditCampaignScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(CampaignToEdit.campaign);
+        System.out.println(CampaignToEdit.campaign.debugPrint());
 
         var dayRange = Arrays.stream(IntStream.rangeClosed(1, 30).toArray())
                 .boxed().collect(Collectors.toList());

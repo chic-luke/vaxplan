@@ -1,10 +1,8 @@
 package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import it.vaxplan.backend.Patient;
-import it.vaxplan.backend.Sex;
-import it.vaxplan.backend.Vaccine;
-import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.*;
+import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 import it.vaxplan.backend.service.VaccineSiteService;
@@ -91,6 +89,48 @@ class SyncTest {
 
         System.out.println(VaccineSiteService.getSites());
         assertFalse(VaccineSiteService.isEmpty());
+    }
+
+    @Test
+    void writeBookingServiceToJsonSuccess() throws IOException {
+        var p1 = Patient.builder()
+                .firstName("Mario")
+                .lastName("Rossi")
+                .birthDay(LocalDate.of(2000, 1, 1))
+                .fiscalCode("RSSMRA00A01F205F")
+                .sex(Sex.MALE)
+                .birthPlace("Milano")
+                .healthCareWorker(true)
+                .build();
+
+        var c1 = VaccineCampaign.builder()
+                .name("Campagna esempio")
+                .startDate(LocalDate.of(2021, 1, 1))
+                .endDate(LocalDate.of(2021, 2, 2))
+                .dailyStartTime(LocalTime.of(9, 0))
+                .dailyEndTime(LocalTime.of(20, 0))
+                .availableSites(VaccineSiteService.getSites())
+                .vaccine(Vaccine.COVID)
+                .build();
+
+        var b1 = Booking.builder()
+                .patient(p1)
+                .vaccineCampaignUUID(c1.getUuid())
+                .date(LocalDate.of(2021, 9, 1))
+                .location(new VaccineSite("Ospedale Civile Brescia"))
+                .build();
+
+        BookingService.addBooking(b1);
+
+        Sync.writeBookingServiceToJson();
+    }
+
+    @Test
+    void initBookingServiceFromJsonSuccess() throws JsonProcessingException {
+        Sync.initBookingServiceFromJson();
+
+        System.out.println(BookingService.getBookings());
+        assertFalse(BookingService.getBookings().isEmpty());
     }
 
 }

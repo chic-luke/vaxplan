@@ -9,9 +9,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Collection;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @Builder
@@ -29,7 +27,6 @@ public class VaccineCampaign {
     private LocalTime dailyStartTime;
     private LocalTime dailyEndTime;
     private final Set<VaccineSite> availableSites;
-    private BookingService bookings;
     private Set<PatientCategories> patientCategories;
 
     
@@ -76,10 +73,29 @@ public class VaccineCampaign {
     }
 
     /**
+     * Get a list of Bookings for this VaccineCampaign from the BookingService and return it
+     * @return List of bookings associated to this vaccine campaign
+     */
+    public List<Booking> returnBookings() {
+        var tmpList = new LinkedList<Booking>();
+        for (Booking b: BookingService.getBookings()) {
+            if (b.getVaccineCampaignUUID().equals(this.uuid))
+                tmpList.add(b);
+        }
+
+        return tmpList;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
+    /**
      * Return a human-readable summary of the booking to stdout.
      * @return Summary of booking
      */
-    public String toString() {
+    public String debugPrint() {
         return "Riassunto campagna vaccinale: \n" +
                 "UUID" + uuid + "\n" +
                 "Nome: " + name + "\n" +
@@ -91,7 +107,7 @@ public class VaccineCampaign {
                 "Alle ore: " + dailyEndTime + "\n" +
                 "Per le seguenti categorie di pazienti: " + patientCategories + "\n" +
                 "Nei seguenti ambulatori: " + availableSites + "\n" +
-                "Prenotazioni effettuate: " + bookings;
+                "Prenotazioni effettuate: " + "WIP";
     }
 
 }

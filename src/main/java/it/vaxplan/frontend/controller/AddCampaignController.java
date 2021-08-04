@@ -205,12 +205,10 @@ public class AddCampaignController implements Initializable {
         setDoses();
         setDateTime();
 
-        var bookings = new BookingService();
-
         var newCampaign = new VaccineCampaign(CampaignToAdd.campaign.getName(), CampaignToAdd.campaign.getVaccine(),
                 CampaignToAdd.campaign.getAvailableDoses(), CampaignToAdd.campaign.getStartDate(), CampaignToAdd.campaign.getEndDate(),
                 CampaignToAdd.campaign.getDailyStartTime(), CampaignToAdd.campaign.getDailyEndTime(),
-                CampaignToAdd.campaign.getAvailableSites(),  bookings,
+                CampaignToAdd.campaign.getAvailableSites(),
                 CampaignToAdd.campaign.getPatientCategories());
         VaccineCampaignService.addCampaign(newCampaign);
 

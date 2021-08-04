@@ -7,7 +7,6 @@ import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.service.PatientService;
 
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 
 public class PatientFromJson {
 

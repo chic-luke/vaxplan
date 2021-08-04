@@ -50,7 +50,7 @@ public class Patient {
      * @return Patient's age
      */
     public long getIntAge() {
-        return ChronoUnit.YEARS.between(ZonedDateTime.now(), birthDay);
+        return ChronoUnit.YEARS.between(birthDay, LocalDate.now());
     }
 
     /**

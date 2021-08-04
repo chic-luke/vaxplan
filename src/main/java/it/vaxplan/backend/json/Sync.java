@@ -2,10 +2,11 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import it.vaxplan.backend.Booking;
 import it.vaxplan.backend.Patient;
-import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.VaccineSite;
+import it.vaxplan.backend.json.pojo.BookingPOJO;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
 import it.vaxplan.backend.json.pojo.VaccineSitePOJO;
@@ -75,7 +76,7 @@ public class Sync {
 
             var newCampaign = new VaccineCampaign(pojo.getName(), pojo.getVaccine(), pojo.getAvailableDoses(),
                     pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
-                    new HashSet<>(), new BookingService(), new HashSet<>());
+                    new HashSet<>(), new HashSet<>());
 
             VaccineCampaignService.addCampaign(newCampaign);
         }
@@ -154,6 +155,56 @@ public class Sync {
             var newSite = new VaccineSite(pojo.getName());
 
             VaccineSiteService.addSite(newSite);
+        }
+
+    }
+
+    /**
+     * Write the contents of BookingService to Bookings.json
+     * (located in resources)
+     */
+    public static void writeBookingServiceToJson() throws IOException {
+        var jio = new JsonIOHandler();
+        JsonNode serviceNode = Json.createArrayNode();
+
+        // Create JSON from BookingService
+        for (Booking b: BookingService.getBookings()) {
+            // Create POJO class from current Patient
+            var pojo = new BookingPOJO();
+            pojo.setPatient(b.getPatient());
+            pojo.setVaccineCampaignUUID(b.getVaccineCampaignUUID());
+            pojo.setDate(b.getDate());
+            pojo.setLocation(b.getLocation());
+
+            // Add POJO to file JSON array
+            serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
+        }
+
+        // Convert node into String
+        var output = Json.prettyPrint(serviceNode);
+
+        // Write said JSON String to file
+        jio.writeJsonToFile(output, "Bookings");
+    }
+
+    /**
+     * Initialize BookingService with contents from Bookings.json
+     * (located in resources)
+     */
+    public static void initBookingServiceFromJson() throws JsonProcessingException {
+        var jio = new JsonIOHandler();
+        var fileOutput = jio.jsonToString("Bookings");
+        var node = Json.parse(fileOutput);
+
+        for (var bookingIt = node.elements(); bookingIt.hasNext();) {
+            var booking = bookingIt.next();
+
+            var pojo = Json.fromJson(booking, BookingPOJO.class);
+
+            var newBooking = new Booking(pojo.getPatient(), pojo.getVaccineCampaignUUID(), pojo.getDate(),
+                    pojo.getLocation());
+
+            BookingService.addBooking(newBooking);
         }
 
     }

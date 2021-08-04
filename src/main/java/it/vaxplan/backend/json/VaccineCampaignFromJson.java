@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
-import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 
 import java.util.HashSet;
@@ -48,7 +47,7 @@ public class VaccineCampaignFromJson {
 
         var campaign = new VaccineCampaign(pojo.getName(), pojo.getVaccine(), pojo.getAvailableDoses(),
                 pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
-                new HashSet<>(), new BookingService(), new HashSet<>());
+                new HashSet<>(), new HashSet<>());
 
         System.out.println(campaign);
 

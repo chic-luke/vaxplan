@@ -1,15 +1,13 @@
 package it.vaxplan.backend;
 
-import java.time.ZonedDateTime;
-import java.util.UUID;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -19,16 +17,12 @@ public class Booking {
 
     private final UUID uuid = UUID.randomUUID();
 
-    @NotNull
     private Patient patient;
 
-    @NotNull
-    private Vaccine vaccine;
+    private UUID vaccineCampaignUUID;
 
-    @NotNull
-    private ZonedDateTime date;
+    private LocalDate date;
 
-    @NotBlank
-    private String location;
+    private VaccineSite location;
 
 }
