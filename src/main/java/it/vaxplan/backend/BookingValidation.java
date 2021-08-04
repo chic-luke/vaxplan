@@ -1,5 +1,10 @@
 package it.vaxplan.backend;
 
+import it.vaxplan.backend.service.VaccineCampaignService;
+
+import java.util.HashSet;
+import java.util.Set;
+
 public class BookingValidation {
 
     /**
@@ -75,6 +80,23 @@ public class BookingValidation {
 
 
         return false;
+    }
+
+    /**
+     * Return a Set of vaccine campaigns for whom the patient is eligible
+     * @param patient Patient who needs to check what vaccine campaigns they are eligible for
+     * @return Set of VaccineCampaign which patient is eligible for
+     */
+    public static Set<VaccineCampaign> availableCampaignsForPatient(Patient patient) {
+        var availableCampaigns = new HashSet<VaccineCampaign>();
+
+        for (VaccineCampaign c: VaccineCampaignService.getCampaigns()) {
+            if (isPatientEligible(patient, c)) {
+                availableCampaigns.add(c);
+            }
+        }
+
+        return availableCampaigns;
     }
 
 }
