@@ -8,10 +8,7 @@ import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToEdit;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +22,8 @@ public class EditCampaignScreenController implements Initializable {
     // Doses
     @FXML
     public TextField dosesAddField;
+    @FXML
+    public Label currentDoses;
 
     // Dates and time
     @FXML
@@ -90,6 +89,7 @@ public class EditCampaignScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println(CampaignToEdit.campaign.debugPrint());
+        currentDoses.setText(String.valueOf(CampaignToEdit.campaign.getAvailableDoses()));
 
         var dayRange = Arrays.stream(IntStream.rangeClosed(1, 30).toArray())
                 .boxed().collect(Collectors.toList());

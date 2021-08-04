@@ -60,7 +60,7 @@
                            <children>
                               <TextField fx:id="dosesAddField" onAction="#addDoses">
                                  <HBox.margin>
-                                    <Insets left="20.0" right="10.0" />
+                                    <Insets bottom="20.0" left="20.0" right="10.0" />
                                  </HBox.margin>
                               </TextField>
                               <Label text="dosi">
@@ -71,7 +71,25 @@
                            </children>
                         </HBox>
                         <HBox />
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Dosi dispoibili:">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label fx:id="currentDoses" text="n">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children></HBox>
                      </children>
                   </VBox>
                </children></AnchorPane>
