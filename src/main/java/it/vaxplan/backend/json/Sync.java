@@ -131,7 +131,9 @@ public class Sync {
             var pojo = Json.fromJson(patient, PatientPOJO.class);
 
             var newPatient = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isHealthCareWorker());
+                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
+                    pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
+                    pojo.isCohabiting());
 
             PatientService.addPatient(newPatient);
         }

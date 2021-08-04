@@ -2,8 +2,9 @@ package it.vaxplan.backend;
 
 public enum PatientCategories {
 
+    EVERYONE("Chiunque"),
     AT_HIGH_RISK("A elevata fragilità"),
-    AT_RISK("A rischio"),
+    ADULT("Adulto"),
     AGE_OVER_80("Over 80"),
     AGE_70_79("70-79 anni"),
     AGE_60_69("60-69 anni"),

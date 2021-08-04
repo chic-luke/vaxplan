@@ -38,7 +38,27 @@ public class PatientPOJO {
 
     @Getter
     @Setter
+    private boolean atHighRisk;
+
+    @Getter
+    @Setter
     private boolean isHealthCareWorker;
+
+    @Getter
+    @Setter
+    private boolean schoolWorker;
+
+    @Getter
+    @Setter
+    private boolean lawEnforcementWorker;
+
+    @Getter
+    @Setter
+    private boolean caretaer;
+
+    @Getter
+    @Setter
+    private boolean cohabiting;
 
     @Override
     public String toString() {
@@ -48,7 +68,11 @@ public class PatientPOJO {
                 "birthPlace: " + birthPlace + "\n" +
                 "sex: " + sex + "\n" +
                 "code: " + code + "\n" +
-                "isHealthCareWorker: " + isHealthCareWorker + "\n";
+                "isHealthCareWorker: " + isHealthCareWorker + "\n" +
+                "isSchoolWorker: " + schoolWorker + "\n" +
+                "isLawEnforcementWorker: " + lawEnforcementWorker + "\n" +
+                "isCareTaker: " + caretaer + "\n" +
+                "isCohabiting:" + cohabiting + "\n" ;
     }
 
 }

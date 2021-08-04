@@ -42,7 +42,17 @@ public class Patient {
 
     private final UUID uuid = UUID.randomUUID();
 
+    private boolean atHighRisk;
+
     private boolean healthCareWorker;
+
+    private boolean schoolWorker;
+
+    private boolean lawEnforcementWorker;
+
+    private boolean caretaker;
+
+    private boolean cohabiting;
 
     /**
      * Gets the age of a patient by calculating the amount of time between
