@@ -185,6 +185,7 @@ class SyncTest {
         var b1 = Booking.builder()
                 .patient(p1)
                 .date(LocalDate.of(2021, 9, 1))
+                .time(LocalTime.of(11, 30))
                 .build();
 
         var bookings = new LinkedList<Booking>();
@@ -200,14 +201,14 @@ class SyncTest {
                 .availableSites(sites)
                 .patientCategories(categories)
                 .vaccine(Vaccine.COVID)
-//                .listOfBookings(bookings)
+                .listOfBookings(bookings)
                 .build();
 
-        b1.setVaccineCampaignUUID(c1.getUuid());
-        BookingService.addBooking(b1);
-        c1.setListOfBookings(c1.returnBookings());
+//        b1.setVaccineCampaignUUID(c1.getUuid());
+//        BookingService.addBooking(b1);
+//        c1.setListOfBookings(c1.returnBookings());
 
-//        c1.addBooking(b1);
+        c1.addBooking(b1);
         System.out.println(c1.debugPrint());
         VaccineCampaignService.addCampaign(c1);
         Sync.writeVaccineCampaignServiceToJson();
@@ -234,6 +235,7 @@ class SyncTest {
         var b1 = Booking.builder()
                 .patient(p1)
                 .date(LocalDate.of(2021, 9, 1))
+                .time(LocalTime.of(11, 30))
                 .build();
 
         for (VaccineCampaign c: VaccineCampaignService.getCampaigns()) {

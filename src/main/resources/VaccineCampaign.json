@@ -11,7 +11,7 @@
   } ],
   "patientCategories" : [ "EVERYONE" ],
   "listOfBookings" : [ {
-    "uuid" : "d860bf68-a9ac-44ba-aa0e-c48f837f311b",
+    "uuid" : "ebaf6ea4-633d-4a30-8f0e-14b47b66c52c",
     "patient" : {
       "firstName" : "Mario",
       "lastName" : "Rossi",
@@ -19,7 +19,7 @@
       "birthPlace" : "Milano",
       "birthDay" : [ 2000, 1, 1 ],
       "sex" : "MALE",
-      "uuid" : "2141a087-7333-4cc2-807a-4b18b22441d9",
+      "uuid" : "3822c61b-2005-4db7-b94d-6781cecf7a0b",
       "atHighRisk" : false,
       "healthCareWorker" : true,
       "schoolWorker" : false,
@@ -31,6 +31,30 @@
     },
     "vaccineCampaignUUID" : null,
     "date" : [ 2021, 9, 1 ],
+    "time" : [ 11, 30 ],
+    "location" : null
+  }, {
+    "uuid" : "ebaf6ea4-633d-4a30-8f0e-14b47b66c52c",
+    "patient" : {
+      "firstName" : "Mario",
+      "lastName" : "Rossi",
+      "fiscalCode" : "RSSMRA00A01F205F",
+      "birthPlace" : "Milano",
+      "birthDay" : [ 2000, 1, 1 ],
+      "sex" : "MALE",
+      "uuid" : "3822c61b-2005-4db7-b94d-6781cecf7a0b",
+      "atHighRisk" : false,
+      "healthCareWorker" : true,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : false,
+      "cohabiting" : false,
+      "intAge" : 21,
+      "adult" : true
+    },
+    "vaccineCampaignUUID" : null,
+    "date" : [ 2021, 9, 1 ],
+    "time" : [ 11, 30 ],
     "location" : null
   } ]
 } ]

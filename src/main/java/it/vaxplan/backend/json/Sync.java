@@ -181,6 +181,7 @@ public class Sync {
             pojo.setPatient(b.getPatient());
             pojo.setVaccineCampaignUUID(b.getVaccineCampaignUUID());
             pojo.setDate(b.getDate());
+            pojo.setTime(b.getTime());
             pojo.setLocation(b.getLocation());
 
             // Add POJO to file JSON array
@@ -209,7 +210,7 @@ public class Sync {
             var pojo = Json.fromJson(booking, BookingPOJO.class);
 
             var newBooking = new Booking(pojo.getPatient(), pojo.getVaccineCampaignUUID(), pojo.getDate(),
-                    pojo.getLocation());
+                    pojo.getTime() ,pojo.getLocation());
 
             BookingService.addBooking(newBooking);
         }

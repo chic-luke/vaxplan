@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.UUID;
 
 public class BookingPOJO {
@@ -22,6 +23,10 @@ public class BookingPOJO {
     @Getter
     @Setter
     private LocalDate date;
+
+    @Getter
+    @Setter
+    private LocalTime time;
 
     @Getter
     @Setter
