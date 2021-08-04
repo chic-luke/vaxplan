@@ -1,45 +1,36 @@
 [ {
-  "name" : "Example",
+  "name" : "Campagna esempio",
   "vaccine" : "COVID",
   "availableDoses" : 100,
-  "startDate" : [ 2021, 8, 1 ],
-  "endDate" : [ 2022, 1, 1 ],
-  "dailyStartTime" : [ 8, 30 ],
-  "dailyEndTime" : [ 20, 30 ],
-  "availableSites" : null,
-  "patientCategories" : null
-}, {
-  "name" : "COVID",
-  "vaccine" : "COVID",
-  "availableDoses" : 111,
-  "startDate" : [ 2021, 8, 1 ],
-  "endDate" : [ 2022, 1, 1 ],
-  "dailyStartTime" : [ 8, 30 ],
-  "dailyEndTime" : [ 20, 30 ],
-  "availableSites" : null,
-  "patientCategories" : null
-}, {
-  "name" : "Test Case Campaign",
-  "vaccine" : "COVID",
-  "availableDoses" : 400,
-  "startDate" : [ 2021, 2, 3 ],
-  "endDate" : [ 2021, 4, 10 ],
-  "dailyStartTime" : [ 8, 30 ],
-  "dailyEndTime" : [ 20, 30 ],
+  "startDate" : [ 2021, 1, 1 ],
+  "endDate" : [ 2021, 2, 2 ],
+  "dailyStartTime" : [ 9, 0 ],
+  "dailyEndTime" : [ 20, 0 ],
   "availableSites" : [ {
-    "name" : "Ambulatorio"
+    "name" : "Fiera"
   } ],
-  "patientCategories" : [ "AT_HIGH_RISK", "AGE_OVER_80" ]
-}, {
-  "name" : "Protezione Varicella",
-  "vaccine" : "CHICKENPOX",
-  "availableDoses" : 1250,
-  "startDate" : [ 2021, 8, 4 ],
-  "endDate" : [ 2022, 8, 4 ],
-  "dailyStartTime" : [ 10, 0 ],
-  "dailyEndTime" : [ 21, 30 ],
-  "availableSites" : [ {
-    "name" : "Milano Ospedale Niguarda"
-  } ],
-  "patientCategories" : [ "ADULT" ]
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : [ {
+    "uuid" : "d860bf68-a9ac-44ba-aa0e-c48f837f311b",
+    "patient" : {
+      "firstName" : "Mario",
+      "lastName" : "Rossi",
+      "fiscalCode" : "RSSMRA00A01F205F",
+      "birthPlace" : "Milano",
+      "birthDay" : [ 2000, 1, 1 ],
+      "sex" : "MALE",
+      "uuid" : "2141a087-7333-4cc2-807a-4b18b22441d9",
+      "atHighRisk" : false,
+      "healthCareWorker" : true,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : false,
+      "cohabiting" : false,
+      "intAge" : 21,
+      "adult" : true
+    },
+    "vaccineCampaignUUID" : null,
+    "date" : [ 2021, 9, 1 ],
+    "location" : null
+  } ]
 } ]

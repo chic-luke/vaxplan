@@ -28,6 +28,7 @@ public class VaccineCampaign {
     private LocalTime dailyEndTime;
     private final Set<VaccineSite> availableSites;
     private Set<PatientCategories> patientCategories;
+    private List<Booking> listOfBookings;
 
     
     /**
@@ -73,6 +74,38 @@ public class VaccineCampaign {
     }
 
     /**
+     * Add a Booking to the list of associated bookings.
+     * @param booking Booking to add
+     */
+    public void addBooking(Booking booking) {
+        listOfBookings.add(booking);
+    }
+
+    /**
+     * Remove a Booking from the list of associated bookings.
+     * @param booking Booking to remove
+     */
+    public void removeBooking(Booking booking) {
+        listOfBookings.remove(booking);
+    }
+
+    /**
+     * Add a Collection of Booking to the list of associated bookings.
+     * @param bookingsToAdd Bookings to add
+     */
+    public void addBookings(Collection<Booking> bookingsToAdd) {
+        listOfBookings.addAll(bookingsToAdd);
+    }
+
+    /**
+     * Remove a Collection of Booking from the list of associated bookings.
+     * @param bookingsToRemove Bookings to remove
+     */
+    public void removeBookings(Collection<Booking> bookingsToRemove) {
+        listOfBookings.removeAll(bookingsToRemove);
+    }
+
+    /**
      * Get a list of Bookings for this VaccineCampaign from the BookingService and return it
      * @return List of bookings associated to this vaccine campaign
      */
@@ -107,7 +140,7 @@ public class VaccineCampaign {
                 "Alle ore: " + dailyEndTime + "\n" +
                 "Per le seguenti categorie di pazienti: " + patientCategories + "\n" +
                 "Nei seguenti ambulatori: " + availableSites + "\n" +
-                "Prenotazioni effettuate: " + "WIP";
+                "Prenotazioni effettuate: " + listOfBookings + "\n";
     }
 
 }

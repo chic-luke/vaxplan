@@ -47,7 +47,7 @@ public class VaccineCampaignFromJson {
 
         var campaign = new VaccineCampaign(pojo.getName(), pojo.getVaccine(), pojo.getAvailableDoses(),
                 pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
-                new HashSet<>(), new HashSet<>());
+                new HashSet<>(), new HashSet<>(), pojo.getListOfBookings());
 
         System.out.println(campaign);
 

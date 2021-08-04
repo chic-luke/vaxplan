@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -45,7 +46,12 @@ public class LoginScreenController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        syncData();
+        try {
+            syncData();
+        } catch (Exception e) {
+            System.out.println("Empty set");
+        }
+
     }
 
     /**

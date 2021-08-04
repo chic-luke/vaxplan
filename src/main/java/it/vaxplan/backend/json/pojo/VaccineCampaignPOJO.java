@@ -1,5 +1,6 @@
 package it.vaxplan.backend.json.pojo;
 
+import it.vaxplan.backend.Booking;
 import it.vaxplan.backend.PatientCategories;
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineSite;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 public class VaccineCampaignPOJO {
@@ -47,5 +49,9 @@ public class VaccineCampaignPOJO {
     @Getter
     @Setter
     private Set<PatientCategories> patientCategories;
+
+    @Getter
+    @Setter
+    private List<Booking> listOfBookings;
 
 }

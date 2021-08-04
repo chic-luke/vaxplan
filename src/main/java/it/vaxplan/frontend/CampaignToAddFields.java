@@ -1,5 +1,6 @@
 package it.vaxplan.frontend;
 
+import it.vaxplan.backend.Booking;
 import it.vaxplan.backend.PatientCategories;
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineSite;
@@ -8,9 +9,7 @@ import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -54,6 +53,10 @@ public class CampaignToAddFields {
     @Getter
     @Setter
     private Set<PatientCategories> patientCategories = new HashSet<>();
+
+    @Getter
+    @Setter
+    private List<Booking> listOfBookings = new LinkedList<>();
 
     @Override
     public String toString() {
