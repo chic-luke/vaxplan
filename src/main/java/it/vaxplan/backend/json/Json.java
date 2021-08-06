@@ -104,14 +104,13 @@ public class Json {
      * Add a JSON object to a JSON array
      * @param pojo POJO containing the object to add
      * @param node JsonNode to add the new node to
-     * @return JsonNode with the new node added
-     * @throws JsonProcessingException if JSON processing fails
      */
-    public static JsonNode addPojoToJsonArray(Object pojo, JsonNode node) throws JsonProcessingException {
-        ArrayNode aNode = node.deepCopy();
+    public static void addPojoToJsonArray(Object pojo, JsonNode node) {
+        if (!(node instanceof ArrayNode)) {
+            throw new IllegalArgumentException("Expected an ArrayNode instance as argument, got " + node.getClass().getName());
+        }
+        ArrayNode aNode = (ArrayNode) node;
         aNode.addPOJO(pojo);
-        var stage2 = Json.prettyPrint(aNode);
-        return parse(stage2);
     }
 
     /**

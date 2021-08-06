@@ -49,7 +49,7 @@ public class Sync {
             pojo.setListOfBookings(c.getListOfBookings());
 
             // Add POJO to file JSON array
-            serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
+            Json.addPojoToJsonArray(pojo, serviceNode);
         }
 
         // Convert node into String
@@ -111,7 +111,7 @@ public class Sync {
             pojo.setCohabiting(p.isCohabiting());
 
             // Add POJO to file JSON array
-            serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
+            Json.addPojoToJsonArray(pojo, serviceNode);
         }
 
         // Convert node into String
@@ -185,7 +185,7 @@ public class Sync {
             pojo.setLocation(b.getLocation());
 
             // Add POJO to file JSON array
-            serviceNode = Json.addPojoToJsonArray(pojo, serviceNode);
+            Json.addPojoToJsonArray(pojo, serviceNode);
         }
 
         // Convert node into String

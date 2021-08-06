@@ -184,11 +184,11 @@ class JsonTest {
         pojo.setHealthCareWorker(false);
         pojo.setCode("205B");
 
-        var finalNode = Json.addPojoToJsonArray(pojo, node);
+        Json.addPojoToJsonArray(pojo, node);
 
-        System.out.println(Json.prettyPrint(finalNode));
+        System.out.println(Json.prettyPrint(node));
 
-        for (var userIt = finalNode.elements(); userIt.hasNext();) {
+        for (var userIt = node.elements(); userIt.hasNext();) {
             var user = userIt.next();
             System.out.println(user.get("firstName"));
         }
