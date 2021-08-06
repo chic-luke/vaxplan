@@ -1,7 +1,10 @@
 package it.vaxplan.backend.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import it.vaxplan.backend.Patient;
+import it.vaxplan.backend.exceptions.CitizenNotFoundException;
 import it.vaxplan.backend.json.JsonUtils;
+import it.vaxplan.backend.service.CitizenService;
 
 public class IDChecker {
 
@@ -28,8 +31,40 @@ public class IDChecker {
      * @return Whether an object with the matching fiscal code was found
      * @throws JsonProcessingException If JSON processing fails
      */
-    public static boolean isIDRegistered(String idcode) throws JsonProcessingException {
+    public static boolean isInDemographic(String idcode) throws JsonProcessingException {
         return JsonUtils.lookUp("User", "fiscalCode", idcode);
+    }
+
+    public static boolean isRegistered(String idcode) throws JsonProcessingException {
+        return JsonUtils.lookUp("RegisteredUsers", "fiscalCode", idcode);
+    }
+
+    public static boolean isRegisterDataCorrect(Patient patient) throws JsonProcessingException {
+        if (!isInDemographic(patient.getFiscalCode())) {
+            return false;
+        }
+
+        var citizen = getCitizen(patient.getFiscalCode());
+
+        return patient.getFirstName().equals(citizen.getFirstName()) &&
+                patient.getLastName().equals(citizen.getLastName()) &&
+                patient.getBirthPlace().equals(citizen.getBirthPlace()) &&
+                patient.getBirthDay().equals(citizen.getBirthDay()) &&
+                patient.getSex().equals(citizen.getSex());
+    }
+
+    /**
+     * Returns a citizen according to fiscal code to caller.
+     * @param idCode Key to look citizens up
+     * @return Corresponding citizen if found
+     */
+    public static Patient getCitizen(String idCode) {
+        for (Patient citizen: CitizenService.getCitizens()) {
+            if (citizen.getFiscalCode().equals(idCode))
+                return citizen;
+        }
+
+        throw new CitizenNotFoundException();
     }
 
 }
