@@ -1,6 +1,8 @@
 package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.node.JsonNodeType;
+import com.fasterxml.jackson.databind.node.POJONode;
 import it.vaxplan.backend.Sex;
 import it.vaxplan.backend.json.pojo.*;
 import org.junit.jupiter.api.Test;
@@ -190,7 +192,18 @@ class JsonTest {
 
         for (var userIt = node.elements(); userIt.hasNext();) {
             var user = userIt.next();
-            System.out.println(user.get("firstName"));
+            String firstName;
+            // ALWAYS check if the ValueNode is a pojo.
+            //
+            // If it is it must be handled separately.
+            if (user.isPojo()) {
+                var pojoNode = (POJONode) user;
+                var patient = (PatientPOJO) pojoNode.getPojo();
+                firstName = patient.getFirstName();
+            } else {
+                firstName = user.get("firstName").asText();
+            }
+            System.out.println(firstName);
         }
 
     }

@@ -1,5 +1,6 @@
 package it.vaxplan.backend.json.pojo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import it.vaxplan.backend.Sex;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,8 +9,7 @@ import java.time.LocalDate;
 
 public class PatientPOJO {
 
-    @Getter
-    @Setter
+    @JsonProperty
     private String firstName;
 
     @Getter
@@ -75,4 +75,12 @@ public class PatientPOJO {
                 "isCohabiting:" + cohabiting + "\n" ;
     }
 
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }
