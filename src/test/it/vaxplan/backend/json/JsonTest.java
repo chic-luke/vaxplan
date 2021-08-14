@@ -150,6 +150,8 @@ class JsonTest {
         var node = Json.parse(jsonTestSource4);
         var testPatient = PatientFromJson.createPatient(node);
 
+        var pojo = Json.fromJson(node, PatientPOJO.class);
+
         assertEquals("Elena", testPatient.getFirstName());
         assertEquals("Rossi", testPatient.getLastName());
         assertEquals("RSSLNE99A66F205S", testPatient.getFiscalCode());

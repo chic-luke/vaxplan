@@ -5,6 +5,9 @@ import java.util.*;
 import it.vaxplan.backend.Booking;
 import lombok.Getter;
 
+/**
+ * Obsolete for now
+ */
 public class BookingService {
 
     /**

@@ -11,9 +11,24 @@ import javax.validation.constraints.NotBlank;
 import lombok.Getter;
 
 public enum Vaccine {
-    CHICKENPOX("Varicella", Patient::isAdult),
+    CHICKENPOX("Anti-varicella", Patient::isAdult),
     COVID("Covid-19", u -> u.getIntAge() > 23 && u.isHealthCareWorker()),
-    MEASLES("Non lo so", null);
+    MEASLES("Anti-morbillo", null),
+    SARS("SARS", null),
+    FLU("Influenza", null),
+    POLIO("Anti-poliomielitica", null),
+    DIPHTHERIA("Anti-difterica", null),
+    TETHANUS("Anti-tetanica", null),
+    HEPATITIS_B("Anti-epatite B", null),
+    PERTUSSIS("Anti-pertosse", null),
+    HAEMOPHILUS("Anti-Haemophilus influenzae tipo b", null),
+    RUBELLA("Anti-rosolia", null),
+    MUMPS("Anti-parotite", null),
+    MENINGOCOCCAL_B("Anti-meningococcica B", null),
+    MENINGOCOCCAL_C("Anti-meningococcica C", null),
+    PNEUMOCOCCAL("Anti-pneumococcica", null),
+    ROTAVIRUS("Anti-rotavirus", null);
+
 
     @Getter
     @NotBlank
