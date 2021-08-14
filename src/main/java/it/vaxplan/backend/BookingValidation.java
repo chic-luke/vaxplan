@@ -24,62 +24,51 @@ public class BookingValidation {
 
         var patientCategories = campaign.getPatientCategories();
 
+        if (patientCategories == null) {
+            throw new IllegalArgumentException("patientCategories is null!");
+        }
+
         if (patientCategories.contains(PatientCategories.EVERYONE)) {
             return true;
         }
 
-        if (patientCategories.contains(PatientCategories.AT_HIGH_RISK)) {
-            if (patient.isAtHighRisk())
+        if (patientCategories.contains(PatientCategories.AT_HIGH_RISK) && patient.isAtHighRisk()) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.ADULT)) {
-            if (patient.isAdult())
+        if (patientCategories.contains(PatientCategories.ADULT) && patient.isAdult()) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.AGE_OVER_80)) {
-            if (patient.getIntAge() >= 80)
+        if (patientCategories.contains(PatientCategories.AGE_OVER_80) && patient.getIntAge() >= 80) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.AGE_70_79)) {
-            if (patient.getIntAge() >= 70 && patient.getIntAge() <= 79)
+        if (patientCategories.contains(PatientCategories.AGE_70_79) && (patient.getIntAge() >= 70 && patient.getIntAge() <= 79)) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.AGE_60_69)) {
-            if (patient.getIntAge() >= 60 && patient.getIntAge() <= 69)
+        if (patientCategories.contains(PatientCategories.AGE_60_69) && (patient.getIntAge() >= 60 && patient.getIntAge() <= 69)) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.CARETAKER)) {
-            if (patient.isCaretaker())
+        if (patientCategories.contains(PatientCategories.CARETAKER) && patient.isCaretaker()) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.COHABITING)) {
-            if (patient.isCohabiting())
+        if (patientCategories.contains(PatientCategories.COHABITING) && patient.isCohabiting()) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.HEALTH_WORKER)) {
-            if (patient.isHealthCareWorker())
+        if (patientCategories.contains(PatientCategories.HEALTH_WORKER) && patient.isHealthCareWorker()) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.SCHOOL_WORKER)) {
-            if (patient.isSchoolWorker())
+        if (patientCategories.contains(PatientCategories.SCHOOL_WORKER) && patient.isSchoolWorker()) {
                 return true;
         }
 
-        if (patientCategories.contains(PatientCategories.LAW_ENFORCEMENT_WORKER)) {
-            if (patient.isLawEnforcementWorker())
-                return true;
-        }
-
-
-        return false;
+        return patientCategories.contains(PatientCategories.LAW_ENFORCEMENT_WORKER) && patient.isLawEnforcementWorker();
     }
 
     /**

@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegistrationScreenExtraController implements Initializable {
+public class RegistrationSecondScreenController implements Initializable {
 
     @FXML
     public ListView<PatientCategories> categoriesList;
@@ -50,13 +50,11 @@ public class RegistrationScreenExtraController implements Initializable {
 
     /**
      * Constructs a Patient object according to the input, adds it to
-     * PatientService and then goes back to the welcome screen
+     * PatientService and then goes on to booking screen
      * @throws IOException if FXML file is not found
      */
     public void confirmButtonAction() throws IOException{
-        // Vai alla schermata del cittadino
-
-        App.setRoot("welcome");
+        App.setRoot("selectCampaignScreen");
     }
 
 }

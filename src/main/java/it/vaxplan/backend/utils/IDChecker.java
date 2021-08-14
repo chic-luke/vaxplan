@@ -5,6 +5,7 @@ import it.vaxplan.backend.Patient;
 import it.vaxplan.backend.exceptions.CitizenNotFoundException;
 import it.vaxplan.backend.json.JsonUtils;
 import it.vaxplan.backend.service.CitizenService;
+import it.vaxplan.backend.service.PatientService;
 
 public class IDChecker {
 
@@ -17,26 +18,26 @@ public class IDChecker {
 
     /**
      * Checks of a given Italian fiscal code is valid according to a regular expression
-     * @param idCode Fiscal code to validate
+     * @param fiscalCode Fiscal code to validate
      * @return Whether the input fiscal code is valid
      */
-    public static boolean isFiscalCodeValid(String idCode) {
-        return idCode.matches("^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
+    public static boolean isFiscalCodeValid(String fiscalCode) {
+        return fiscalCode.matches("^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
     }
 
     /**
      * Looks up an input fiscal code in the User.json file to check whether the
      * code is registered
-     * @param idcode Fiscal code to look up in the file
+     * @param fiscalCode Fiscal code to look up in the file
      * @return Whether an object with the matching fiscal code was found
      * @throws JsonProcessingException If JSON processing fails
      */
-    public static boolean isInDemographic(String idcode) throws JsonProcessingException {
-        return JsonUtils.lookUp("User", "fiscalCode", idcode);
+    public static boolean isInDemographic(String fiscalCode) throws JsonProcessingException {
+        return JsonUtils.lookUp("User", "fiscalCode", fiscalCode);
     }
 
-    public static boolean isRegistered(String idcode) throws JsonProcessingException {
-        return JsonUtils.lookUp("RegisteredUsers", "fiscalCode", idcode);
+    public static boolean isRegistered(String fiscalCode) throws JsonProcessingException {
+        return JsonUtils.lookUp("RegisteredUsers", "fiscalCode", fiscalCode);
     }
 
     public static boolean isRegisterDataCorrect(Patient patient) throws JsonProcessingException {
@@ -55,16 +56,30 @@ public class IDChecker {
 
     /**
      * Returns a citizen according to fiscal code to caller.
-     * @param idCode Key to look citizens up
+     * @param fiscalCode Key to look citizens up
      * @return Corresponding citizen if found
      */
-    public static Patient getCitizen(String idCode) {
+    public static Patient getCitizen(String fiscalCode) {
         for (Patient citizen: CitizenService.getCitizens()) {
-            if (citizen.getFiscalCode().equals(idCode))
+            if (citizen.getFiscalCode().equals(fiscalCode))
                 return citizen;
         }
 
         throw new CitizenNotFoundException();
+    }
+
+    /**
+     * Checks whether a citizen is already registered to the system using the fiscal code to compare.
+     * @param fiscalCode Fiscal code to check in PatientService
+     * @return Whether citizen with fiscal code fiscalCode is registered
+     */
+    public static boolean isCitizenRegistered(String fiscalCode) {
+        for (Patient patient: PatientService.getPatients()) {
+            if (patient.getFiscalCode().equals(fiscalCode))
+                return true;
+        }
+
+        return false;
     }
 
 }

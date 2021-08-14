@@ -105,7 +105,6 @@ public class Sync {
             pojo.setBirthPlace(p.getBirthPlace());
             pojo.setBirthDay(p.getBirthDay());
             pojo.setSex(p.getSex());
-            pojo.setCode(p.getFiscalCode());
             pojo.setAtHighRisk(p.isAtHighRisk());
             pojo.setHealthCareWorker(p.isHealthCareWorker());
             pojo.setSchoolWorker(p.isSchoolWorker());

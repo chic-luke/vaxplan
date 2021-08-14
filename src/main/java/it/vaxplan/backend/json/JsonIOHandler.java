@@ -50,18 +50,19 @@ public class JsonIOHandler {
             FileOutputStream fos = new FileOutputStream(file, false);
             fos.write(json.getBytes());
             fos.close();
-            // Create a new file
-            try {
-                System.out.println(file.createNewFile());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Write content of json to file
-            var writer = new FileWriter(file);
-            writer.write(json);
-            writer.close();
         }
+
+        // Create a new file
+        try {
+            System.out.println(file.createNewFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Write content of json to file
+        var writer = new FileWriter(file);
+        writer.write(json);
+        writer.close();
 
     }
 

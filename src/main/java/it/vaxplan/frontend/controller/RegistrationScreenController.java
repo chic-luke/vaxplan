@@ -6,6 +6,7 @@ import it.vaxplan.backend.exceptions.InvalidFiscalCodeException;
 import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
+import it.vaxplan.frontend.CitizenBookingFields;
 import it.vaxplan.frontend.RegistrationData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -138,11 +139,26 @@ public class RegistrationScreenController implements Initializable {
         // If currently input information matches with an actual citizen, add that citizen to the set of
         // patients
         if (IDChecker.isRegisterDataCorrect(tmpPatient)) {
-            System.out.println("Data is CORRECT!");
             var patient = IDChecker.getCitizen(RegistrationData.fields.getFiscalCode());
-            System.out.println(patient);
-            PatientService.addPatient(patient);
+
+            // Print out PatientService for debug
+            System.out.println("PatientService: " + PatientService.getPatients());
+
+            if (IDChecker.isCitizenRegistered(patient.getFiscalCode())) {
+                System.out.println("Patient already registered! Reusing");
+            } else {
+                // Add patient to PatientService
+                PatientService.addPatient(patient);
+            }
+
+            // Print out PatientService for debug
+            System.out.println("PatientService: " + PatientService.getPatients());
+
+            // Sync to JSON file
             Sync.writePatientServiceToJson();
+
+            // Save the current patient in the designated singleton for next view
+            CitizenBookingFields.setCurrentPatient(patient);
             RegistrationData.registeredPatient = patient;
 
             // Go to registration confirmation screen

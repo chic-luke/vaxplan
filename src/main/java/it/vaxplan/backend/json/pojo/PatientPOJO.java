@@ -34,10 +34,6 @@ public class PatientPOJO {
 
     @Getter
     @Setter
-    private String code;
-
-    @Getter
-    @Setter
     private boolean atHighRisk;
 
     @Getter
@@ -67,7 +63,6 @@ public class PatientPOJO {
                 "fiscalCode: " + fiscalCode + "\n" +
                 "birthPlace: " + birthPlace + "\n" +
                 "sex: " + sex + "\n" +
-                "code: " + code + "\n" +
                 "isHealthCareWorker: " + isHealthCareWorker + "\n" +
                 "isSchoolWorker: " + schoolWorker + "\n" +
                 "isLawEnforcementWorker: " + lawEnforcementWorker + "\n" +

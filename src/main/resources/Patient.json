@@ -5,7 +5,6 @@
   "birthPlace" : "Milano",
   "birthDay" : [ 1999, 1, 26 ],
   "sex" : "FEMALE",
-  "code" : "RSSLNE99A66F205S",
   "atHighRisk" : true,
   "schoolWorker" : false,
   "lawEnforcementWorker" : false,

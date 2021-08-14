@@ -141,7 +141,6 @@ class JsonTest {
         assertEquals("RSSLNE99A66F205S", pojo.getFiscalCode());
         assertEquals("Milano", pojo.getBirthPlace());
         assertEquals(Sex.FEMALE, pojo.getSex());
-        assertEquals("RSSLNE99A66F205S", pojo.getCode());
         assertFalse(pojo.isHealthCareWorker());
     }
 
@@ -186,7 +185,6 @@ class JsonTest {
         pojo.setBirthPlace("Milano");
         pojo.setSex(Sex.MALE);
         pojo.setHealthCareWorker(false);
-        pojo.setCode("205B");
 
         Json.addPojoToJsonArray(pojo, node);
 

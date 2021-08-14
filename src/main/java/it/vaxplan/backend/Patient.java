@@ -1,17 +1,15 @@
 package it.vaxplan.backend;
 
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.UUID;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-
-import lombok.*;
-import lombok.experimental.Accessors;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.UUID;
 
 @Data
 @RequiredArgsConstructor
@@ -80,8 +78,12 @@ public class Patient {
                 "birthPlace: " + birthPlace + "\n" +
                 "birthDay: " + birthDay + "\n" +
                 "sex: " + sex + "\n" +
-                "code: " + "placeholder" + "\n" +
-                "isHealthCareWorker: " + healthCareWorker + "\n";
+                "isAtHighRisk: " + atHighRisk + "\n" +
+                "isHealthCareWorker: " + healthCareWorker + "\n" +
+                "isSchoolWorker: " + schoolWorker + "\n" +
+                "isLawEnforcementWorker: " + lawEnforcementWorker + "\n" +
+                "isCaretaker: " + caretaker + "\n" +
+                "cohabiting: " + cohabiting + "\n";
     }
 
 }
