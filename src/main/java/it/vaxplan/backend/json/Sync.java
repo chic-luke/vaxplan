@@ -13,7 +13,6 @@ import it.vaxplan.backend.json.pojo.VaccineSitePOJO;
 import it.vaxplan.backend.service.*;
 
 import java.io.IOException;
-import java.util.HashSet;
 
 public class Sync {
 
@@ -69,6 +68,9 @@ public class Sync {
         var fileOutput = jio.jsonToString("VaccineCampaign");
         var node = Json.parse(fileOutput);
 
+        // Clear VaccineCampaignService to avoid double entries
+        VaccineCampaignService.getCampaigns().clear();
+
         for (var campaignIt = node.elements(); campaignIt.hasNext();) {
             var campaign = campaignIt.next();
 
@@ -78,6 +80,7 @@ public class Sync {
                     pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
                     pojo.getAvailableSites(), pojo.getPatientCategories(), pojo.getListOfBookings());
 
+            // Add campaign created above to VaccineCampaignService
             VaccineCampaignService.addCampaign(newCampaign);
         }
 
@@ -130,6 +133,9 @@ public class Sync {
         var fileOutput = jio.jsonToString("Patient");
         var node = Json.parse(fileOutput);
 
+        // Clear PatientService to avoid double entries
+        PatientService.getPatients().clear();
+
         for (var patientIt = node.elements(); patientIt.hasNext();) {
             var patient = patientIt.next();
 
@@ -153,6 +159,9 @@ public class Sync {
         var jio = new JsonIOHandler();
         var fileOutput = jio.jsonToString("VaccineSites");
         var node = Json.parse(fileOutput);
+
+        // Clear VaccineSiteService to avoid double entries
+        VaccineSiteService.getSites().clear();
 
         for (var siteIt = node.elements(); siteIt.hasNext();) {
             var site = siteIt.next();
@@ -204,6 +213,9 @@ public class Sync {
         var fileOutput = jio.jsonToString("Bookings");
         var node = Json.parse(fileOutput);
 
+        // Clear BookingService to avoid double entries
+        BookingService.getBookings().clear();
+
         for (var bookingIt = node.elements(); bookingIt.hasNext();) {
             var booking = bookingIt.next();
 
@@ -224,6 +236,9 @@ public class Sync {
         var jio = new JsonIOHandler();
         var fileOutput = jio.jsonToString("Citizens");
         var node = Json.parse(fileOutput);
+
+        // Clear CitizenService to avoid double entries
+        CitizenService.getCitizens().clear();
 
         for (var bookingIt = node.elements(); bookingIt.hasNext();) {
             var booking = bookingIt.next();

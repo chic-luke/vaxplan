@@ -1,8 +1,8 @@
 package it.vaxplan.frontend.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.Vaccine;
-import it.vaxplan.backend.json.Sync;
+import it.vaxplan.backend.VaccineCampaign;
+import it.vaxplan.backend.service.VaccineCampaignService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToAdd;
 import it.vaxplan.frontend.CampaignToAddFields;
@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,10 +20,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
-
-import it.vaxplan.backend.VaccineCampaign;
-import it.vaxplan.backend.service.VaccineCampaignService;
-import lombok.SneakyThrows;
 
 public class AdminScreenController implements Initializable {
 
@@ -73,6 +70,7 @@ public class AdminScreenController implements Initializable {
         }
 
         System.out.println(tmpList);
+        System.out.println("VaccineCampaignService: " + VaccineCampaignService.getCampaigns());
 
         campaignsBox.setPromptText("Seleziona campagna vaccinale");
         clearComboBox();
