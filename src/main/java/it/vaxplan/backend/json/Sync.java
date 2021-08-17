@@ -46,6 +46,7 @@ public class Sync {
             pojo.setAvailableSites(c.getAvailableSites());
             pojo.setPatientCategories(c.getPatientCategories());
             pojo.setListOfBookings(c.getListOfBookings());
+            pojo.setBookedSlots(c.getBookedSlots());
 
             // Add POJO to file JSON array
             Json.addPojoToJsonArray(pojo, serviceNode);
@@ -78,7 +79,8 @@ public class Sync {
 
             var newCampaign = new VaccineCampaign(pojo.getName(), pojo.getVaccine(), pojo.getAvailableDoses(),
                     pojo.getStartDate(), pojo.getEndDate(), pojo.getDailyStartTime(), pojo.getDailyEndTime(),
-                    pojo.getAvailableSites(), pojo.getPatientCategories(), pojo.getListOfBookings());
+                    pojo.getAvailableSites(), pojo.getPatientCategories(), pojo.getListOfBookings(),
+                    pojo.getBookedSlots());
 
             // Add campaign created above to VaccineCampaignService
             VaccineCampaignService.addCampaign(newCampaign);

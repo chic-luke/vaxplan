@@ -36,6 +36,8 @@ public class BookingScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setDate();
+
+        // Set
     }
 
     private void setDate()

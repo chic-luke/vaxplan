@@ -39,31 +39,6 @@ public class AdminScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         var vaccineCampaigns = VaccineCampaignService.getCampaigns();
 
-        // Begin placeholder code
-        if (VaccineCampaignService.isEmpty()) {
-            VaccineCampaign camp1 = VaccineCampaign.builder()
-                    .name("COVID-19")
-                    .vaccine(Vaccine.COVID)
-                    .availableDoses(1000)
-                    .dailyStartTime(LocalTime.of(9, 0))
-                    .dailyEndTime(LocalTime.of(20, 0))
-                    .availableSites(new HashSet<>())
-                    .build();
-
-            VaccineCampaign camp2 = VaccineCampaign.builder()
-                    .name("Chickenpox")
-                    .vaccine(Vaccine.CHICKENPOX)
-                    .availableDoses(1000)
-                    .dailyStartTime(LocalTime.of(9, 0))
-                    .dailyEndTime(LocalTime.of(20, 0))
-                    .availableSites(new HashSet<>())
-                    .build();
-
-            VaccineCampaignService.addCampaign(camp1);
-            VaccineCampaignService.addCampaign(camp2);
-        }
-        // End placeholder code
-
         tmpList.clear();
         for (VaccineCampaign c: vaccineCampaigns) {
             tmpList.add(c.getName());

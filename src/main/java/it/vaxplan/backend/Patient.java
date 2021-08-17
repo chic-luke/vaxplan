@@ -54,7 +54,7 @@ public class Patient {
 
     /**
      * Gets the age of a patient by calculating the amount of time between
-     * the current moment and the patient's birthday
+     * the current day and the patient's birthday
      * @return Patient's age
      */
     public long getIntAge() {

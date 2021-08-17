@@ -48,15 +48,15 @@ public class CampaignToAddFields {
 
     @Getter
     @Setter
-    public Set<VaccineSite> availableSites = new HashSet<>();
+    public Set<VaccineSite> availableSites;
 
     @Getter
     @Setter
-    private Set<PatientCategories> patientCategories = new HashSet<>();
+    private Set<PatientCategories> patientCategories;
 
     @Getter
     @Setter
-    private List<Booking> listOfBookings = new LinkedList<>();
+    private List<Booking> listOfBookings;
 
     @Override
     public String toString() {

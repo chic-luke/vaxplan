@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -17,25 +18,13 @@ class SyncTest {
 
     @Test
     void vaccineCampaignServiceToFileSuccess() throws IOException {
-        var newCampaign = VaccineCampaign.builder()
-                .name("Example")
-                .availableDoses(100)
-                .dailyStartTime(LocalTime.of(8, 30))
-                .dailyEndTime(LocalTime.of(20, 30))
-                .startDate(LocalDate.of(2021, 8, 1))
-                .endDate(LocalDate.of(2022, 1, 1))
-                .vaccine(Vaccine.COVID)
-                .build();
+        var newCampaign = new VaccineCampaign("Example", Vaccine.COVID, 100, LocalDate.of(2021, 8, 1),
+                LocalDate.of(2022, 1, 1), LocalTime.of(9, 0), LocalTime.of(20, 0));
 
-        var newCampaign2 = VaccineCampaign.builder()
-                .name("COVID")
-                .availableDoses(111)
-                .dailyStartTime(LocalTime.of(8, 30))
-                .dailyEndTime(LocalTime.of(20, 30))
-                .startDate(LocalDate.of(2021, 8, 1))
-                .endDate(LocalDate.of(2022, 1, 1))
-                .vaccine(Vaccine.COVID)
-                .build();
+
+        var newCampaign2 = new VaccineCampaign("COVID", Vaccine.COVID, 111, LocalDate.of(2021, 8, 1),
+                LocalDate.of(2022, 1, 1), LocalTime.of(8, 30),
+                LocalTime.of(20, 30));
 
         var categories = new HashSet<PatientCategories>();
         categories.add(PatientCategories.AT_HIGH_RISK);
@@ -45,18 +34,8 @@ class SyncTest {
         var site = new VaccineSite("Ambulatorio");
         sites.add(site);
 
-        var testCampaign = VaccineCampaign.builder()
-                .name("Test Case Campaign")
-                .vaccine(Vaccine.COVID)
-                .startDate(LocalDate.of(2021, 2, 3))
-                .endDate(LocalDate.of(2021, 4, 10))
-                .dailyStartTime(LocalTime.of(8, 30))
-                .dailyEndTime(LocalTime.of(20, 30))
-                .availableDoses(400)
-                .patientCategories(categories)
-                .availableSites(sites)
-                .build();
-
+        var testCampaign = new VaccineCampaign("Test Case Campaign", Vaccine.COVID, 100, LocalDate.of(2021, 2, 3),
+                LocalDate.of(2021, 4, 10), LocalTime.of(8, 30), LocalTime.of(20, 30) );
 
         VaccineCampaignService.addCampaign(newCampaign);
         VaccineCampaignService.addCampaign(newCampaign2);
@@ -128,15 +107,8 @@ class SyncTest {
                 .schoolWorker(false)
                 .build();
 
-        var c1 = VaccineCampaign.builder()
-                .name("Campagna esempio")
-                .startDate(LocalDate.of(2021, 1, 1))
-                .endDate(LocalDate.of(2021, 2, 2))
-                .dailyStartTime(LocalTime.of(9, 0))
-                .dailyEndTime(LocalTime.of(20, 0))
-                .availableSites(VaccineSiteService.getSites())
-                .vaccine(Vaccine.COVID)
-                .build();
+        var c1 = new VaccineCampaign("Campagna esempio", Vaccine.COVID, 20, LocalDate.of(2021, 1, 1),
+                LocalDate.of(2021, 2, 2), LocalTime.of(9, 0), LocalTime.of(20, 0));
 
         var b1 = Booking.builder()
                 .patient(p1)
@@ -191,18 +163,8 @@ class SyncTest {
         var bookings = new LinkedList<Booking>();
         bookings.add(b1);
 
-        var c1 = VaccineCampaign.builder()
-                .name("Campagna esempio")
-                .availableDoses(100)
-                .startDate(LocalDate.of(2021, 1, 1))
-                .endDate(LocalDate.of(2021, 2, 2))
-                .dailyStartTime(LocalTime.of(9, 0))
-                .dailyEndTime(LocalTime.of(20, 0))
-                .availableSites(sites)
-                .patientCategories(categories)
-                .vaccine(Vaccine.COVID)
-                .listOfBookings(bookings)
-                .build();
+        var c1 = new VaccineCampaign("Campagna esempio", Vaccine.COVID, 20, LocalDate.of(2021, 1, 1),
+                LocalDate.of(2021, 2, 2), LocalTime.of(9, 0), LocalTime.of(20, 0));
 
 //        b1.setVaccineCampaignUUID(c1.getUuid());
 //        BookingService.addBooking(b1);
@@ -279,18 +241,9 @@ class SyncTest {
         var categories = new HashSet<PatientCategories>();
         categories.add(PatientCategories.EVERYONE);
 
-        var c1 = VaccineCampaign.builder()
-                .name("Campagna esempio")
-                .availableDoses(100)
-                .startDate(LocalDate.of(2021, 1, 1))
-                .endDate(LocalDate.of(2021, 2, 2))
-                .dailyStartTime(LocalTime.of(9, 0))
-                .dailyEndTime(LocalTime.of(20, 0))
-                .availableSites(sites)
-                .patientCategories(categories)
-                .vaccine(Vaccine.COVID)
-                .listOfBookings(new LinkedList<>())
-                .build();
+        var c1 = new VaccineCampaign("Campagna esempio", Vaccine.COVID, 20, LocalDate.of(2021, 1, 1),
+                LocalDate.of(2021, 2, 2), LocalTime.of(9, 0), LocalTime.of(20, 0));
+
 
         VaccineCampaignService.addCampaign(c1);
         Sync.writeVaccineCampaignServiceToJson();
@@ -307,6 +260,37 @@ class SyncTest {
         System.out.println(CitizenService.getCitizens());
 
         assertFalse(CitizenService.getCitizens().isEmpty());
+    }
+
+    @Test
+    void serializeMaps() throws IOException {
+        var startDate = LocalDate.of(2021, 9, 1);
+        var endDate = LocalDate.of(2021, 9, 10);
+        var dailyStartTime = LocalTime.of(10, 0);
+        var dailyEndTime = LocalTime.of(17, 0);
+
+        Set<VaccineSite> sites = new HashSet<>();
+        var site = new VaccineSite("Sito esempio");
+        sites.add(site);
+
+        var campaign = new VaccineCampaign("Test", Vaccine.FLU, 10, startDate, endDate,
+                dailyStartTime, dailyEndTime, sites, new HashSet<>(), new LinkedList<>());
+
+        campaign.bookTimeSlot(LocalDate.of(2021, 9, 4), LocalTime.of(10, 0),  site);
+
+        System.out.println(campaign.getSlotsPerSite());
+        System.out.println("BOOKED SLOTS: \n" + campaign.getBookedSlots());
+
+        VaccineCampaignService.addCampaign(campaign);
+        Sync.writeVaccineCampaignServiceToJson();
+    }
+
+    @Test
+    void deserializeMaps() throws JsonProcessingException {
+        Sync.initVaccineCampaignServiceFromJson();
+        for (VaccineCampaign c: VaccineCampaignService.getCampaigns()) {
+            System.out.println(c.getBookedSlots());
+        }
     }
 
 }

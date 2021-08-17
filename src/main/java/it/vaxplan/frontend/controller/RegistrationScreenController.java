@@ -163,8 +163,10 @@ public class RegistrationScreenController implements Initializable {
 
             // Go to registration confirmation screen
             App.setRoot("registrationSecondScreen");
+        } else {
+            App.setRoot("ErrorScreen");
         }
 
-
     }
+
 }

@@ -86,4 +86,5 @@ public class LoginScreenController implements Initializable {
         // Sync patient database (registered users)
         Sync.initPatientServiceFromJson();
     }
+
 }

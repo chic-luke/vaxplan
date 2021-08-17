@@ -8,7 +8,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -53,5 +55,9 @@ public class VaccineCampaignPOJO {
     @Getter
     @Setter
     private List<Booking> listOfBookings;
+
+    @Getter
+    @Setter
+    private HashMap<VaccineSite, LocalDateTime> bookedSlots;
 
 }
