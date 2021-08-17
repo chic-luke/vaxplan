@@ -29,7 +29,6 @@ public class VaccineCampaign {
     private HashMap<VaccineSite, HashMap<LocalDateTime, Boolean>> slotsPerSite;
     @JsonSerialize(keyUsing = MapSerializer.class)
     private HashMap<VaccineSite, LocalDateTime> bookedSlots;
-    private HashMap<String, String> bookedSlotsSerializable;
 
     /**
      * Short constructor, initializes sets
@@ -173,6 +172,7 @@ public class VaccineCampaign {
      */
     public void addBooking(Booking booking) {
         listOfBookings.add(booking);
+        bookTimeSlot(booking.getDate(), booking.getTime(), booking.getLocation());
     }
 
     /**
@@ -181,6 +181,8 @@ public class VaccineCampaign {
      */
     public void removeBooking(Booking booking) {
         listOfBookings.remove(booking);
+        slotsPerSite.remove(booking.getLocation());
+        bookedSlots.remove(booking.getLocation());
     }
 
     /**
@@ -188,15 +190,7 @@ public class VaccineCampaign {
      * @param bookingsToAdd Bookings to add
      */
     public void addBookings(Collection<Booking> bookingsToAdd) {
-        listOfBookings.addAll(bookingsToAdd);
-    }
-
-    /**
-     * Remove a Collection of Booking from the list of associated bookings.
-     * @param bookingsToRemove Bookings to remove
-     */
-    public void removeBookings(Collection<Booking> bookingsToRemove) {
-        listOfBookings.removeAll(bookingsToRemove);
+        listOfBookings.addAll(bookingsToAdd);W
     }
 
 
