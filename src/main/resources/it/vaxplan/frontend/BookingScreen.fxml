@@ -27,17 +27,20 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="birthDay" prefHeight="24.0" prefWidth="73.0" promptText="d" />
-                  <ComboBox fx:id="birthDay1" prefHeight="24.0" prefWidth="73.0" promptText="m">
+                  <ComboBox fx:id="vacYear" prefHeight="24.0" prefWidth="105.0" promptText="y">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="vacMonth" prefHeight="24.0" prefWidth="73.0" promptText="m">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <ComboBox fx:id="birthDay11" prefHeight="24.0" prefWidth="105.0" promptText="y">
+                  <ComboBox fx:id="vacDay" prefHeight="24.0" prefWidth="73.0" promptText="d">
                      <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </ComboBox>
+                        <Insets left="5.0" />
+                     </HBox.margin></ComboBox>
                   <Label prefHeight="24.0" prefWidth="77.0" text="ORA:">
                      <font>
                         <Font size="15.0" />
@@ -46,8 +49,8 @@
                         <Insets left="30.0" />
                      </padding>
                   </Label>
-                  <ComboBox fx:id="birthDay2" prefHeight="24.0" prefWidth="56.0" promptText="h" />
-                  <ComboBox fx:id="birthDay21" promptText="m">
+                  <ComboBox fx:id="hour" prefHeight="24.0" prefWidth="56.0" promptText="h" />
+                  <ComboBox fx:id="minutes" promptText="m">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin></ComboBox>
@@ -63,7 +66,7 @@
                   </Label>
                </children>
             </HBox>
-            <ListView fx:id="categoriesList" prefHeight="165.0" prefWidth="566.0" />
+            <ListView fx:id="aviableSites" prefHeight="165.0" prefWidth="566.0" />
             <HBox prefHeight="23.0" prefWidth="600.0">
                <VBox.margin>
                   <Insets top="20.0" />
