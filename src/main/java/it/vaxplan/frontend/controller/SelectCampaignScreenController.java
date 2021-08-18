@@ -3,7 +3,7 @@ package it.vaxplan.frontend.controller;
 import it.vaxplan.backend.BookingValidation;
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.frontend.App;
-import it.vaxplan.frontend.CitizenBookingFields;
+import it.vaxplan.frontend.BookingData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -25,17 +25,17 @@ public class SelectCampaignScreenController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        patientName.setText(CitizenBookingFields.getCurrentPatient().getFirstName() + " " +
-                CitizenBookingFields.getCurrentPatient().getLastName());
+        patientName.setText(BookingData.getPatient().getFirstName() + " " +
+                BookingData.getPatient().getLastName());
 
         campaignsListView.getItems().addAll(BookingValidation.availableCampaignsForPatient(
-                CitizenBookingFields.getCurrentPatient()));
+                BookingData.getPatient()));
     }
 
     public void nextButtonAction() throws IOException {
-        CitizenBookingFields.setSelectedCampaign(campaignsListView.getSelectionModel().getSelectedItem());
+        BookingData.setCampaign(campaignsListView.getSelectionModel().getSelectedItem());
 
-        App.setRoot("BookingScreen");
+        App.setRoot("BookingScreenSite");
     }
 
 }

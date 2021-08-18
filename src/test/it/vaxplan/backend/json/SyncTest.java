@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -92,47 +93,8 @@ class SyncTest {
     }
 
     @Test
-    void writeBookingServiceToJsonSuccess() throws IOException {
-        var p1 = Patient.builder()
-                .firstName("Mario")
-                .lastName("Rossi")
-                .birthDay(LocalDate.of(2000, 1, 1))
-                .fiscalCode("RSSMRA00A01F205F")
-                .sex(Sex.MALE)
-                .birthPlace("Milano")
-                .healthCareWorker(true)
-                .caretaker(false)
-                .lawEnforcementWorker(false)
-                .cohabiting(false)
-                .schoolWorker(false)
-                .build();
-
-        var c1 = new VaccineCampaign("Campagna esempio", Vaccine.COVID, 20, LocalDate.of(2021, 1, 1),
-                LocalDate.of(2021, 2, 2), LocalTime.of(9, 0), LocalTime.of(20, 0));
-
-        var b1 = Booking.builder()
-                .patient(p1)
-                .vaccineCampaignUUID(c1.getUuid())
-                .date(LocalDate.of(2021, 9, 1))
-                .location(new VaccineSite("Ospedale Civile Brescia"))
-                .build();
-
-        BookingService.addBooking(b1);
-
-        Sync.writeBookingServiceToJson();
-    }
-
-    @Test
-    void initBookingServiceFromJsonSuccess() throws JsonProcessingException {
-        Sync.initBookingServiceFromJson();
-
-        System.out.println(BookingService.getBookings());
-        assertFalse(BookingService.getBookings().isEmpty());
-    }
-
-    @Test
     void vaccineCampaignHasBookingsSuccess() throws IOException {
-        initBookingServiceFromJsonSuccess();
+//        initBookingServiceFromJsonSuccess();
 
         var p1 = Patient.builder()
                 .firstName("Mario")
@@ -157,7 +119,7 @@ class SyncTest {
         var b1 = Booking.builder()
                 .patient(p1)
                 .date(LocalDate.of(2021, 9, 1))
-                .time(LocalTime.of(11, 30))
+                .time(LocalDateTime.of(LocalDate.of(2021, 9, 1), LocalTime.of(11, 30)))
                 .build();
 
         var bookings = new LinkedList<Booking>();
@@ -197,7 +159,7 @@ class SyncTest {
         var b1 = Booking.builder()
                 .patient(p1)
                 .date(LocalDate.of(2021, 9, 1))
-                .time(LocalTime.of(11, 30))
+                .time(LocalDateTime.of(LocalDate.of(2021, 9, 1), LocalTime.of(11, 30)))
                 .build();
 
         for (VaccineCampaign c: VaccineCampaignService.getCampaigns()) {
@@ -205,7 +167,7 @@ class SyncTest {
                 var booking = Booking.builder()
                         .patient(p1)
                         .date(LocalDate.now())
-                        .vaccineCampaignUUID(c.getUuid())
+                        .campaignUUID(c.getUuid())
                         .build();
                 BookingService.addBooking(booking);
             }

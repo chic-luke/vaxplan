@@ -177,60 +177,6 @@ public class Sync {
     }
 
     /**
-     * Write the contents of BookingService to Bookings.json
-     * (located in resources)
-     */
-    public static void writeBookingServiceToJson() throws IOException {
-        var jio = new JsonIOHandler();
-        JsonNode serviceNode = Json.createArrayNode();
-
-        // Create JSON from BookingService
-        for (Booking b: BookingService.getBookings()) {
-            // Create POJO class from current Patient
-            var pojo = new BookingPOJO();
-            pojo.setPatient(b.getPatient());
-            pojo.setVaccineCampaignUUID(b.getVaccineCampaignUUID());
-            pojo.setDate(b.getDate());
-            pojo.setTime(b.getTime());
-            pojo.setLocation(b.getLocation());
-
-            // Add POJO to file JSON array
-            Json.addPojoToJsonArray(pojo, serviceNode);
-        }
-
-        // Convert node into String
-        var output = Json.prettyPrint(serviceNode);
-
-        // Write said JSON String to file
-        jio.writeJsonToFile(output, "Bookings");
-    }
-
-    /**
-     * Initialize BookingService with contents from Bookings.json
-     * (located in resources)
-     */
-    public static void initBookingServiceFromJson() throws JsonProcessingException {
-        var jio = new JsonIOHandler();
-        var fileOutput = jio.jsonToString("Bookings");
-        var node = Json.parse(fileOutput);
-
-        // Clear BookingService to avoid double entries
-        BookingService.getBookings().clear();
-
-        for (var bookingIt = node.elements(); bookingIt.hasNext();) {
-            var booking = bookingIt.next();
-
-            var pojo = Json.fromJson(booking, BookingPOJO.class);
-
-            var newBooking = new Booking(pojo.getPatient(), pojo.getVaccineCampaignUUID(), pojo.getDate(),
-                    pojo.getTime() ,pojo.getLocation());
-
-            BookingService.addBooking(newBooking);
-        }
-
-    }
-
-    /**
      * Initialize CitizenService with contents from Citizens.json
      */
     public static void initCitizenServiceFromJson() throws JsonProcessingException {

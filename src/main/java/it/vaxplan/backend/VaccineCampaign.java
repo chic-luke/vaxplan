@@ -2,7 +2,6 @@ package it.vaxplan.backend;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.MapSerializer;
-import it.vaxplan.backend.service.BookingService;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -171,26 +170,13 @@ public class VaccineCampaign {
      * @param booking Booking to add
      */
     public void addBooking(Booking booking) {
+
+        if (listOfBookings == null) {
+            this.listOfBookings = new ArrayList<>();
+        }
+
         listOfBookings.add(booking);
         bookTimeSlot(booking.getDate(), booking.getTime(), booking.getLocation());
-    }
-
-    /**
-     * Remove a Booking from the list of associated bookings.
-     * @param booking Booking to remove
-     */
-    public void removeBooking(Booking booking) {
-        listOfBookings.remove(booking);
-        slotsPerSite.remove(booking.getLocation());
-        bookedSlots.remove(booking.getLocation());
-    }
-
-    /**
-     * Add a Collection of Booking to the list of associated bookings.
-     * @param bookingsToAdd Bookings to add
-     */
-    public void addBookings(Collection<Booking> bookingsToAdd) {
-        listOfBookings.addAll(bookingsToAdd);W
     }
 
 
@@ -214,13 +200,43 @@ public class VaccineCampaign {
 
     /**
      * Book a vaccination time slot
-     * @param date
-     * @param time
-     * @param site
+     * @param date Date of vaccination
+     * @param time Time slot of vaccination
+     * @param site Physical vaccination site
      */
     public void bookTimeSlot(LocalDate date, LocalTime time, VaccineSite site) {
         var dateTime = LocalDateTime.of(date, time);
         slotsPerSite.get(site).replace(dateTime, false);
+
+        if (bookedSlots == null) {
+            this.bookedSlots = new HashMap<>();
+        }
+
+        bookedSlots.put(site, dateTime);
+    }
+
+    /**
+     * Book a vaccination time slot.
+     * @param dateTime DateTime of vaccination
+     * @param site Physical vaccination site
+     */
+    public void bookTimeSlot(LocalDateTime dateTime, VaccineSite site) {
+        slotsPerSite.get(site).replace(dateTime, false);
+
+        if (bookedSlots == null) {
+            this.bookedSlots = new HashMap<>();
+        }
+
+        bookedSlots.put(site, dateTime);
+    }
+
+    public void bookTimeSlot(LocalDate date, LocalDateTime dateTime, VaccineSite site) {
+        slotsPerSite.get(site).replace(dateTime, false);
+
+        if (bookedSlots == null) {
+            this.bookedSlots = new HashMap<>();
+        }
+
         bookedSlots.put(site, dateTime);
     }
 

@@ -5,9 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Data
@@ -20,12 +19,21 @@ public class Booking {
 
     private Patient patient;
 
-    private UUID vaccineCampaignUUID;
+    private UUID campaignUUID;
 
     private LocalDate date;
 
-    private LocalTime time;
+    private LocalDateTime time;
 
     private VaccineSite location;
+
+    @Override
+    public String toString() {
+        return "Patient: " + patient.getFirstName() + " " + patient.getLastName() + "\n" +
+                "Campaign: " + campaignUUID + "\n" +
+                "Date: " + date + "\n" +
+                "TIme: " + time + "\n" +
+                "Site: " + location + "\n";
+    }
 
 }

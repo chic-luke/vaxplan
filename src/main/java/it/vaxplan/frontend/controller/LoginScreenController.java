@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.utils.IDChecker;
 import it.vaxplan.frontend.App;
-import it.vaxplan.frontend.CitizenBookingFields;
+import it.vaxplan.frontend.BookingData;
 import it.vaxplan.frontend.RegistrationData;
 import it.vaxplan.frontend.RegistrationFields;
 import javafx.fxml.FXML;
@@ -49,7 +49,7 @@ public class LoginScreenController implements Initializable {
 
     private void loginSuccess() throws IOException {
         var citizen = IDChecker.getCitizen(idField.getText());
-        CitizenBookingFields.setCurrentPatient(citizen);
+        BookingData.setPatient(citizen);
 
         App.setRoot("selectCampaignScreen");
     }

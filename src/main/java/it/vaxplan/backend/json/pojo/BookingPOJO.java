@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class BookingPOJO {
@@ -18,7 +18,7 @@ public class BookingPOJO {
 
     @Getter
     @Setter
-    private UUID vaccineCampaignUUID;
+    private UUID campaignUUID;
 
     @Getter
     @Setter
@@ -26,7 +26,7 @@ public class BookingPOJO {
 
     @Getter
     @Setter
-    private LocalTime time;
+    private LocalDateTime time;
 
     @Getter
     @Setter

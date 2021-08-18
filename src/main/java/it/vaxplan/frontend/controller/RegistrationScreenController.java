@@ -6,7 +6,7 @@ import it.vaxplan.backend.exceptions.InvalidFiscalCodeException;
 import it.vaxplan.backend.json.Sync;
 import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
-import it.vaxplan.frontend.CitizenBookingFields;
+import it.vaxplan.frontend.BookingData;
 import it.vaxplan.frontend.RegistrationData;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -158,7 +158,7 @@ public class RegistrationScreenController implements Initializable {
             Sync.writePatientServiceToJson();
 
             // Save the current patient in the designated singleton for next view
-            CitizenBookingFields.setCurrentPatient(patient);
+            BookingData.setPatient(patient);
             RegistrationData.registeredPatient = patient;
 
             // Go to registration confirmation screen
