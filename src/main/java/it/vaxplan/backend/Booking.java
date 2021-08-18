@@ -1,38 +1,39 @@
 package it.vaxplan.backend;
 
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Data
+@Builder
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class Booking {
 
-    String site, date, booking;
-    User user;
-    ArrayList<Booking> bookings = new ArrayList<>();
+    private final UUID uuid = UUID.randomUUID();
 
-    public Booking(String site, String date, String booking, User user)
-    {
-        this.site = site;
-        this.date = date;
-        this.booking = booking;
-        this.user = user;
+    private Patient patient;
+
+    private UUID campaignUUID;
+
+    private LocalDate date;
+
+    private LocalDateTime time;
+
+    private VaccineSite location;
+
+    @Override
+    public String toString() {
+        return "Patient: " + patient.getFirstName() + " " + patient.getLastName() + "\n" +
+                "Campaign: " + campaignUUID + "\n" +
+                "Date: " + date + "\n" +
+                "TIme: " + time + "\n" +
+                "Site: " + location + "\n";
     }
 
-    public String getSite()
-    {
-        return site;
-    }
-
-    public String getDate()
-    {
-        return date;
-    }
-
-    public String getBooking()
-    {
-        return booking;
-    }
-
-    public void addBooking(Booking booking)
-    {
-        bookings.add(booking);
-    }
 }

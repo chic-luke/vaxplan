@@ -1,29 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.vaxplan.frontend.LoginScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.vaxplan.frontend.controller.LoginScreenController">
    <children>
-      <Label layoutX="155.0" layoutY="30.0" text="Campagna Vaccinale ASL">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font>
-      </Label>
-      <Label layoutX="46.0" layoutY="79.0" prefHeight="16.0" prefWidth="507.0" text="Effettui il login inserendo il suo Codice Fiscale:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="idField" layoutX="177.0" layoutY="120.0" prefHeight="24.0" prefWidth="374.0" />
-      <Label layoutX="46.0" layoutY="124.0" text="Codice Fiscale:">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Button fx:id="loginButton" layoutX="277.0" layoutY="188.0" mnemonicParsing="false" onAction="#checkLogin" text="Invia" />
+      <VBox layoutX="-3.0" layoutY="-3.0" prefHeight="406.0" prefWidth="609.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="Benvenutə">
+                     <font>
+                        <Font name="System Bold" size="36.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label text="Effettui il login inserendo il suo Codice Fiscale:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Codice Fiscale:">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="30.0" left="20.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="idField" prefHeight="24.0" prefWidth="374.0" promptText="Codice fiscale" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#checkLogin" text="Login">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin></Button>
+                  <Button fx:id="registrationButton" layoutX="289.0" layoutY="10.0" mnemonicParsing="false" onAction="#registrationButtonAction" text="Registrati">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </Pane>
