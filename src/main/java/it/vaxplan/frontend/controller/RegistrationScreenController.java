@@ -8,6 +8,7 @@ import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.BookingData;
 import it.vaxplan.frontend.RegistrationData;
+import it.vaxplan.frontend.RegistrationFields;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -71,6 +72,9 @@ public class RegistrationScreenController implements Initializable {
 
         // Initialize Sex ComboBox
         sexComboBox.getItems().addAll(Sex.values());
+
+        // Initialize registration fields
+        RegistrationData.fields = new RegistrationFields();
     }
 
     /**

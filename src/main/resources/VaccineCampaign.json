@@ -10,7 +10,32 @@
     "name" : "Ambulatorio"
   } ],
   "patientCategories" : [ "AGE_OVER_80", "AT_HIGH_RISK" ],
-  "listOfBookings" : null,
+  "listOfBookings" : [ {
+    "uuid" : "abd2a496-9e17-488a-b03e-b64b5b88097b",
+    "patient" : {
+      "firstName" : "Elena",
+      "lastName" : "Rossi",
+      "fiscalCode" : "RSSLNE99A66F205S",
+      "birthPlace" : "Milano",
+      "birthDay" : [ 1999, 1, 26 ],
+      "sex" : "FEMALE",
+      "uuid" : "a0d93105-8cd6-4611-9495-c9710e162e41",
+      "atHighRisk" : true,
+      "healthCareWorker" : false,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : true,
+      "cohabiting" : false,
+      "intAge" : 22,
+      "adult" : true
+    },
+    "campaignUUID" : "a358ebb3-f40a-405d-8e3c-4d0bb201e6e7",
+    "date" : [ 2021, 2, 6 ],
+    "time" : [ 2021, 2, 6, 9, 10 ],
+    "location" : {
+      "name" : "Ambulatorio"
+    }
+  } ],
   "bookedSlots" : {
     "Ambulatorio" : [ 2021, 2, 6, 9, 10 ]
   }

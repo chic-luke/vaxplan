@@ -37,7 +37,7 @@ public class IDChecker {
     }
 
     public static boolean isRegistered(String fiscalCode) throws JsonProcessingException {
-        return JsonUtils.lookUp("RegisteredUsers", "fiscalCode", fiscalCode);
+        return JsonUtils.lookUp("Patient", "fiscalCode", fiscalCode);
     }
 
     public static boolean isRegisterDataCorrect(Patient patient) throws JsonProcessingException {

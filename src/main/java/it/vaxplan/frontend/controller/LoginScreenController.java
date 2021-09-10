@@ -41,7 +41,7 @@ public class LoginScreenController implements Initializable {
 
         if (inputString.equals("admin"))
             App.setRoot("adminscreen");
-        else if (IDChecker.isInDemographic(inputString))
+        else if (IDChecker.isRegistered(inputString))
             loginSuccess();
         else
             App.setRoot("registrationScreen");
