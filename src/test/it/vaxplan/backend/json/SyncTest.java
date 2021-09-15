@@ -48,7 +48,7 @@ class SyncTest {
     @Test
     void initVaccineCampaignServiceSuccess() throws JsonProcessingException {
         Sync.initVaccineCampaignServiceFromJson();
-        assertFalse(VaccineCampaignService.isEmpty());
+        assertFalse(VaccineCampaignService.getCampaigns().isEmpty());
     }
 
     @Test

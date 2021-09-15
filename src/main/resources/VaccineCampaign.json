@@ -52,7 +52,21 @@
   }, {
     "name" : "Brescia Fiera"
   } ],
-  "patientCategories" : [ "AGE_70_79", "AGE_60_69" ],
+  "patientCategories" : [ "AGE_60_69", "AGE_70_79" ],
   "listOfBookings" : null,
   "bookedSlots" : null
+}, {
+  "name" : "Sburrata",
+  "vaccine" : "SARS",
+  "availableDoses" : 420,
+  "startDate" : [ 2024, 1, 1 ],
+  "endDate" : [ 2027, 2, 12 ],
+  "dailyStartTime" : [ 2, 1 ],
+  "dailyEndTime" : [ 6, 1 ],
+  "availableSites" : [ {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "CARETAKER" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
 } ]

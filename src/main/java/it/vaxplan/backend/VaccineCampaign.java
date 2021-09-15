@@ -99,14 +99,6 @@ public class VaccineCampaign {
         initializeTimeSlices();
     }
 
-    /**
-     * Check if patient is eligible for the vaccine campaign.
-     * @param patient patient to check for eligibility
-     * @return truth value
-     */
-    public boolean isPatientElegible(Patient patient) {
-        return vaccine.isPatientElegible(patient);
-    }
 
     /**
      * Add an arbitrary number of doses to this campaign.
@@ -121,27 +113,27 @@ public class VaccineCampaign {
      * Add a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to add to this campaign
      */
-    public void addVaccinationSite(VaccineSite site) {
-        availableSites.add(site);
-        var map = new HashMap<LocalDateTime, Boolean>();
-        slotsPerSite.put(site, map);
-
-        // Add a time slice every 10 minutes for the whole amount of hours where the vaccination is possible
-        for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
-            for (LocalTime time = dailyStartTime; time.isAfter(dailyEndTime); time = time.plusMinutes(10)) {
-                slotsPerSite.get(site).put(LocalDateTime.of(date, time), true);
-            }
-        }
-    }
+//    public void addVaccinationSite(VaccineSite site) {
+//        availableSites.add(site);
+//        var map = new HashMap<LocalDateTime, Boolean>();
+//        slotsPerSite.put(site, map);
+//
+//        // Add a time slice every 10 minutes for the whole amount of hours where the vaccination is possible
+//        for (LocalDate date = startDate; date.isBefore(endDate); date = date.plusDays(1)) {
+//            for (LocalTime time = dailyStartTime; time.isAfter(dailyEndTime); time = time.plusMinutes(10)) {
+//                slotsPerSite.get(site).put(LocalDateTime.of(date, time), true);
+//            }
+//        }
+//    }
 
     /**
      * Remove a site to the list of vaccination sites where this vaccine campaign is available.
      * @param site vaccination site to remove from this campaign
      */
-    public void removeVaccinationSite(VaccineSite site) {
-        availableSites.remove(site);
-        slotsPerSite.remove(site);
-    }
+//    public void removeVaccinationSite(VaccineSite site) {
+//        availableSites.remove(site);
+//        slotsPerSite.remove(site);
+//    }
 
     /**
      * Add a Collection of sites to the list of vaccination sites

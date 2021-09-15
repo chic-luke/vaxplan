@@ -2,15 +2,16 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import it.vaxplan.backend.Booking;
 import it.vaxplan.backend.Patient;
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.VaccineSite;
-import it.vaxplan.backend.json.pojo.BookingPOJO;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
 import it.vaxplan.backend.json.pojo.VaccineSitePOJO;
-import it.vaxplan.backend.service.*;
+import it.vaxplan.backend.service.CitizenService;
+import it.vaxplan.backend.service.PatientService;
+import it.vaxplan.backend.service.VaccineCampaignService;
+import it.vaxplan.backend.service.VaccineSiteService;
 
 import java.io.IOException;
 

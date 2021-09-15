@@ -41,8 +41,8 @@ public class VaccineCampaignService {
      * Return true if there are no currently running campaigns
      * @return truth value
      */
-    public static boolean isEmpty() {
-        return campaigns.isEmpty();
-    }
+//    public static boolean isEmpty() {
+//        return campaigns.isEmpty();
+//    }
 
 }

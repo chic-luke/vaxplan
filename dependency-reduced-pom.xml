@@ -28,7 +28,7 @@
           <execution>
             <id>default-cli</id>
             <configuration>
-              <mainClass>it.vaxplan.frontend.LoginScreen</mainClass>
+              <mainClass>it.vaxplan.frontend.App</mainClass>
             </configuration>
           </execution>
         </executions>
@@ -45,7 +45,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>it.vaxplan.frontend.LoginScreen</mainClass>
+                  <mainClass>it.vaxplan.frontend.App</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -60,6 +60,32 @@
       <artifactId>lombok</artifactId>
       <version>1.18.20</version>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>7.0.1.Final</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <artifactId>junit-jupiter-api</artifactId>
+          <groupId>org.junit.jupiter</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>junit-jupiter-params</artifactId>
+          <groupId>org.junit.jupiter</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>junit-jupiter-engine</artifactId>
+          <groupId>org.junit.jupiter</groupId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
   <properties>

@@ -1,7 +1,6 @@
 package it.vaxplan.backend.json.pojo;
 
 import it.vaxplan.backend.Patient;
-import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.VaccineSite;
 import lombok.Getter;
 import lombok.Setter;
