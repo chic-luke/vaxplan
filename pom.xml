@@ -4,6 +4,7 @@
     <groupId>it.vaxplan</groupId>
     <artifactId>vaxplan</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -113,7 +114,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>it.vaxplan.frontend.App</mainClass>
+                                    <mainClass>it.vaxplan.frontend.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

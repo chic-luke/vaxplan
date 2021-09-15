@@ -37,6 +37,9 @@ public class LoginScreenController implements Initializable {
      */
     @FXML
     private void checkLogin() throws IOException {
+        // Sync patient database (registered users)
+        Sync.initPatientServiceFromJson();
+
         String inputString = idField.getText();
 
         if (inputString.equals("admin"))

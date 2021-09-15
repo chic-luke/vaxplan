@@ -1,8 +1,12 @@
 package it.vaxplan.backend.json;
 
+import lombok.SneakyThrows;
+
 import java.io.*;
 
 public class JsonIOHandler {
+
+    private static final String BASE_DIR = "data/";
 
     /**
      * Read a JSON file placed in the resources folder and return its contents
@@ -10,17 +14,18 @@ public class JsonIOHandler {
      * @param filename Name of the JSON file to parse (without extension)
      * @return Contents of filename as String
      */
+    @SneakyThrows
     public String jsonToString(String filename) {
         var out = new StringBuilder();
-
-        // Get JSON file as InputStream from resources folder
-        var inputStream = this.getClass().getClassLoader()
-                .getResourceAsStream(filename + ".json");
+        var path = JsonIOHandler.BASE_DIR + filename + ".json";
 
         // Make sure JSON InputStream is not null
-        if (inputStream == null) {
-            throw new IllegalArgumentException("File not found! " + filename + ".json");
+        if (!new File(path).exists()) {
+            throw new IllegalArgumentException("File not found! " + path);
         }
+
+        // Get JSON file as InputStream from resources folder
+        var inputStream = new FileInputStream(path);
 
         // Copy JSON InputStream to a String
         var line = "";
@@ -40,16 +45,15 @@ public class JsonIOHandler {
     }
 
     public void writeJsonToFile(String json, String filename) throws IOException {
-        String filePath = "src/main/resources/" + filename + ".json";
-        var file = new File("src/main/resources/" + filename + ".json");
+        var path = JsonIOHandler.BASE_DIR + filename + ".json";
+        var file = new File(path);
 
         if (file.exists()) {
             // Overwrite the existing file
             System.out.println("File exists!");
-            new FileOutputStream(filePath).close();
-            FileOutputStream fos = new FileOutputStream(file, false);
-            fos.write(json.getBytes());
-            fos.close();
+            try (FileOutputStream fos = new FileOutputStream(path, false)) {
+                fos.write(json.getBytes());
+            }
         }
 
         // Create a new file
@@ -60,9 +64,9 @@ public class JsonIOHandler {
         }
 
         // Write content of json to file
-        var writer = new FileWriter(file);
-        writer.write(json);
-        writer.close();
+        try (var writer = new FileWriter(file)) {
+            writer.write(json);
+        }
 
     }
 

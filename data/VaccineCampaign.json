@@ -69,4 +69,50 @@
   "patientCategories" : [ "CARETAKER" ],
   "listOfBookings" : null,
   "bookedSlots" : { }
+}, {
+  "name" : "comp",
+  "vaccine" : "MEASLES",
+  "availableDoses" : 71,
+  "startDate" : [ 2023, 11, 3 ],
+  "endDate" : [ 2025, 10, 11 ],
+  "dailyStartTime" : [ 6, 1 ],
+  "dailyEndTime" : [ 8, 2 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  }, {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "AGE_OVER_80", "AT_HIGH_RISK", "COHABITING", "ADULT", "CARETAKER", "AGE_60_69", "EVERYONE", "HEALTH_WORKER", "AGE_70_79" ],
+  "listOfBookings" : [ {
+    "uuid" : "ef3f869a-3453-467b-b22f-dfcc8e3dc2f7",
+    "patient" : {
+      "firstName" : "Armando",
+      "lastName" : "Bianchi",
+      "fiscalCode" : "BNCRND00B10F205G",
+      "birthPlace" : "Brescia",
+      "birthDay" : [ 2000, 2, 10 ],
+      "sex" : "MALE",
+      "uuid" : "a0ef6cbe-7eab-4e60-acde-664d03ca2aa9",
+      "atHighRisk" : false,
+      "healthCareWorker" : true,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : false,
+      "cohabiting" : false,
+      "intAge" : 21,
+      "adult" : true
+    },
+    "campaignUUID" : "65d42adb-d160-4f1e-8832-0c556c20b313",
+    "date" : [ 2023, 11, 7 ],
+    "time" : [ 2023, 11, 7, 6, 41 ],
+    "location" : {
+      "name" : "Brescia Ospedale Civile"
+    }
+  } ],
+  "bookedSlots" : {
+    "Brescia Ospedale Civile" : [ 2023, 11, 7, 6, 41 ],
+    "Brescia Fiera" : [ 2025, 10, 10, 8, 1 ]
+  }
 } ]

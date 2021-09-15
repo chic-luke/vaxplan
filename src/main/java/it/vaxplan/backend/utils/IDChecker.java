@@ -33,7 +33,7 @@ public class IDChecker {
      * @throws JsonProcessingException If JSON processing fails
      */
     public static boolean isInDemographic(String fiscalCode) throws JsonProcessingException {
-        return JsonUtils.lookUp("User", "fiscalCode", fiscalCode);
+        return JsonUtils.lookUp("Citizens", "fiscalCode", fiscalCode);
     }
 
     public static boolean isRegistered(String fiscalCode) throws JsonProcessingException {

@@ -1,0 +1,118 @@
+[ {
+  "name" : "Test Case Campaign",
+  "vaccine" : "COVID",
+  "availableDoses" : 400,
+  "startDate" : [ 2021, 2, 3 ],
+  "endDate" : [ 2021, 4, 10 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ],
+  "availableSites" : [ {
+    "name" : "Ambulatorio"
+  } ],
+  "patientCategories" : [ "AGE_OVER_80", "AT_HIGH_RISK" ],
+  "listOfBookings" : [ {
+    "uuid" : "abd2a496-9e17-488a-b03e-b64b5b88097b",
+    "patient" : {
+      "firstName" : "Elena",
+      "lastName" : "Rossi",
+      "fiscalCode" : "RSSLNE99A66F205S",
+      "birthPlace" : "Milano",
+      "birthDay" : [ 1999, 1, 26 ],
+      "sex" : "FEMALE",
+      "uuid" : "a0d93105-8cd6-4611-9495-c9710e162e41",
+      "atHighRisk" : true,
+      "healthCareWorker" : false,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : true,
+      "cohabiting" : false,
+      "intAge" : 22,
+      "adult" : true
+    },
+    "campaignUUID" : "a358ebb3-f40a-405d-8e3c-4d0bb201e6e7",
+    "date" : [ 2021, 2, 6 ],
+    "time" : [ 2021, 2, 6, 9, 10 ],
+    "location" : {
+      "name" : "Ambulatorio"
+    }
+  } ],
+  "bookedSlots" : {
+    "Ambulatorio" : [ 2021, 2, 6, 9, 10 ]
+  }
+}, {
+  "name" : "Scriviti",
+  "vaccine" : "COVID",
+  "availableDoses" : 100,
+  "startDate" : [ 2021, 4, 3 ],
+  "endDate" : [ 2022, 5, 4 ],
+  "dailyStartTime" : [ 2, 6 ],
+  "dailyEndTime" : [ 18, 6 ],
+  "availableSites" : [ {
+    "name" : "Brescia Ospedale Civile"
+  }, {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "AGE_60_69", "AGE_70_79" ],
+  "listOfBookings" : null,
+  "bookedSlots" : null
+}, {
+  "name" : "Sburrata",
+  "vaccine" : "SARS",
+  "availableDoses" : 420,
+  "startDate" : [ 2024, 1, 1 ],
+  "endDate" : [ 2027, 2, 12 ],
+  "dailyStartTime" : [ 2, 1 ],
+  "dailyEndTime" : [ 6, 1 ],
+  "availableSites" : [ {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "CARETAKER" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+}, {
+  "name" : "comp",
+  "vaccine" : "MEASLES",
+  "availableDoses" : 71,
+  "startDate" : [ 2023, 11, 3 ],
+  "endDate" : [ 2025, 10, 11 ],
+  "dailyStartTime" : [ 6, 1 ],
+  "dailyEndTime" : [ 8, 2 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  }, {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "AGE_OVER_80", "HEALTH_WORKER", "CARETAKER", "AT_HIGH_RISK", "ADULT", "EVERYONE", "AGE_60_69", "COHABITING", "AGE_70_79" ],
+  "listOfBookings" : [ {
+    "uuid" : "ef560a24-f8d1-4b23-b466-5e0db370be9b",
+    "patient" : {
+      "firstName" : "Armando",
+      "lastName" : "Bianchi",
+      "fiscalCode" : "BNCRND00B10F205G",
+      "birthPlace" : "Brescia",
+      "birthDay" : [ 2000, 2, 10 ],
+      "sex" : "MALE",
+      "uuid" : "96878968-4ae4-455f-9052-bd1eec8d2174",
+      "atHighRisk" : false,
+      "healthCareWorker" : true,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : false,
+      "cohabiting" : false,
+      "intAge" : 21,
+      "adult" : true
+    },
+    "campaignUUID" : "2b54339f-922f-4931-9ffa-a273fbf5f338",
+    "date" : [ 2023, 11, 7 ],
+    "time" : [ 2023, 11, 7, 6, 41 ],
+    "location" : {
+      "name" : "Brescia Ospedale Civile"
+    }
+  } ],
+  "bookedSlots" : {
+    "Brescia Ospedale Civile" : [ 2023, 11, 7, 6, 41 ],
+    "Brescia Fiera" : [ 2025, 10, 10, 8, 1 ]
+  }
+} ]
