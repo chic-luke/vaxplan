@@ -9,7 +9,7 @@
   "availableSites" : [ {
     "name" : "Ambulatorio"
   } ],
-  "patientCategories" : [ "AGE_OVER_80", "AT_HIGH_RISK" ],
+  "patientCategories" : [ "AT_HIGH_RISK", "AGE_OVER_80" ],
   "listOfBookings" : [ {
     "uuid" : "abd2a496-9e17-488a-b03e-b64b5b88097b",
     "patient" : {
@@ -52,7 +52,7 @@
   }, {
     "name" : "Brescia Fiera"
   } ],
-  "patientCategories" : [ "AGE_60_69", "AGE_70_79" ],
+  "patientCategories" : [ "AGE_70_79", "AGE_60_69" ],
   "listOfBookings" : null,
   "bookedSlots" : null
 }, {
@@ -84,7 +84,7 @@
   }, {
     "name" : "Brescia Fiera"
   } ],
-  "patientCategories" : [ "AGE_OVER_80", "AT_HIGH_RISK", "COHABITING", "ADULT", "CARETAKER", "AGE_60_69", "EVERYONE", "HEALTH_WORKER", "AGE_70_79" ],
+  "patientCategories" : [ "AGE_70_79", "COHABITING", "AGE_60_69", "HEALTH_WORKER", "ADULT", "CARETAKER", "AT_HIGH_RISK", "EVERYONE", "AGE_OVER_80" ],
   "listOfBookings" : [ {
     "uuid" : "ef3f869a-3453-467b-b22f-dfcc8e3dc2f7",
     "patient" : {
@@ -115,4 +115,20 @@
     "Brescia Ospedale Civile" : [ 2023, 11, 7, 6, 41 ],
     "Brescia Fiera" : [ 2025, 10, 10, 8, 1 ]
   }
+}, {
+  "name" : "Eskere",
+  "vaccine" : "SARS",
+  "availableDoses" : 100,
+  "startDate" : [ 2021, 2, 2 ],
+  "endDate" : [ 2022, 5, 2 ],
+  "dailyStartTime" : [ 2, 4 ],
+  "dailyEndTime" : [ 5, 4 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  } ],
+  "patientCategories" : [ "ADULT", "AGE_OVER_80" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
 } ]
