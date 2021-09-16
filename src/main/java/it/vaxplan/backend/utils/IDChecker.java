@@ -49,6 +49,7 @@ public class IDChecker {
 
         return patient.getFirstName().equals(citizen.getFirstName()) &&
                 patient.getLastName().equals(citizen.getLastName()) &&
+                patient.getHealthCardNumber().equals(citizen.getHealthCardNumber()) &&
                 patient.getBirthPlace().equals(citizen.getBirthPlace()) &&
                 patient.getBirthDay().equals(citizen.getBirthDay()) &&
                 patient.getSex().equals(citizen.getSex());

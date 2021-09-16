@@ -56,7 +56,7 @@ public class PatientFromJson {
         var pojo = Json.fromJson(node, PatientPOJO.class);
 
         return new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
+                pojo.getHealthCardNumber(), pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
                 pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(), pojo.isCohabiting());
     }
 

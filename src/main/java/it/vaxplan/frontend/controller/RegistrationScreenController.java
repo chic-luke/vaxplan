@@ -44,6 +44,8 @@ public class RegistrationScreenController implements Initializable {
     @FXML
     public TextField fiscalCode;
     @FXML
+    public TextField healthCardNumberTextField;
+    @FXML
     public ComboBox<Sex> sexComboBox;
 
     // Back and confirm buttons
@@ -99,6 +101,10 @@ public class RegistrationScreenController implements Initializable {
             RegistrationData.fields.setLastName(surnameTextField.getText());
         }
 
+        if (!healthCardNumberTextField.getText().equals("")) {
+            RegistrationData.fields.setHealthCardNumber(healthCardNumberTextField.getText());
+        }
+
         if (birthDay.getValue() != null && birthMonth.getValue() != null && birthYear.getValue() != null) {
             RegistrationData.fields.setBirthDay(
                     LocalDate.of(birthYear.getValue(), birthMonth.getValue(), birthDay.getValue()));
@@ -135,6 +141,7 @@ public class RegistrationScreenController implements Initializable {
                 .firstName(RegistrationData.fields.getFirstName())
                 .lastName(RegistrationData.fields.getLastName())
                 .fiscalCode(RegistrationData.fields.getFiscalCode())
+                .healthCardNumber(RegistrationData.fields.getHealthCardNumber())
                 .birthPlace(RegistrationData.fields.getBirthPlace())
                 .birthDay(RegistrationData.fields.getBirthDay())
                 .sex(RegistrationData.fields.getSex())

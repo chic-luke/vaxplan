@@ -29,6 +29,9 @@ public class Patient {
     private String fiscalCode;
 
     @NotBlank
+    private String healthCardNumber;
+
+    @NotBlank
     private String birthPlace;
 
     @PastOrPresent

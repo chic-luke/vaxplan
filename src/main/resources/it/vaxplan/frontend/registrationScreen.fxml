@@ -21,7 +21,7 @@
                   <Region prefHeight="129.0" prefWidth="195.0" />
                   <Label alignment="CENTER" centerShape="false" contentDisplay="CENTER" prefHeight="124.0" prefWidth="231.0" text="Registrazione">
                      <HBox.margin>
-                        <Insets bottom="40.0" top="40.0" />
+                        <Insets bottom="30.0" top="30.0" />
                      </HBox.margin>
                      <font>
                         <Font size="31.0" />
@@ -124,6 +124,23 @@
                      </HBox.margin></TextField>
                </children>
             </HBox>
+            <HBox layoutX="10.0" layoutY="256.0" prefHeight="43.0" prefWidth="607.0">
+               <children>
+                  <Label text="Tessera sanitaria: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="healthCardNumberTextField" prefHeight="24.0" prefWidth="255.0">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
             <HBox layoutX="10.0" layoutY="276.0" prefHeight="43.0" prefWidth="607.0">
                <children>
                   <Label text="Sesso:">
@@ -146,7 +163,7 @@
       <ToolBar layoutY="360.0" prefHeight="40.0" prefWidth="629.0" AnchorPane.bottomAnchor="0.0">
          <items>
             <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonAction" prefHeight="24.0" prefWidth="84.0" text="Indietro" />
-            <Region prefHeight="29.0" prefWidth="431.0" />
+            <Region prefHeight="29.0" prefWidth="409.0" />
             <Button fx:id="nextButton" mnemonicParsing="false" onAction="#confirmButtonAction" prefHeight="24.0" prefWidth="88.0" text="Conferma" />
          </items>
       </ToolBar>
