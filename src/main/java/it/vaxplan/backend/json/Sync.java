@@ -2,15 +2,16 @@ package it.vaxplan.backend.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import it.vaxplan.backend.Booking;
 import it.vaxplan.backend.Patient;
 import it.vaxplan.backend.VaccineCampaign;
 import it.vaxplan.backend.VaccineSite;
-import it.vaxplan.backend.json.pojo.BookingPOJO;
 import it.vaxplan.backend.json.pojo.PatientPOJO;
 import it.vaxplan.backend.json.pojo.VaccineCampaignPOJO;
 import it.vaxplan.backend.json.pojo.VaccineSitePOJO;
-import it.vaxplan.backend.service.*;
+import it.vaxplan.backend.service.CitizenService;
+import it.vaxplan.backend.service.PatientService;
+import it.vaxplan.backend.service.VaccineCampaignService;
+import it.vaxplan.backend.service.VaccineSiteService;
 
 import java.io.IOException;
 
@@ -104,6 +105,7 @@ public class Sync {
             pojo.setFirstName(p.getFirstName());
             pojo.setLastName(p.getLastName());
             pojo.setFiscalCode(p.getFiscalCode());
+            pojo.setHealthCardNumber(p.getHealthCardNumber());
             pojo.setBirthPlace(p.getBirthPlace());
             pojo.setBirthDay(p.getBirthDay());
             pojo.setSex(p.getSex());
@@ -143,7 +145,7 @@ public class Sync {
             var pojo = Json.fromJson(patient, PatientPOJO.class);
 
             var newPatient = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
+                    pojo.getHealthCardNumber(), pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
                     pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
                     pojo.isCohabiting());
 
@@ -188,13 +190,13 @@ public class Sync {
         CitizenService.getCitizens().clear();
 
         for (var bookingIt = node.elements(); bookingIt.hasNext();) {
-            var booking = bookingIt.next();
+            var citizen = bookingIt.next();
 
-            var pojo = Json.fromJson(booking, PatientPOJO.class);
+            var pojo = Json.fromJson(citizen, PatientPOJO.class);
 
             var newCitizen = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
-                    pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
+                    pojo.getHealthCardNumber(), pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(),
+                    pojo.isHealthCareWorker(), pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
                     pojo.isCohabiting());
 
             CitizenService.addCitizen(newCitizen);

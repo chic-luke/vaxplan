@@ -8,6 +8,7 @@ import it.vaxplan.backend.service.PatientService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.BookingData;
 import it.vaxplan.frontend.RegistrationData;
+import it.vaxplan.frontend.RegistrationFields;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -43,6 +44,8 @@ public class RegistrationScreenController implements Initializable {
     @FXML
     public TextField fiscalCode;
     @FXML
+    public TextField healthCardNumberTextField;
+    @FXML
     public ComboBox<Sex> sexComboBox;
 
     // Back and confirm buttons
@@ -71,6 +74,9 @@ public class RegistrationScreenController implements Initializable {
 
         // Initialize Sex ComboBox
         sexComboBox.getItems().addAll(Sex.values());
+
+        // Initialize registration fields
+        RegistrationData.fields = new RegistrationFields();
     }
 
     /**
@@ -93,6 +99,10 @@ public class RegistrationScreenController implements Initializable {
 
         if (!surnameTextField.getText().equals("")) {
             RegistrationData.fields.setLastName(surnameTextField.getText());
+        }
+
+        if (!healthCardNumberTextField.getText().equals("")) {
+            RegistrationData.fields.setHealthCardNumber(healthCardNumberTextField.getText());
         }
 
         if (birthDay.getValue() != null && birthMonth.getValue() != null && birthYear.getValue() != null) {
@@ -131,6 +141,7 @@ public class RegistrationScreenController implements Initializable {
                 .firstName(RegistrationData.fields.getFirstName())
                 .lastName(RegistrationData.fields.getLastName())
                 .fiscalCode(RegistrationData.fields.getFiscalCode())
+                .healthCardNumber(RegistrationData.fields.getHealthCardNumber())
                 .birthPlace(RegistrationData.fields.getBirthPlace())
                 .birthDay(RegistrationData.fields.getBirthDay())
                 .sex(RegistrationData.fields.getSex())

@@ -37,11 +37,14 @@ public class LoginScreenController implements Initializable {
      */
     @FXML
     private void checkLogin() throws IOException {
+        // Sync patient database (registered users)
+        Sync.initPatientServiceFromJson();
+
         String inputString = idField.getText();
 
         if (inputString.equals("admin"))
             App.setRoot("adminscreen");
-        else if (IDChecker.isInDemographic(inputString))
+        else if (IDChecker.isRegistered(inputString))
             loginSuccess();
         else
             App.setRoot("registrationScreen");

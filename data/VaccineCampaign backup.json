@@ -1,0 +1,63 @@
+[ {
+  "name" : "Anti-polio",
+  "vaccine" : "POLIO",
+  "availableDoses" : 10000,
+  "startDate" : [ 2021, 10, 1 ],
+  "endDate" : [ 2022, 10, 1 ],
+  "dailyStartTime" : [ 9, 0 ],
+  "dailyEndTime" : [ 19, 30 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  } ],
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+}, {
+  "name" : "COVID-19 con categorie",
+  "vaccine" : "COVID",
+  "availableDoses" : 50000,
+  "startDate" : [ 2021, 9, 26 ],
+  "endDate" : [ 2021, 11, 29 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ],
+  "availableSites" : [ {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "AT_HIGH_RISK", "COHABITING", "AGE_70_79", "AGE_OVER_80", "SCHOOL_WORKER", "HEALTH_WORKER", "LAW_ENFORCEMENT_WORKER", "CARETAKER", "AGE_60_69" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+}, {
+  "name" : "COVID-19 per tutti",
+  "vaccine" : "COVID",
+  "availableDoses" : 100000,
+  "startDate" : [ 2021, 11, 30 ],
+  "endDate" : [ 2022, 6, 10 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 19, 30 ],
+  "availableSites" : [ {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+}, {
+  "name" : "Anti-Meningococca B",
+  "vaccine" : "MENINGOCOCCAL_B",
+  "availableDoses" : 7500,
+  "startDate" : [ 2022, 1, 1 ],
+  "endDate" : [ 2023, 2, 3 ],
+  "dailyStartTime" : [ 11, 30 ],
+  "dailyEndTime" : [ 18, 0 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  }, {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+} ]

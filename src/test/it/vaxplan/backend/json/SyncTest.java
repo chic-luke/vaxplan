@@ -48,7 +48,7 @@ class SyncTest {
     @Test
     void initVaccineCampaignServiceSuccess() throws JsonProcessingException {
         Sync.initVaccineCampaignServiceFromJson();
-        assertFalse(VaccineCampaignService.isEmpty());
+        assertFalse(VaccineCampaignService.getCampaigns().isEmpty());
     }
 
     @Test
@@ -138,43 +138,6 @@ class SyncTest {
         Sync.writeVaccineCampaignServiceToJson();
     }
 
-    @Test
-    void addBookingToCampaignAndSyncSuccess() throws IOException {
-        initVaccineCampaignServiceSuccess();
-
-        var p1 = Patient.builder()
-                .firstName("Mario")
-                .lastName("Rossi")
-                .birthDay(LocalDate.of(2000, 1, 1))
-                .fiscalCode("RSSMRA00A01F205F")
-                .sex(Sex.MALE)
-                .birthPlace("Milano")
-                .healthCareWorker(true)
-                .caretaker(false)
-                .lawEnforcementWorker(false)
-                .cohabiting(false)
-                .schoolWorker(false)
-                .build();
-
-        var b1 = Booking.builder()
-                .patient(p1)
-                .date(LocalDate.of(2021, 9, 1))
-                .time(LocalDateTime.of(LocalDate.of(2021, 9, 1), LocalTime.of(11, 30)))
-                .build();
-
-        for (VaccineCampaign c: VaccineCampaignService.getCampaigns()) {
-            if (c.getName().equals("Cosa")) {
-                var booking = Booking.builder()
-                        .patient(p1)
-                        .date(LocalDate.now())
-                        .campaignUUID(c.getUuid())
-                        .build();
-                BookingService.addBooking(booking);
-            }
-        }
-
-        Sync.writeVaccineCampaignServiceToJson();
-    }
 
     @Test
     void simplerBookingImplementation() throws IOException {

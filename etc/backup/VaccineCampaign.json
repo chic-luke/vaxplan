@@ -10,10 +10,7 @@
     "name" : "Ambulatorio"
   } ],
   "patientCategories" : [ "AGE_OVER_80", "AT_HIGH_RISK" ],
-  "listOfBookings" : null,
-  "bookedSlots" : {
-    "Ambulatorio" : [ 2021, 2, 6, 9, 10 ]
-  }
+  "listOfBookings" : null
 }, {
   "name" : "Scriviti",
   "vaccine" : "COVID",
@@ -28,6 +25,5 @@
     "name" : "Brescia Fiera"
   } ],
   "patientCategories" : [ "AGE_70_79", "AGE_60_69" ],
-  "listOfBookings" : null,
-  "bookedSlots" : null
+  "listOfBookings" : [ ]
 } ]

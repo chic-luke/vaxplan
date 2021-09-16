@@ -23,7 +23,7 @@ public class App extends Application {
         stage.setTitle("Vaxplan");
         stage.setScene(scene);
         stage.setResizable(false);
-
+    
         stage.setOnCloseRequest(e -> {
             e.consume();
             try {

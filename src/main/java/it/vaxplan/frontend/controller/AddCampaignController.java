@@ -2,12 +2,11 @@ package it.vaxplan.frontend.controller;
 
 import it.vaxplan.backend.Vaccine;
 import it.vaxplan.backend.VaccineCampaign;
-import it.vaxplan.backend.json.Json;
 import it.vaxplan.backend.json.Sync;
-import it.vaxplan.backend.service.BookingService;
 import it.vaxplan.backend.service.VaccineCampaignService;
 import it.vaxplan.frontend.App;
 import it.vaxplan.frontend.CampaignToAdd;
+import it.vaxplan.frontend.CampaignToAddFields;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -87,6 +86,9 @@ public class AddCampaignController implements Initializable {
 
         // Initialize Vaccines ComboBox
         vaccineTypeComboBox.getItems().addAll(Vaccine.values());
+
+        // Initialize singleton
+        CampaignToAdd.campaign = new CampaignToAddFields();
     }
 
     /**

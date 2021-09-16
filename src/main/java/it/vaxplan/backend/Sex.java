@@ -3,7 +3,8 @@ package it.vaxplan.backend;
 public enum Sex {
 
     MALE("Maschio"),
-    FEMALE("Femmina");
+    FEMALE("Femmina"),
+    ANY("Qualsiasi altro");
 
     private final String string;
 
