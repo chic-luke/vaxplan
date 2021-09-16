@@ -30,6 +30,10 @@ public class RegistrationFields {
 
     @Getter
     @Setter
+    private String healthCardNumber;
+
+    @Getter
+    @Setter
     private Sex sex;
 
 }

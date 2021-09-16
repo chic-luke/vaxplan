@@ -1,20 +1,8 @@
 [ {
-  "firstName" : "Armando",
-  "lastName" : "Bianchi",
-  "fiscalCode" : "BNCRND00B10F205G",
-  "birthPlace" : "Brescia",
-  "birthDay" : [ 2000, 2, 10 ],
-  "sex" : "MALE",
-  "atHighRisk" : false,
-  "schoolWorker" : false,
-  "lawEnforcementWorker" : false,
-  "caretaer" : false,
-  "cohabiting" : false,
-  "healthCareWorker" : true
-}, {
   "firstName" : "Elena",
   "lastName" : "Rossi",
   "fiscalCode" : "RSSLNE99A66F205S",
+  "healthCardNumber" : "916915714470839943",
   "birthPlace" : "Milano",
   "birthDay" : [ 1999, 1, 26 ],
   "sex" : "FEMALE",
@@ -24,4 +12,18 @@
   "caretaer" : true,
   "cohabiting" : false,
   "healthCareWorker" : false
+}, {
+  "firstName" : "Armando",
+  "lastName" : "Bianchi",
+  "fiscalCode" : "BNCRND00B10F205G",
+  "healthCardNumber" : "388827792517749575",
+  "birthPlace" : "Brescia",
+  "birthDay" : [ 2000, 2, 10 ],
+  "sex" : "MALE",
+  "atHighRisk" : false,
+  "schoolWorker" : false,
+  "lawEnforcementWorker" : false,
+  "caretaer" : false,
+  "cohabiting" : false,
+  "healthCareWorker" : true
 } ]

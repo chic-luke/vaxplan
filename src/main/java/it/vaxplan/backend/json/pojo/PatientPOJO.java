@@ -22,6 +22,10 @@ public class PatientPOJO {
 
     @Getter
     @Setter
+    private String healthCardNumber;
+
+    @Getter
+    @Setter
     private String birthPlace;
 
     @Setter

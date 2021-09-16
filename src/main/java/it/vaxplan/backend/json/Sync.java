@@ -105,6 +105,7 @@ public class Sync {
             pojo.setFirstName(p.getFirstName());
             pojo.setLastName(p.getLastName());
             pojo.setFiscalCode(p.getFiscalCode());
+            pojo.setHealthCardNumber(p.getHealthCardNumber());
             pojo.setBirthPlace(p.getBirthPlace());
             pojo.setBirthDay(p.getBirthDay());
             pojo.setSex(p.getSex());
@@ -144,7 +145,7 @@ public class Sync {
             var pojo = Json.fromJson(patient, PatientPOJO.class);
 
             var newPatient = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
+                    pojo.getHealthCardNumber(), pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
                     pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
                     pojo.isCohabiting());
 
@@ -189,13 +190,13 @@ public class Sync {
         CitizenService.getCitizens().clear();
 
         for (var bookingIt = node.elements(); bookingIt.hasNext();) {
-            var booking = bookingIt.next();
+            var citizen = bookingIt.next();
 
-            var pojo = Json.fromJson(booking, PatientPOJO.class);
+            var pojo = Json.fromJson(citizen, PatientPOJO.class);
 
             var newCitizen = new Patient(pojo.getFirstName(), pojo.getLastName(), pojo.getFiscalCode(),
-                    pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(), pojo.isHealthCareWorker(),
-                    pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
+                    pojo.getHealthCardNumber(), pojo.getBirthPlace(), pojo.getBirthDay(), pojo.getSex(), pojo.isAtHighRisk(),
+                    pojo.isHealthCareWorker(), pojo.isSchoolWorker(), pojo.isLawEnforcementWorker(), pojo.isCaretaer(),
                     pojo.isCohabiting());
 
             CitizenService.addCitizen(newCitizen);
