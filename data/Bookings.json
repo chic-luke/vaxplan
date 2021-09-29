@@ -1,0 +1,24 @@
+[ {
+  "patient" : {
+    "firstName" : "Mario",
+    "lastName" : "Rossi",
+    "fiscalCode" : "RSSMRA00A01F205F",
+    "birthPlace" : "Milano",
+    "birthDay" : [ 2000, 1, 1 ],
+    "sex" : "MALE",
+    "uuid" : "1c97809a-d5db-46d0-8073-4d22d411b83e",
+    "atHighRisk" : false,
+    "healthCareWorker" : true,
+    "schoolWorker" : false,
+    "lawEnforcementWorker" : false,
+    "caretaker" : false,
+    "cohabiting" : false,
+    "intAge" : 21,
+    "adult" : true
+  },
+  "vaccineCampaignUUID" : "bab2e3c7-d669-4ced-8cae-7889797f688d",
+  "date" : [ 2021, 9, 1 ],
+  "location" : {
+    "name" : "Ospedale Civile Brescia"
+  }
+} ]

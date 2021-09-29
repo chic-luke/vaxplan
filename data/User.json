@@ -1,0 +1,87 @@
+[
+  {
+    "firstName": "Mario",
+    "lastName": "Rossi",
+    "fiscalCode": "RSSMRA86D05F205W",
+    "birthPlace": "Milano",
+    "birthDay": "05/04/1986",
+    "sex": "MALE",
+    "code": "205W",
+    "isHealthCareWorker": false
+  },
+  {
+    "firstName": "Adalgisa",
+    "lastName": "Greco",
+    "fiscalCode": "GRCDGS90E05B157J",
+    "birthPlace": "Brescia",
+    "birthDay": "05/05/1990",
+    "sex": "FEMALE",
+    "code": "157J",
+    "isHealthCareWorker": true
+  },
+  {
+    "firstName": "Aranaldo",
+    "lastName": "De Luca",
+    "fiscalCode": "DLCRLD80C15F839D",
+    "birthPlace": "Cremona",
+    "birthDay": "15/03/1980",
+    "sex": "MALE",
+    "code": "839D",
+    "isHealthCareWorker": false
+  },
+  {
+    "firstName": "Giovanna",
+    "lastName": "Giordano",
+    "fiscalCode": "GRDGNN76T04H501O",
+    "birthPlace": "Pavia",
+    "birthDay": "04/12/1976",
+    "sex": "FEMALE",
+    "code": "501O",
+    "isHealthCareWorker": false
+  },
+  {
+    "firstName": "Andrea",
+    "lastName": "Cattaneo",
+    "fiscalCode": "CTTNDR99D20F704Q",
+    "birthPlace": "Monza",
+    "birthDay": "20/04/1999",
+    "sex": "MALE",
+    "code": "704Q",
+    "isHealthCareWorker": false
+  },
+  {
+    "firstName": "Paola",
+    "lastName": "Bianchi",
+    "fiscalCode": "CTTNDR99D20F704Q",
+    "birthPlace": "Monza",
+    "birthDay": "20/04/1999",
+    "sex": "MALE",
+    "code": "704Q",
+    "isHealthCareWorker": false
+  },
+  {
+    "firstName": "Cirno",
+    "lastName": "Esposito",
+    "fiscalCode": "SPSCRN99P09A944U",
+    "birthPlace": "Bergamo",
+    "birthDay": "09/09/1999",
+    "sex": "FEMALE",
+    "code": "944U",
+    "isHealthCareWorker": false
+  },
+  {
+    "firstName" : "Elena",
+    "lastName" : "Rossi",
+    "fiscalCode" : "RSSLNE99A66F205S",
+    "birthPlace" : "Milano",
+    "birthDay" : [ 1999, 1, 26 ],
+    "sex" : "FEMALE",
+    "code" : "RSSLNE99A66F205S",
+    "atHighRisk" : true,
+    "schoolWorker" : false,
+    "lawEnforcementWorker" : false,
+    "caretaer" : true,
+    "cohabiting" : false,
+    "healthCareWorker" : false
+  }
+]

@@ -1,0 +1,103 @@
+[ {
+  "name" : "Anti-polio",
+  "vaccine" : "POLIO",
+  "availableDoses" : 10000,
+  "startDate" : [ 2021, 10, 1 ],
+  "endDate" : [ 2022, 10, 1 ],
+  "dailyStartTime" : [ 9, 0 ],
+  "dailyEndTime" : [ 19, 30 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  } ],
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+}, {
+  "name" : "COVID-19 con categorie",
+  "vaccine" : "COVID",
+  "availableDoses" : 50000,
+  "startDate" : [ 2021, 9, 26 ],
+  "endDate" : [ 2021, 11, 29 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 20, 30 ],
+  "availableSites" : [ {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "AGE_70_79", "AGE_60_69", "CARETAKER", "COHABITING", "LAW_ENFORCEMENT_WORKER", "AT_HIGH_RISK", "AGE_OVER_80", "SCHOOL_WORKER", "HEALTH_WORKER" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+}, {
+  "name" : "COVID-19 per tutti",
+  "vaccine" : "COVID",
+  "availableDoses" : 100000,
+  "startDate" : [ 2021, 11, 30 ],
+  "endDate" : [ 2022, 6, 10 ],
+  "dailyStartTime" : [ 8, 30 ],
+  "dailyEndTime" : [ 19, 30 ],
+  "availableSites" : [ {
+    "name" : "Ospedale Civile - Voghera"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  }, {
+    "name" : "Brescia Fiera"
+  }, {
+    "name" : "Ospedale Papa Giovanni XXIII - Bergamo"
+  }, {
+    "name" : " Ospedale di Circolo e Fondazione Macchi - Varese"
+  }, {
+    "name" : "Policlinico S. Matteo - Pavia"
+  }, {
+    "name" : "P.O. Città di Sesto San Giovanni"
+  } ],
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : [ {
+    "uuid" : "a23c9544-794c-495c-9385-b2bf66263620",
+    "patient" : {
+      "firstName" : "Armando",
+      "lastName" : "Bianchi",
+      "fiscalCode" : "BNCRND00B10F205G",
+      "healthCardNumber" : "388827792517749575",
+      "birthPlace" : "Brescia",
+      "birthDay" : [ 2000, 2, 10 ],
+      "sex" : "MALE",
+      "uuid" : "0810ae51-4623-460b-8086-00a840af66db",
+      "atHighRisk" : false,
+      "healthCareWorker" : true,
+      "schoolWorker" : false,
+      "lawEnforcementWorker" : false,
+      "caretaker" : false,
+      "cohabiting" : false,
+      "intAge" : 21,
+      "adult" : true
+    },
+    "campaignUUID" : "d2d72662-15f1-4304-a063-1eca0d924da0",
+    "date" : [ 2021, 12, 3 ],
+    "time" : [ 2021, 12, 3, 9, 50 ],
+    "location" : {
+      "name" : "Brescia Ospedale Civile"
+    }
+  } ],
+  "bookedSlots" : {
+    "Brescia Ospedale Civile" : [ 2021, 12, 3, 9, 50 ]
+  }
+}, {
+  "name" : "Anti-Meningococca B",
+  "vaccine" : "MENINGOCOCCAL_B",
+  "availableDoses" : 7500,
+  "startDate" : [ 2022, 1, 1 ],
+  "endDate" : [ 2023, 2, 3 ],
+  "dailyStartTime" : [ 11, 30 ],
+  "dailyEndTime" : [ 18, 0 ],
+  "availableSites" : [ {
+    "name" : "Milano Ospedale Niguarda"
+  }, {
+    "name" : "Brescia Ospedale Civile"
+  }, {
+    "name" : "Brescia Fiera"
+  } ],
+  "patientCategories" : [ "EVERYONE" ],
+  "listOfBookings" : null,
+  "bookedSlots" : { }
+} ]

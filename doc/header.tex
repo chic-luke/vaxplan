@@ -1,0 +1,94 @@
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{framed}
+\usepackage{geometry}
+\usepackage{parskip}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{color,colortbl}
+\usepackage{tocloft}
+\usepackage{afterpage}
+\usepackage{xparse}
+\usepackage[stretch=10,shrink=10]{microtype}
+
+% Set path for pictures
+\graphicspath{ {./images/} }
+
+% Do not indent on new paragraphe
+% \setlength{\parindent}{0pt}
+
+% Newline after paragraphe title
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+   {-3.25ex\@plus-1ex \@minus-.2ex}%
+   {1.5ex \@plus.2ex}%
+   {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
+\newcommand{\myparskip}{\setlength{\parskip}{.8em}}
+\newcommand{\noparskip}{\setlength{\parskip}{0pt}}
+\definecolor{link}{rgb}{0,0,.6}
+
+
+\def\ifempty#1{\def\temp{#1} \ifx\temp\empty}
+\newcommand{\code}[1]{\texttt{#1}}
+
+% Wrapper for new image.
+% [#1]: scale factor
+% {#2}: file path
+% {#3}: caption
+% {#4}: label (ID for links etcs)
+\NewDocumentCommand{\image}{ O{} m m m }{%
+  \begin{figure}[ht]
+    \centering
+    \caption{#3}
+    \vspace{2pt}
+    \includegraphics[width=#1\linewidth]{#2}%
+    \label{fig:#4}
+  \end{figure}
+  \afterpage{\clearpage}
+}
+\NewDocumentEnvironment{custenum}{ O{} }{%
+  \begin{enumerate}[topsep=2pt,label=\arabic*.#1]
+    \setlength{\itemsep}{2pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+}{%
+  \end{enumerate}
+}
+\NewDocumentEnvironment{custlist}{ O{} }{%
+  \begin{itemize}[topsep=2pt#1]
+    \setlength{\itemsep}{2pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+}{%
+  \end{itemize}
+}
+\NewDocumentEnvironment{custdesc}{ O{} }{%
+  \begin{description}[topsep=2pt#1]
+    \setlength{\itemsep}{2pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}
+}{%
+  \end{description}
+}
+\NewDocumentEnvironment{specifica}{ m m m }{%
+  \begin{framed}
+    \noparskip{}
+    \textbf{Attori}: #1\\
+    \ifempty{#2} \empty\else \textbf{Precondizioni}: #2 \fi
+    \textbf{Passi}:
+    \begin{custenum}
+}{%
+    \end{custenum}
+    \ifempty{#3} \empty\else \textbf{Postcondizioni}: #3 \fi
+  \end{framed}
+}

@@ -1,54 +1,43 @@
 package it.vaxplan.backend;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.Getter;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
+import javax.validation.constraints.NotBlank;
 
-@Data
-@NoArgsConstructor
-@Accessors(chain = true)
-@AllArgsConstructor
-@Builder
-abstract class Vaccine {
+public enum Vaccine {
+    CHICKENPOX("Anti-varicella"),
+    COVID("Anti-Covid-19"),
+    MEASLES("Anti-morbillo"),
+    SARS("SARS"),
+    FLU("Influenza"),
+    POLIO("Anti-poliomielitica"),
+    DIPHTHERIA("Anti-difterica"),
+    TETHANUS("Anti-tetanica"),
+    HEPATITIS_B("Anti-epatite B"),
+    PERTUSSIS("Anti-pertosse"),
+    HAEMOPHILUS("Anti-Haemophilus influenzae tipo b"),
+    RUBELLA("Anti-rosolia"),
+    MUMPS("Anti-parotite"),
+    MENINGOCOCCAL_B("Anti-meningococcica B"),
+    MENINGOCOCCAL_C("Anti-meningococcica C"),
+    PNEUMOCOCCAL("Anti-pneumococcica"),
+    ROTAVIRUS("Anti-rotavirus");
 
-    Map<User, Booking> bookings = new HashMap<>();
-    //ArrayList<String> sites = new ArrayList<String>();
-    //ArrayList<String> dates = new ArrayList<String>();
-    int availableSlots = 6;
 
-    /**
-     * Determines if a patient is eligible for a given vaccine campaign.
-     * @return Truth value for whether a patient is eligible or not
-     */
-    public abstract boolean isEligible();
+    @Getter
+    @NotBlank
+    private final String virusName;
 
-    /*public void readBufferSedi(Predicate<String> selector, ArrayList<String> save) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("prenotazioni.txt"));
-        String line = reader.readLine();
-        while(line != null)
-        {
-            for(String word: line.split("//W+"))
-                if(selector.test(word))
-                    save.add(word);
-
-            line = reader.readLine();
-        }
-    }*/
-
-    /**
-     * Getter for number of available slots
-     * @return Number of available slots
-     */
-    /*
-    public int getAvailableSlots()
-    {
-        return availableSlots;
+    Vaccine(String virusName) {
+        this.virusName = virusName;
     }
 
+    /**
+     * Return a human-readable String associated to each enum element as String
+     * @return virusName field of enum element
      */
+    @Override
+    public String toString() {
+        return this.virusName;
+    }
 }
