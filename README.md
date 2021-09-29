@@ -1,6 +1,6 @@
 # 💉 Vaxplan - A simple vaccine campaign planning tool in JavaFX for local health authorities written with Java and JavaFX
 
-[![Code Quality Score](https://www.code-inspector.com/project/29237/score/svg)](<PUBLIC-URL>) [![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
+[![Code Quality Score](https://www.code-inspector.com/project/29237/score/svg)](https://frontend.code-inspector.com/public/project/29237/vaxplan/dashboard) [![Code Quality Score](https://www.code-inspector.com/project/29237/status/svg)](https://frontend.code-inspector.com/public/project/29237/vaxplan/dashboard)
 
 This prototype was developed as a group project for the Software Engineering course in the Computer Science undergraduate degree at Università di Verona.
 
