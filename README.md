@@ -20,6 +20,6 @@ Vaxplan is a simple GUI prototype meant for an Italian region to plan various va
 ## ✨ Technologies used
 
 * **Java**: This prototype was written in Java 11 and it's been tested on OpenJDK 11 on Linux. However, since both the JVM and JavaFX run on all major desktop operating systems, this prototype should run anywhere.
-* **JavaFX (OpenJFX 11)**: (OpenJFX)[https://openjfx.io/] is a toolkit to develop graphical user interfaces in Java. It could be considered the de-facto successor to the old AWT and Java Swing libraries.
-* **Jackson Databind**: (jackson-databind)[https://github.com/FasterXML/jackson-databind] was used for JSON (de)serialization. All data is stored permanently on disk on simple, portable JSON files.
+* **JavaFX (OpenJFX 11)**: [OpenJFX](https://openjfx.io/) is a toolkit to develop graphical user interfaces in Java. It could be considered the de-facto successor to the old AWT and Java Swing libraries.
+* **Jackson Databind**: [jackson-databind](https://github.com/FasterXML/jackson-databind) was used for JSON (de)serialization. All data is stored permanently on disk on simple, portable JSON files.
 * **JUnit5**: JUnit5 was used to write and run Unit Tests for the validation steps.
